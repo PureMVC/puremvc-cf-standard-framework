@@ -5,7 +5,7 @@ Release Date: ??/??/??
     Platform: ColdFusion  
      Version: 0 
     Revision: 1
-      Author: Michael Oddis <moddis@puremvc.org>
+      Author: Michael Oddis <michael.oddis@puremvc.org>
      License: Creative Commons Attribution 3.0 United States License
 --------------------------------------------------------------------------
 0.1 - Initial project structure created in repository - CLH
