@@ -56,9 +56,9 @@
 			//var method = thisObject[this.getNotifyMethod()];
 			method(arguments.notification);
 		</cfscript>
-		<cfdump var="#thisObject#">
+		<!--- <cfdump var="#thisObject#">
 		<cfdump var="#methodStr#">
-		<cfdump var="#method#">
+		<cfdump var="#method#"> --->
 		<!--- <cftrace text="End - notifyObserver() of Observer"> --->
 	</cffunction>
 		
