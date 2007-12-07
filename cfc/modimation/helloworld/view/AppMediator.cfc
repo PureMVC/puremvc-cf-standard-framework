@@ -39,7 +39,7 @@
 		<cfscript>
 			if ( arguments.notification.getName() EQ "onSayHello")
 			{
-				WriteOutput(this.GetNotifyContext().getViewComponent().doSayHello());
+				WriteOutput(this.getViewComponent().doSayHello());
 			}
 		</cfscript>
 	</cffunction>
