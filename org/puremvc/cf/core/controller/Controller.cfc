@@ -21,7 +21,6 @@
 	</cfscript>
 	
 	<cffunction name="getInstance" displayname="getInstance" access="public" returntype="org.puremvc.cf.interfaces.IController" output="true">
-		<!--- <cftrace text="In getInstance() of Controller"> --->
 		<cfscript>
 			if ( NOT StructKeyExists(variables,"controllerInstance") )
 			{
@@ -59,8 +58,6 @@
 			this.commandMap[ arguments.notificationName ] = arguments.commandClassRef;
 			this.view.registerObserver( arguments.notificationName, observer );
 		</cfscript>
-		<!--- <cftrace var="this.commandMap['STARTUP']">
-		<cftrace text="Ending - registerCommand() of Controller"> --->
 	</cffunction>
 	
 	<cffunction name="executeCommand" returntype="void" access="public" output="true">
@@ -72,8 +69,6 @@
 			commandInstance = CreateObject("component", commandClassRef);
 			commandInstance.execute( arguments.notification );
 		</cfscript>
-		<!--- <cftrace text="#arguments.notification.getName()#">	
-		<cftrace text="Ending - executeCommand() of Controller "> --->
 	</cffunction>
 	
 	<cffunction name="removeCommand" returntype="void" access="public" output="true">

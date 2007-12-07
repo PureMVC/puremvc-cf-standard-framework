@@ -35,19 +35,9 @@
 	<cffunction name="registerObserver" displayname="registerObserver" returntype="void" access="public" output="true">
 		<cfargument name="notificationName" type="string" required="true">
 		<cfargument name="observer" type="org.puremvc.cf.interfaces.IObserver" required="true">
-		<!--- 
-		<cftrace text="Beginning - registerObserver() of View">
-		<cftrace var="notificationName">
-		<cftrace var="observer"> 
-		--->
 		<cfscript>
 			StructInsert(this.observerMap, arguments.notificationName, arguments.observer, true);
 		</cfscript>
-		<!--- 
-		<cftrace var="this.observerMap">
-		<cftrace var="this.observerMap['STARTUP']">
-		<cftrace text="End - registerObserver() of View"> 
-		--->
 	</cffunction>
 	
 	<cffunction name="notifyObservers" displayname="notifyObservers" returntype="void" access="public" output="true">
@@ -59,19 +49,10 @@
 			if( StructKeyExists(this.observerMap, notificationName) ) 
 			{
 				observers = this.observerMap;
-				//for (i=1; i <= StructCount(observers); i++)
-				//{
-					observer = observers[notificationName];
-					observer.notifyObserver( arguments.notification );
-				///}
+				observer = observers[notificationName];
+				observer.notifyObserver( arguments.notification );
 			}
 		</cfscript>
-		<!--- <cftrace var="observers">
-		<cftrace var="observer">
-		<cftrace var="notification">
-		<cftrace var="notification.getName()">
-		<cftrace var="this.observerMap">
-		<cftrace text="End - notifyObservers() of View"> --->
 	</cffunction>
 	
 	<cffunction name="registerMediator" displayname="registerMediator" returntype="void" access="public" output="true">
@@ -96,7 +77,6 @@
 				this.registerObserver( interests[i],  observer );
 			}
 		</cfscript>
-		<!--- <cftrace  text="END - registerMediator of View"> --->
 	</cffunction>
 	
 	<cffunction name="retrieveMediator" displayname="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true">

@@ -12,8 +12,6 @@
 	
 	<cfscript>
 		this.NAME = 'Mediator';
-		
-		// The view component
 		variables.viewComponent = 0;
 	</cfscript>
 	

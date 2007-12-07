@@ -1,4 +1,4 @@
-<cfcomponent displayname="AbstractViewHelper" output="true" implements="org.puremvc.cf.interfaces.IViewHelper">
+<cfcomponent displayname="ViewHelper" output="true" implements="org.puremvc.cf.interfaces.IViewHelper">
 	
 	<cfproperty name="oFacade" type="org.puremvc.cf.patterns.facade.Facade" required="true">
 	<cfproperty name="oNotification" type="org.puremvc.cf.patterns.observer.Notification" required="true">

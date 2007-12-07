@@ -14,6 +14,7 @@
 	<cfscript>
 		this.NAME = "Proxy";
 		variables.data = 0;
+		variables.proxyName = "";
 	</cfscript>
 	
 	<cffunction name="init" returntype="void" access="public" output="true">

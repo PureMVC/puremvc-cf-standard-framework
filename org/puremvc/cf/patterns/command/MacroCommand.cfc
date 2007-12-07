@@ -23,7 +23,6 @@
 	<cffunction name="addSubCommand" returntype="void" access="public" output="true">
 		<cfargument name="commandName" type="string" required="true">
 		<cfargument name="commandClassRef" type="string" required="true">
-		<!--- <cftrace text="Beginning - addSubCommand() of MacroCommand"> --->
 		<cfscript>
 			ArrayAppend(variables.subCommands,arguments.commandClassRef);
 		</cfscript>
@@ -43,7 +42,6 @@
 				commandInstance.execute( notification );
 			}
 		</cfscript>
-		<!--- <cftrace text="End - execute() of MacroCommands"> --->
 	</cffunction>
 
 </cfcomponent>

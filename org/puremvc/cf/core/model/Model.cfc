@@ -15,7 +15,6 @@
 	</cfscript>
 	
 	<cffunction name="getInstance" displayname="getInstance" access="public" output="true" returntype="org.puremvc.cf.interfaces.IModel">
-		<!--- <cftrace text="In getInstance() of Model"> --->
 		<cfscript>
 			if ( NOT StructKeyExists(variables,"modelInstance") )
 			{

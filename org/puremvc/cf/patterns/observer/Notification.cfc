@@ -5,9 +5,9 @@
 --->
 <cfcomponent output="true" implements="org.puremvc.cf.interfaces.INotification">
 	
-	<cfproperty name="notificationName" type="string" required="true">
-	<cfproperty name="notificationBody" type="any" required="true">
-	<cfproperty name="notificationType" type="string" required="true">
+	<cfproperty name="notificationName" type="string" required="true" hint="The name of the notification instance">
+	<cfproperty name="notificationBody" type="any" required="true" hint="The body of the notification instance">
+	<cfproperty name="notificationType" type="string" required="true" hint="The type of the notification instance">
 	
 	<cfscript>
 		// the name of the notification instance
@@ -18,18 +18,10 @@
 		variables.notificationType = "";
 	</cfscript>
 	
-	<!--- 
-	 * Constructor. 
-	 * 
-	 * @param name name of the <code>Notification</code> instance. (required)
-	 * @param body the <code>Notification</code> body. (optional)
-	 * @param type the type of the <code>Notification</code> (optional)
-	--->
 	<cffunction name="init" returntype="void" access="public" output="true">
 		<cfargument name="notificationName" type="string" required="true" hint="Name of the Notification instance">
 		<cfargument name="notificationBody" type="any" required="false" hint="Body the Notification body.">
 		<cfargument name="notificationType" type="string" required="false" hint="Type the type of the Notification">
-		<!--- <cftrace text="In init() of Notification."> --->
 		<cfscript>
 			variables.notificationName = arguments.notificationName;
 			
@@ -44,50 +36,34 @@
 			}
 		</cfscript>
 	</cffunction>
-		
-	<!--- 
-	 * Get the name of the <code>INotification</code> instance. 
-	 * No setter, should be set by constructor only
-	--->
-	<cffunction name="getName" returntype="string" access="public" output="true">
+	
+	<cffunction name="getName" returntype="string" access="public" output="true" description="Get the name of the <code>INotification</code> instance. No setter, should be set by constructor only">
 		<cfscript>
 			return variables.notificationName;
 		</cfscript>
 	</cffunction>
 	
-	<!--- 
-	 * Set the body of the <code>INotification</code> instance
-	--->
-	<cffunction name="setBody" returntype="void" access="public" output="true">
+	<cffunction name="setBody" returntype="void" access="public" output="true" description="Set the body of the <code>INotification</code> instance">
 		<cfargument name="notificationBody" type="any" required="true">
 		<cfscript>
 			variables.notificationBody = arguments.notificationBody;
 		</cfscript>
 	</cffunction>
 	
-	<!---  
-	 * Get the body of the <code>INotification</code> instance
-	--->
-	<cffunction name="getBody" returntype="any" access="public" output="true">
+	<cffunction name="getBody" returntype="any" access="public" output="true" description="Get the body of the <code>INotification</code> instance">
 		<cfscript>
 			return variables.notificationBody;
 		</cfscript>
 	</cffunction>
 	
-	<!---  
-	 * Set the type of the <code>INotification</code> instance
-	--->
-	<cffunction name="setType" returntype="void" access="public" output="true">
+	<cffunction name="setType" returntype="void" access="public" output="true" description="Set the type of the <code>INotification</code> instance">
 		<cfargument name="notificationType" type="string" required="true">
 		<cfscript>
 			variables.notificationType = arguments.notificationType;
 		</cfscript>
 	</cffunction>
 	
-	<!---  
-	 * Get the type of the <code>INotification</code> instance
-	--->
-	<cffunction name="getType" returntype="string" access="public" output="true">
+	<cffunction name="getType" returntype="string" access="public" output="true" description="Get the type of the <code>INotification</code> instance">
 		<cfscript>
 			return variables.notificationType;
 		</cfscript>

@@ -19,7 +19,7 @@
 	</cffunction>
 	
 	<cffunction name="setNotifyMethod" displayname="setNotifyMethod" access="public" returntype="void">
-		<cfargument name="notifyMethod" type="string" required="true">
+		<cfargument name="notifyMethod" type="variableName" required="true">
 		<cfscript>
 			variables.notify = arguments.notifyMethod;
 		</cfscript>	
@@ -51,15 +51,14 @@
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			var thisObject = this.getNotifyContext();
-			var methodStr = this.getNotifyMethod();
-			var method = thisObject[methodStr];
-			//var method = thisObject[this.getNotifyMethod()];
-			method(arguments.notification);
+			var method = this.getNotifyMethod();
+			if (method EQ "handleNotification")
+			{
+				thisObject.handleNotification(arguments.notification);
+			} else if (method EQ "executeCommand") {
+				thisObject.executeCommand(arguments.notification);
+			}
 		</cfscript>
-		<!--- <cfdump var="#thisObject#">
-		<cfdump var="#methodStr#">
-		<cfdump var="#method#"> --->
-		<!--- <cftrace text="End - notifyObserver() of Observer"> --->
 	</cffunction>
 		
 </cfcomponent>

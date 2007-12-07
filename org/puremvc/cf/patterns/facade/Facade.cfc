@@ -87,11 +87,9 @@
 	
 	<cffunction name="registerProxy" returntype="void" access="public" output="true">
 		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true">
-		<!--- <cftrace text="Beginning - registerProxy() of Facade"> --->
 		<cfscript>
 			this.model.registerProxy( arguments.proxy );
 		</cfscript>
-		<!--- <cftrace text="End - registerProxy() of Facade"> --->
 	</cffunction>
 	
 	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true">
@@ -118,21 +116,16 @@
 	
 	<cffunction name="notifyObservers" returntype="void" access="public" output="true">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
-		<!--- <cftrace text="Beginning - notifyObservers() of Facade"> --->
 		<cfscript>
 			if ( IsObject(this.view) ) { this.view.notifyObservers( arguments.notification ); }
 		</cfscript>
-		<!--- <cftrace text="End - notifyObservers() of Facade"> --->
 	</cffunction>
 	
 	<cffunction name="registerMediator" returntype="void" access="public" output="true">
 		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true">
-		<!--- <cftrace text="Beginning - registerMediator() of Facade"> --->
 		<cfscript>
 			if ( IsObject(this.view) ) this.view.registerMediator( arguments.mediator );
 		</cfscript>
-		<!--- <cfdump var="#this.view.mediatorMap#">
-		<cftrace text="End - registerMediator() of Facade"> --->
 	</cffunction>
 	
 	<cffunction name="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true">
