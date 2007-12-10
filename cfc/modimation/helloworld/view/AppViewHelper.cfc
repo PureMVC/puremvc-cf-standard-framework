@@ -10,12 +10,24 @@
 	<cffunction name="initializeViewHelper" access="public" returntype="void">
 		<cfscript>
 			super.initializeViewHelper();
-			
 			variables.oNotification.init("STARTUP", this);
 			oFacade.notifyObservers(oNotification);
 			
-			variables.oNotification.init("onSayHello");
-			oFacade.notifyObservers(oNotification);
+			this.handlePostBack();
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="handlePostBack" access="public" returntype="void">
+		<cfscript>
+			var user = {};
+			if (IsDefined("FORM.userName") AND IsDefined("FORM.userPassword"))
+			{
+				user.firstName = FORM.userName;
+				user.lastName = FORM.userPassword;
+				
+				variables.oNotification.init("onLogin", user);
+				oFacade.notifyObservers(oNotification);
+			}
 		</cfscript>
 	</cffunction>
 	
