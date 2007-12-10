@@ -173,5 +173,10 @@
 			viewInstance.removeMediator("ViewTestMediator");
 		</cfscript>
 	</cffunction>
+	
+	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
+		<cfscript>
+		</cfscript>
+	</cffunction>
 
 </cfcomponent>
