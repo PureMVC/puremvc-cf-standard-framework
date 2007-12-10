@@ -9,7 +9,7 @@
 	<cffunction name="init" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true">
 		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewHelper" required="false" default="0">
 		<cfscript>
-			super.init(arguments.viewComponent);
+			super.init(arguments.viewComponent);		
 			return this;
 		</cfscript>
 	</cffunction>
@@ -30,6 +30,7 @@
 		<cfscript>
 			var interests = ArrayNew(1);
 			interests[1] = "onSayHello";
+			interests[2] = "onLogin";
 			return interests;
 		</cfscript>
 	</cffunction>
@@ -40,6 +41,11 @@
 			if ( arguments.notification.getName() EQ "onSayHello")
 			{
 				WriteOutput(this.getViewComponent().doSayHello());
+			}
+			if ( arguments.notification.getName() EQ "onLogin")
+			{
+				WriteOutput(arguments.notification.getBody().firstName);
+				WriteOutput(arguments.notification.getBody().lastName);
 			}
 		</cfscript>
 	</cffunction>
