@@ -4,4 +4,8 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
 <cfinterface name="IViewHelper" displayname="IViewHelper">
+	
+	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
+	</cffunction>
+	
 </cfinterface>
