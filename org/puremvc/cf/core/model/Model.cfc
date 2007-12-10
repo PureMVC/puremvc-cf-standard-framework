@@ -16,12 +16,12 @@
 	
 	<cffunction name="getInstance" displayname="getInstance" access="public" output="true" returntype="org.puremvc.cf.interfaces.IModel">
 		<cfscript>
-			if ( NOT StructKeyExists(variables,"modelInstance") )
+			if ( NOT StructKeyExists(this, "modelInstance") )
 			{
-				variables.modelInstance = CreateObject("Component", "org.puremvc.cf.core.model.Model");
-				variables.modelInstance.initializeModel();
+				this.modelInstance = CreateObject("Component", "org.puremvc.cf.core.model.Model");
+				this.modelInstance.initializeModel();
 			}
-			return variables.modelInstance;
+			return this.modelInstance;
 		</cfscript>
 	</cffunction>
 	

@@ -22,31 +22,18 @@
 	
 	<cffunction name="getInstance" displayname="getInstance" access="public" returntype="org.puremvc.cf.interfaces.IController" output="true">
 		<cfscript>
-			if ( NOT StructKeyExists(variables,"controllerInstance") )
+			if ( NOT StructKeyExists(this, "controllerInstance" ) )
 			{
-				variables.controllerInstance = CreateObject("Component", "org.puremvc.cf.core.controller.Controller");
-				variables.controllerInstance.initializeController();
+				this.controllerInstance = CreateObject("Component", "org.puremvc.cf.core.controller.Controller");
+				this.controllerInstance.initializeController();
 			}
-			return variables.controllerInstance;
+			return this.controllerInstance;
 		</cfscript>
 	</cffunction>
 	
 	<cffunction name="initializeController" displayname="initializeController" access="public" returntype="void">
 		<cfscript>
 			this.view = application.facadeInstance.view;
-		</cfscript>
-	</cffunction>
-	
-	<cffunction name="setView" displayname="setView" access="public" returntype="void">
-		<cfargument name="view" type="org.puremvc.cf.interfaces.IView" required="true">
-		<cfscript>
-			this.view = arguments.view;
-		</cfscript>
-	</cffunction>
-	
-	<cffunction name="getView" displayname="getView" access="public" returntype="org.puremvc.cf.interfaces.IView">
-		<cfscript>
-			return this.view;
 		</cfscript>
 	</cffunction>
 	
@@ -63,9 +50,13 @@
 	<cffunction name="executeCommand" returntype="void" access="public" output="true">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
-			var commandClassRef = application.facadeInstance.controller.commandMap[arguments.notification.getName()];
+			var commandClassRef = 0;
 			var commandInstance = 0;
-			if ( commandClassRef EQ "" ){ return; }
+			if (StructKeyExists(this.commandMap, arguments.notification.getName()))
+			{
+				commandClassRef = this.commandMap[arguments.notification.getName()];
+			} 
+			if ( commandClassRef EQ 0 ){ return; }
 			commandInstance = CreateObject("component", commandClassRef);
 			commandInstance.execute( arguments.notification );
 		</cfscript>

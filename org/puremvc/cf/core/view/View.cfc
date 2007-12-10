@@ -18,12 +18,12 @@
 		
 	<cffunction name="getInstance" displayname="getInstance" access="public" returntype="org.puremvc.cf.interfaces.IView" output="true">
 		<cfscript>
-			if ( NOT StructKeyExists(variables,"viewInstance") )
+			if ( NOT StructKeyExists(this, "viewInstance" ) )
 			{
-				variables.viewInstance = CreateObject("Component", "org.puremvc.cf.core.view.View");
-				variables.viewInstance.initializeView();
+				this.viewInstance = CreateObject("Component", "org.puremvc.cf.core.view.View");
+				this.viewInstance.initializeView();
 			}
-			return variables.viewInstance;
+			return this.viewInstance;
 		</cfscript>
 	</cffunction>
 	

@@ -6,6 +6,7 @@
 	<cfscript>
 		variables.oFacade = 0;
 		variables.oNotification = 0;
+		variables.isPostBack = false;
 	</cfscript>
 	
 	<cffunction name="init" access="public" returntype="void">
@@ -30,6 +31,28 @@
 	<cffunction name="getNotification" access="public" returntype="org.puremvc.cf.patterns.observer.Notification">
 		<cfscript>
 			return variables.oNotification;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="hasFormBeenPosted" access="public" returntype="boolean">
+		<cfscript>
+			return variables.isPostBack;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="handlePostBack" access="public" returntype="void">
+		<cfscript>
+			var user = {};
+			if (IsDefined("FORM.userName") AND IsDefined("FORM.userPassword"))
+			{
+				user.firstName = FORM.userName;
+				user.lastName = FORM.userPassword;
+				
+				variables.oNotification.init("onLogin", user);
+				oFacade.notifyObservers(oNotification);
+				
+				variables.isPostBack = true;
+			}
 		</cfscript>
 	</cffunction>
 	
