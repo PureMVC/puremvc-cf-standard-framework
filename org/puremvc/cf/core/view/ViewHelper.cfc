@@ -4,6 +4,7 @@
 	<cfproperty name="oNotification" type="org.puremvc.cf.patterns.observer.Notification" required="true">
 	
 	<cfscript>
+		this.id = "";
 		variables.oFacade = 0;
 		variables.oNotification = 0;
 		variables.isPostBack = false;
