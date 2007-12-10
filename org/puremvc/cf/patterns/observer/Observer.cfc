@@ -57,6 +57,8 @@
 				thisObject.handleNotification(arguments.notification);
 			} else if (method EQ "executeCommand") {
 				thisObject.executeCommand(arguments.notification);
+			} else if (method EQ "viewTestMethod") {
+				thisObject.viewTestMethod(arguments.notification);
 			}
 		</cfscript>
 	</cffunction>
