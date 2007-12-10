@@ -22,6 +22,13 @@
 		</cfscript>
 	</cffunction>
 	
+	<cffunction name="setFacade" access="public" returntype="void">
+		<cfargument name="facade" type="org.puremvc.cf.interfaces.IFacade" required="true">
+		<cfscript>
+			variables.oFacade = arguments.facade;
+		</cfscript>
+	</cffunction>
+	
 	<cffunction name="getFacade" access="public" returntype="org.puremvc.cf.patterns.facade.Facade">
 		<cfscript>
 			return variables.oFacade;
@@ -40,19 +47,8 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="handlePostBack" access="public" returntype="void">
+	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
 		<cfscript>
-			var user = {};
-			if (IsDefined("FORM.userName") AND IsDefined("FORM.userPassword"))
-			{
-				user.firstName = FORM.userName;
-				user.lastName = FORM.userPassword;
-				
-				variables.oNotification.init("onLogin", user);
-				oFacade.notifyObservers(oNotification);
-				
-				variables.isPostBack = true;
-			}
 		</cfscript>
 	</cffunction>
 	
