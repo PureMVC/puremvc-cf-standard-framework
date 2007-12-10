@@ -17,17 +17,8 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="handlePostBack" access="public" returntype="void">
+	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
 		<cfscript>
-			var user = {};
-			if (IsDefined("FORM.userName") AND IsDefined("FORM.userPassword"))
-			{
-				user.firstName = FORM.userName;
-				user.lastName = FORM.userPassword;
-				
-				variables.oNotification.init("onLogin", user);
-				oFacade.notifyObservers(oNotification);
-			}
 		</cfscript>
 	</cffunction>
 	
