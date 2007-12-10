@@ -17,6 +17,7 @@
 		<cfscript>
 			var done = true;
 			var applicationFacade = 0;
+			var oAppViewHelper = 0;
 			if (IsDefined("url.initApp") AND url.initApp )
 			{
 				if ( StructKeyExists(application,"facadeInstance") )
