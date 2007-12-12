@@ -80,10 +80,6 @@
 			// will not change   			
    			controllerInstance.executeCommand(oNotification);
 		</cfscript>
-		<!--- 
-		<cfdump var="#application.facadeInstance#">
-		<cfabort> 
-		--->
 		<cfinvoke method="assertTrue">
 			<cfinvokeargument name="message" value="Expecting vo.result == 0">
 			<cfinvokeargument name="condition" value="#(oVO.getResult() EQ 0)#">
