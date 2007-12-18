@@ -1,3 +1,8 @@
+<!---
+ PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
+ PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
+ Your reuse is governed by the Creative Commons Attribution 3.0 License
+--->
 <cfcomponent displayname="ViewHelper" 
 			 output="true" 
 			 implements="org.puremvc.cf.interfaces.IViewHelper,org.flairteam.interfaces.IFactoryObject">
@@ -61,6 +66,7 @@
 		<cfdump var="#this.listenerMap#">
 	</cffunction>
 	
+	<!--- 
 	<cffunction name="retrieveEventListener" displayname="retrieveEventListener" returntype="org.puremvc.cf.interfaces.IViewHelper" access="public" output="true">
 		<cfargument name="eventName" type="string" required="true">
 		<cfscript>
@@ -73,7 +79,8 @@
 		<cfscript>
 			StructDelete(this.listenerMap, arguments.eventName, false);
 		</cfscript>
-	</cffunction>
+	</cffunction> 
+	--->
 	
 	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
 		<cfscript>
