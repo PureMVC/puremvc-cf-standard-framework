@@ -57,31 +57,6 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="addEventListener" access="public" returntype="void" output="true">
-		<cfargument name="eventName" type="string" required="true">
-		<cfargument name="eventListener" type="any" required="true">
-		<cfscript>
-			StructInsert(this.listenerMap, arguments.eventName, arguments.eventListener, true);
-		</cfscript>
-		<cfdump var="#this.listenerMap#">
-	</cffunction>
-	
-	<!--- 
-	<cffunction name="retrieveEventListener" displayname="retrieveEventListener" returntype="org.puremvc.cf.interfaces.IViewHelper" access="public" output="true">
-		<cfargument name="eventName" type="string" required="true">
-		<cfscript>
-			return this.listenerMap[ arguments.eventName ];
-		</cfscript>
-	</cffunction>
-	
-	<cffunction name="removeEventListener" returntype="void" access="public" output="true">
-		<cfargument name="eventName" type="string" required="true">
-		<cfscript>
-			StructDelete(this.listenerMap, arguments.eventName, false);
-		</cfscript>
-	</cffunction> 
-	--->
-	
 	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
 		<cfscript>
 		</cfscript>

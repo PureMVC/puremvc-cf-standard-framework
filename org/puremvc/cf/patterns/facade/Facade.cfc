@@ -5,9 +5,9 @@
 --->
 <cfcomponent displayname="Facade" output="true" implements="org.puremvc.cf.interfaces.IFacade">
 	
-	<cfproperty name="model" type="org.puremvc.cf.core.model.IModel" default="0" required="true">
-	<cfproperty name="view" type="org.puremvc.cf.core.view.IView" default="0" required="true">
-	<cfproperty name="controller" type="org.puremvc.cf.core.controller.IController" default="0" required="true">
+	<cfproperty name="model" type="org.puremvc.cf.interfaces.model.IModel" default="0" required="true">
+	<cfproperty name="view" type="org.puremvc.cf.interfaces.view.IView" default="0" required="true">
+	<cfproperty name="controller" type="org.puremvc.cf.interfaces.controller.IController" default="0" required="true">
 	<cfproperty name="SINGLETON_MSG" type="string" default="Facade Singleton already constructed!" required="true">
 	<cfproperty name="facadeInstance" type="org.puremvc.cf.interfaces.IFacade" required="true">
 	

@@ -8,15 +8,4 @@
 	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
 	</cffunction>
 	
-	<!--- 
-	<cffunction name="addEventListener" access="public" returntype="void" output="true">
-		<cfargument name="eventName" type="string" required="true">
-		<cfargument name="eventListener" type="any" required="true">
-	</cffunction>
-	
-	<cffunction name="removeEventListener" returntype="void" access="public" output="true">
-		<cfargument name="eventName" type="string" required="true">
-	</cffunction> 
-	--->
-	
 </cfinterface>
