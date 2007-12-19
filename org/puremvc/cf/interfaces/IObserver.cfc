@@ -15,7 +15,7 @@
 	 */
 	 --->
 	<cffunction name="setNotifyMethod" displayname="setNotifyMethod" access="public" returntype="void">
-		<cfargument name="notifyMethod" type="variableName" required="true">	
+		<cfargument name="notifyMethod" type="string" required="true">	
 	</cffunction>
 	
 	<!--- Set the notification context. --->
