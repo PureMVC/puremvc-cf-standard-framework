@@ -5,6 +5,8 @@
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.core.view.ViewTest")>
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.core.controller.ControllerTest")>
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.proxy.ProxyTest")>
+	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.observer.NotificationTest")>
+	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.observer.ObserverTest")>
 	<!--- Add as many test classes as you would like to the array --->
 	<cfset testSuite = CreateObject("component", "net.sourceforge.cfunit.framework.TestSuite").init( testClasses )>
 </cfsilent>
