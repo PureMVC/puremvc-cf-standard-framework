@@ -8,6 +8,10 @@
 	<cfproperty name="notify" type="string" required="true">
 	<cfproperty name="context" type="any" required="true">
 	
+	<cfscript>
+		variables.context = {};
+	</cfscript>
+	
 	<cffunction name="init" displayname="init" access="public" returntype="org.puremvc.cf.interfaces.IObserver" output="true">
 		<cfargument name="notifyMethod" type="string" required="true">
 		<cfargument name="notifyContext" type="any" required="true">
@@ -19,13 +23,13 @@
 	</cffunction>
 	
 	<cffunction name="setNotifyMethod" displayname="setNotifyMethod" access="public" returntype="void">
-		<cfargument name="notifyMethod" type="variableName" required="true">
+		<cfargument name="notifyMethod" type="string" required="true">
 		<cfscript>
 			variables.notify = arguments.notifyMethod;
 		</cfscript>	
 	</cffunction>
 	
-	<cffunction name="getNotifyMethod" displayname="getNotifyMethod" access="public" returntype="variablename">
+	<cffunction name="getNotifyMethod" displayname="getNotifyMethod" access="public" returntype="string">
 		<cfscript>
 			return variables.notify;
 		</cfscript>	
@@ -59,8 +63,25 @@
 				thisObject.executeCommand(arguments.notification);
 			} else if (method EQ "viewTestMethod") {
 				thisObject.viewTestMethod(arguments.notification);
+			} else if (method EQ "observerTestMethod") {
+				thisObject.observerTestMethod(arguments.notification);
 			}
 		</cfscript>
 	</cffunction>
-		
+	
+	<!--- 
+	/**
+	 * Compare an object to the notification context. 
+	 * 
+	 * @param object the object to compare
+	 * @return boolean indicating if the object and the notification context are the same
+	 */
+	 --->
+	<cffunction name="compareNotifyContext" displayname="compareNotifyContext" access="public" returntype="boolean" output="true">
+		<cfargument name="object" type="any" required="true">
+		<cfscript>
+			return ( IsObject(arguments.object) == IsObject(variables.context) );
+		</cfscript>
+	</cffunction>
+
 </cfcomponent>
