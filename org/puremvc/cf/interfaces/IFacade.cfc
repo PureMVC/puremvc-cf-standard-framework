@@ -3,7 +3,7 @@
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfinterface name="IController" displayname="IController">
+<cfinterface name="IFacade" displayname="IFacade">
 	
 	<cffunction name="registerProxy" returntype="void" access="public" output="true">
 		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true">
