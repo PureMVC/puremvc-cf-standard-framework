@@ -16,7 +16,7 @@
 	</cfscript>
 	
 	<cffunction name="init" returntype="void" access="public" output="true">
-		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewHelper" required="false" default="0">
+		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewHelper" required="false">
 		<cfscript>
 			variables.viewComponent = arguments.viewComponent;
 		</cfscript>
