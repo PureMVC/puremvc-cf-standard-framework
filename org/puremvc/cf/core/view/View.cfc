@@ -60,20 +60,21 @@
 		<cfscript>
 			var interests = [];
 			var observer = 0;
-			
+			var interestsLen = 0;
 			// Register the Mediator for retrieval by name
 			this.mediatorMap[ arguments.mediator.getMediatorName() ] = arguments.mediator;
 			
 			// Get Notification interests, if any.
 			interests = arguments.mediator.listNotificationInterests();
-			if ( ArrayLen(interests) EQ 0) return;
+			interestsLen = ArrayLen(interests);
+			if ( interestsLen EQ 0) return;
 			
 			// Create Observer
 			observer = CreateObject("component","org.puremvc.cf.patterns.observer.Observer");
 			observer = observer.init("handleNotification", arguments.mediator);			
 			
 			// Register Mediator as Observer for its list of Notification interests
-			for (i=1;  i <= ArrayLen(interests); i++) {
+			for (i=1;  i <= interestsLen; i++) {
 				this.registerObserver( interests[i],  observer );
 			}
 		</cfscript>
