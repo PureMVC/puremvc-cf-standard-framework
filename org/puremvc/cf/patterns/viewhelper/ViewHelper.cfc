@@ -7,18 +7,20 @@
 			 output="true" 
 			 implements="org.puremvc.cf.interfaces.IViewHelper,org.flairteam.interfaces.IFactoryObject">
 	
+	<cfproperty name="id" type="string" required="false" hint="Identifies the View Helper object.">
+	<cfproperty name="name" type="string" required="false" hint="The name of the View Helper.">
 	<cfproperty name="oFacade" type="org.puremvc.cf.patterns.facade.Facade" required="true">
-	<cfproperty name="viewHelperMap" type="struct" required="true">
 	<cfproperty name="oNotification" type="org.puremvc.cf.patterns.observer.Notification" required="true">
+	<cfproperty name="isPostBack" type="boolean" required="true" default="false">
+	<cfproperty name="listenerMap" type="struct" required="true">
 	
 	<cfscript>
-		//this.id = "";
-		this.listenerMap = {};
 		variables.id = "";
 		variables.name = "";
 		variables.oFacade = 0;
 		variables.oNotification = 0;
 		variables.isPostBack = false;
+		this.listenerMap = {};
 	</cfscript>
 	
 	<cffunction name="init" access="public" returntype="void">
