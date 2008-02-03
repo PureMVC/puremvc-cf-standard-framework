@@ -1,13 +1,18 @@
+<!---
+ PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
+ PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
+ Your reuse is governed by the Creative Commons Attribution 3.0 License
+--->
 <cfcomponent displayname="ViewTestMediator" extends="org.puremvc.cf.patterns.mediator.Mediator" output="true">
 	
-	<cfproperty name="viewComponent" type="org.puremvc.cf.interfaces.IView" required="true">
+	<cfproperty name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true">
 	
 	<cfscript>
 		this.NAME = 'ViewTestMediator';
 	</cfscript>
 
 	<cffunction name="init" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true">
-		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewHelper" required="false" default="0">
+		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="false" default="0">
 		<cfscript>
 			super.init(arguments.viewComponent);		
 			return this;
@@ -20,7 +25,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getViewComponent" returntype="org.puremvc.cf.interfaces.IViewHelper" access="public" output="true">
+	<cffunction name="getViewComponent" returntype="org.puremvc.cf.interfaces.IViewComponent" access="public" output="true">
 		<cfscript>
 			return variables.viewComponent;
 		</cfscript>

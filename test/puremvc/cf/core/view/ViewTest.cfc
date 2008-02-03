@@ -1,9 +1,12 @@
 <!---
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
- PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
+ PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent displayname="VuewTest" output="true" extends="net.sourceforge.cfunit.framework.TestCase" implements="org.puremvc.cf.interfaces.IViewHelper">
+<cfcomponent displayname="ViewTest" 
+			 output="true" 
+			 extends="net.sourceforge.cfunit.framework.TestCase" 
+			 implements="org.puremvc.cf.interfaces.IViewHelper">
 	
 	<cfproperty name="view" type="org.puremvc.cf.core.view.View">
 	
@@ -172,6 +175,33 @@
 		</cfinvoke>
 		
 		<cfset this.cleanUp()>
+	</cffunction>
+	
+	<cffunction name="setId" access="public" returntype="void" output="true">
+		<cfargument name="componentId" type="string" required="true" hint="The id of the View Component">
+		<cfscript>
+			variables.id = arguments.componentId;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="getId" access="public" returntype="string" output="true">
+		<cfscript>
+			return variables.id;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="setComponentName" access="public" returntype="void" output="true">
+		<cfargument name="componentName" type="string" required="true" hint="The name of the View Component">
+		<cfscript>
+			variables.name = arguments.componentName;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="getComponentName" access="public" returntype="string" output="true">
+		<cfscript>
+			if (len(variables.name)) { return GetMetaData(this).name; } 
+			variables.name = arguments.componentName;
+		</cfscript>
 	</cffunction>
 	
 	<cffunction name="cleanup" returntype="void" access="public" output="true">
