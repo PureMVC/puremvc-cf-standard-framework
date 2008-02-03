@@ -7,9 +7,11 @@
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.proxy.ProxyTest")>
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.observer.NotificationTest")>
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.observer.ObserverTest")>
+	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.mediator.MediatorTest")>
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.command.SimpleCommandTest")>
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.command.MacroCommandTest")>
 	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.facade.FacadeTest")>
+	<cfset ArrayAppend(testClasses, "test.puremvc.cf.patterns.viewHelper.ViewHelperTest")>
 	<!--- Add as many test classes as you would like to the array --->
 	<cfset testSuite = CreateObject("component", "net.sourceforge.cfunit.framework.TestSuite").init( testClasses )>
 </cfsilent>
