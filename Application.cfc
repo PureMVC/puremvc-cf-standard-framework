@@ -1,3 +1,8 @@
+<!---
+ PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
+ PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
+ Your reuse is governed by the Creative Commons Attribution 3.0 License
+--->
 <cfcomponent displayname="Application" hint="PureMVC_CF" output="true">
 	
 	<cfscript>
@@ -16,18 +21,7 @@
 	<cffunction name="onSessionStart" displayname="On Session Start" hint="Session start" access="public" output="true" returntype="boolean">
 		<cfscript>
 			var done = true;
-			var applicationFacade = 0;
-			var oAppViewHelper = 0;
-			if (IsDefined("url.initApp") AND url.initApp )
-			{
-				if ( StructKeyExists(application,"facadeInstance") )
-				{
-					WriteOutput("Deleting facade!");
-					StructDelete(application,"facadeInstance");
-				}
-			}
 		</cfscript>
-		<cfinvoke component="cfc.modimation.helloworld.AppFacade" method="getInstance" returnvariable="oFacade">
 		<cfreturn done>
 	</cffunction>
 	
@@ -41,8 +35,15 @@
 	<cffunction name="onRequestStart" displayname="On Request Start" hint="Request start" access="public" output="true" returntype="boolean">
 		<cfscript>
 			var done = true;
-			this.onSessionStart();
-		</cfscript>		
+			if (IsDefined("url.initApp") AND url.initApp )
+			{
+				if ( StructKeyExists(application,"facadeInstance") )
+				{
+					WriteOutput("Deleting facade!");
+					StructDelete(application,"facadeInstance");
+				}
+			}
+		</cfscript>
 		<cfreturn done>
 	</cffunction>
 	
