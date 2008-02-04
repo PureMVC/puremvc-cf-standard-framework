@@ -35,14 +35,6 @@
 	<cffunction name="onRequestStart" displayname="On Request Start" hint="Request start" access="public" output="true" returntype="boolean">
 		<cfscript>
 			var done = true;
-			if (IsDefined("url.initApp") AND url.initApp )
-			{
-				if ( StructKeyExists(application,"facadeInstance") )
-				{
-					WriteOutput("Deleting facade!");
-					StructDelete(application,"facadeInstance");
-				}
-			}
 		</cfscript>
 		<cfreturn done>
 	</cffunction>
