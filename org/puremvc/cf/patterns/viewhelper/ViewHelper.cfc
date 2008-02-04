@@ -5,7 +5,7 @@
 --->
 <cfcomponent displayname="ViewHelper" 
 			 output="true" 
-			 implements="org.puremvc.cf.interfaces.IViewHelper,org.flairteam.interfaces.IFactoryObject">
+			 implements="org.puremvc.cf.interfaces.IViewHelper,org.puremvc.cf.interfaces.IFactoryObject">
 	
 	<cfproperty name="id" type="string" required="false" hint="Identifies the View Helper object.">
 	<cfproperty name="name" type="string" required="false" hint="The name of the View Helper.">
