@@ -1,17 +1,15 @@
 <!---
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
- PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
+ PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
 <cfcomponent displayname="Model" output="true" implements="org.puremvc.cf.interfaces.IModel">
 	
-	<cfproperty name="proxyMap" type="struct" required="true">
-	<cfproperty name="SINGLETON_MSG" type="string" required="true">
-	<cfproperty name="modelInstance" type="org.puremvc.cf.interfaces.IModel" required="true">
+	<cfproperty name="proxyMap" type="struct" required="true" hint="Holds a collection of proxy objects.">
+	<cfproperty name="modelInstance" type="org.puremvc.cf.interfaces.IModel" required="true" hint="The instance of the Model.">
 	
 	<cfscript>
 		this.proxyMap = StructNew();
-		this.SINGLETON_MSG = "Model Singleton already constructed!";
 	</cfscript>
 	
 	<cffunction name="getInstance" displayname="getInstance" access="public" output="true" returntype="org.puremvc.cf.interfaces.IModel">

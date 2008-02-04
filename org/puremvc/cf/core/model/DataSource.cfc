@@ -1,3 +1,8 @@
+<!---
+ PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
+ PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
+ Your reuse is governed by the Creative Commons Attribution 3.0 License
+--->
 <cfcomponent name="DataSource" output="false" hint="Defines a data source connection object.">
 		
 	<cfproperty name="connectionName" type="string" required="true" hint="Name of the data source connection.">
