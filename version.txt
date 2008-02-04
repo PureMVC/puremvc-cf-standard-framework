@@ -1,13 +1,33 @@
-PureMVC Port to AS2 by Michael Oddis
-PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
+PureMVC Port to ColdFusion by Michael Oddis
+PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
 --------------------------------------------------------------------------
 Release Date: ??/??/??
-    Platform: ColdFusion  
+    Platform: ColdFusion 8
      Version: 0 
-    Revision: 1
+    Revision: 6
       Author: Michael Oddis <michael.oddis@puremvc.org>
      License: Creative Commons Attribution 3.0 United States License
 --------------------------------------------------------------------------
-0.1 - Initial project structure created in repository - CLH
+0.1 - 	Initial project structure created in repository - CLH
 
-0.2 - ???
+0.2 - 	Converted all the interfaces which are a part of the PureMVC AS3 interface core. Implemented Proxy 
+		and Mediator patterns. - MJO
+
+0.3		Implemented the rest of the interfaces into their concreate implementations. Came to realization we
+		will have to add an IViewHelper and ViewHelper pattern to act as the viewComponent in CF since HTML
+		is not considered an object to ColdFusion code. The ViewHelper will act as the view which is passed into
+		the Mediator. - MJO
+		
+0.4		Implemented the Model, View, and Controller. Had to hard code a switch statement into the 
+		notifyObserver() method of the Observer class for now until I figure out how to best implement the
+		apply() method which is available in AS3 but not available in ColdFusion. - MJO
+		
+0.5		Added solution for hard coded switch statement in notifyObserver() method of the Observer class. Added
+		an applyNotifyMethod() to the IController and INotifier interfaces. applyNotification() takes an
+		INotification. So, now anything that implements IController or INotifier must implement the a
+		applyNotifyMethod(). This works like a charm because now he Controller can fire off the executeCommand()
+		when applyNotifyMethod() is called and the Notified class in fire off its handleNotification() method
+		when its applyNotifyMethod() is called. Polymorphism is great in this situation :). - MJO
+
+0.6		IViewHelper now extends IViewComponent after discovering thru unit testing that Mediators are not just
+		ment for composite views but technically could be used with other objects. - MJO
