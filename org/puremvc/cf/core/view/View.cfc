@@ -6,13 +6,13 @@
 <cfcomponent output="true" implements="org.puremvc.cf.interfaces.IView">
 	
 	<cfproperty name="mediatorMap" type="struct" required="true">
-	<cfproperty name="observerMap" type="struct" required="true">
+	<cfproperty name="observerMap" type="array" required="true">
 	<cfproperty name="SINGLETON_MSG" type="string" required="true">
 	<cfproperty name="viewInstance" type="org.puremvc.cf.interfaces.IView" required="true">
 	
 	<cfscript>
 		this.mediatorMap = {};
-		this.observerMap = {};
+		this.observerMap = ArrayNew(1);
 		this.SINGLETON_MSG = "View Singleton already constructed!";
 	</cfscript>
 		
@@ -36,21 +36,29 @@
 		<cfargument name="notificationName" type="string" required="true">
 		<cfargument name="observer" type="org.puremvc.cf.interfaces.IObserver" required="true">
 		<cfscript>
-			StructInsert(this.observerMap, arguments.notificationName, arguments.observer, true);
+			var obj = 0;
+			if ( IsDefined("this.observerMap") )
+			{
+				obj = {context=GetMetaData(arguments.observer.getNotifyContext()).name, notificationName=arguments.notificationName, observer=arguments.observer};
+				ArrayAppend(this.observerMap, obj);
+			}
 		</cfscript>
 	</cffunction>
 	
 	<cffunction name="notifyObservers" displayname="notifyObservers" returntype="void" access="public" output="true">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
-			var observers = {};
+			var observerMapLength = ArrayLen(this.observerMap);
 			var observer = 0;
 			var notificationName = arguments.notification.getName();
-			if( StructKeyExists(this.observerMap, notificationName) ) 
-			{
-				observers = this.observerMap;
-				observer = observers[notificationName];
-				observer.notifyObserver( arguments.notification );
+			// Loop over the observerMap and notify those observers which match 
+			// the name of the notifcation passed into the function. 
+			for (i=1;  i <= observerMapLength; i++) {
+				if (this.observerMap[i].notificationName == notificationName)
+				{
+					observer = this.observerMap[i].observer;
+					observer.notifyObserver( arguments.notification );
+				}
 			}
 		</cfscript>
 	</cffunction>
