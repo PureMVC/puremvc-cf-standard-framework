@@ -2,6 +2,13 @@
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
+
+ A Base IViewHelper implementation.
+ 
+ Since this ViewHelper is also used in a Factory it also implements IFactoryObject.
+
+ A ViewHelper is registered with a Mediator in PureMVC_CF. Mediators and the Controller
+ can listen for Notifications sent from a ViewHelper.
 --->
 <cfcomponent displayname="ViewHelper"
 			 output="true" 
@@ -16,7 +23,7 @@
 	
 	<cfscript>
 		variables.id = "";
-		variables.name = "";
+		variables.name = "ViewHelper";
 		variables.isPostBack = false;
 		this.listenerMap = {};
 	</cfscript>
