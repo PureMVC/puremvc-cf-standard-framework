@@ -2,6 +2,8 @@
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
+
+ A Base IMediator implementation.
 --->
 <cfcomponent displayname="Mediator" output="true"  
 			 extends="org.puremvc.cf.patterns.observer.Notifier" 
@@ -25,6 +27,7 @@
 	
 	<cffunction name="getMediatorName" returntype="string" access="public" output="true" hint="Gets the name of the Mediator">
 		<cfscript>
+			if ( IsDefined(GetMetaData(this).displayName) ) { return GetMetaData(this).displayName; } 
 			return this.NAME;
 		</cfscript>
 	</cffunction>
