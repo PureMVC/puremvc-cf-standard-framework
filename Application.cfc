@@ -35,7 +35,16 @@
 	<cffunction name="onRequestStart" displayname="On Request Start" hint="Request start" access="public" output="true" returntype="boolean">
 		<cfscript>
 			var done = true;
+			if (IsDefined("url.initApp") AND url.initApp )
+			{
+				if ( StructKeyExists(application,"facadeInstance") )
+				{
+					StructDelete(application,"facadeInstance");
+				}
+				StructDelete(application,"ObjectFactory");
+			}
 		</cfscript>
+		<cfinvoke component="org.puremvc.cf.patterns.facade.Facade" method="getInstance" returnvariable="oFacade">
 		<cfreturn done>
 	</cffunction>
 	
