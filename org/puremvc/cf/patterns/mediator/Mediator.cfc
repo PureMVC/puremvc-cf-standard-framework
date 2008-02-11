@@ -3,7 +3,7 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent output="true" 
+<cfcomponent displayname="Mediator" output="true"  
 			 extends="org.puremvc.cf.patterns.observer.Notifier" 
 			 implements="org.puremvc.cf.interfaces.IMediator,org.puremvc.cf.interfaces.INotifier"
 			 hint="Base IMediator implementation.">
