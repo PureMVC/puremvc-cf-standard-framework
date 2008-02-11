@@ -177,6 +177,13 @@
 		<cfset this.cleanUp()>
 	</cffunction>
 	
+	<cffunction name="cleanup" returntype="void" access="public" output="true">
+		<cfinvoke component="org.puremvc.cf.core.view.View" method="getInstance" returnvariable="viewInstance" />
+		<cfscript>
+			viewInstance.removeMediator("ViewTestMediator");
+		</cfscript>
+	</cffunction>
+	
 	<cffunction name="setId" access="public" returntype="void" output="true">
 		<cfargument name="componentId" type="string" required="true" hint="The id of the View Component">
 		<cfscript>
@@ -204,10 +211,26 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="cleanup" returntype="void" access="public" output="true">
-		<cfinvoke component="org.puremvc.cf.core.view.View" method="getInstance" returnvariable="viewInstance" />
+	<cffunction name="setFacade" access="public" returntype="void">
+		<cfargument name="facade" type="org.puremvc.cf.interfaces.IFacade" required="true">
 		<cfscript>
-			viewInstance.removeMediator("ViewTestMediator");
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="getFacade" access="public" returntype="org.puremvc.cf.patterns.facade.Facade">
+		<cfscript>
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="registerMediator" returntype="void" access="public" output="true">
+		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true">
+		<cfscript>
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true">
+		<cfargument name="mediatorName" type="string" required="true">
+		<cfscript>
 		</cfscript>
 	</cffunction>
 	
