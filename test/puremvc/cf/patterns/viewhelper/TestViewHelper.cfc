@@ -8,10 +8,10 @@
 			 extends="org.puremvc.cf.patterns.viewHelper.ViewHelper">
 	
 	<cfscript>
-
+		this.testValue = 0;
 	</cfscript>
 	
-	<cffunction name="init" access="public" returntype="org.flairteam.interfaces.IFactoryObject">
+	<cffunction name="init" access="public" returntype="org.puremvc.cf.interfaces.IFactoryObject">
 		<cfscript>
 			super.init();
 			return this;
@@ -20,7 +20,7 @@
 	
 	<cffunction name="initializeViewHelper" access="public" returntype="void">
 		<cfscript>
-			super.init();
+			super.initializeViewHelper();
 		</cfscript>
 	</cffunction>
 	
@@ -31,6 +31,7 @@
 	
 	<cffunction name="updateView" returntype="void" access="public" output="true">
 		<cfscript>
+			this.testValue = this.testValue + 5;
 		</cfscript>
 	</cffunction>
 	
