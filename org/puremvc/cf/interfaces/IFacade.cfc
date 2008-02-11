@@ -38,4 +38,11 @@
 		<cfargument name="mediatorName" type="string" required="true">
 	</cffunction>
 	
+	<cffunction name="retrieveFactory" returntype="org.puremvc.cf.interfaces.IFactory" access="public" output="true">
+	</cffunction>
+	
+	<cffunction name="registerFactory" returntype="void" access="public" output="true">
+		<cfargument name="factory" type="org.puremvc.cf.interfaces.IFactory" required="true">
+	</cffunction>
+	
 </cfinterface>
