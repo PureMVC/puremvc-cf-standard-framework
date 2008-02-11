@@ -8,6 +8,7 @@
 	<cfproperty name="model" type="org.puremvc.cf.interfaces.model.IModel" default="0" required="true">
 	<cfproperty name="view" type="org.puremvc.cf.interfaces.view.IView" default="0" required="true">
 	<cfproperty name="controller" type="org.puremvc.cf.interfaces.controller.IController" default="0" required="true">
+	<cfproperty name="factory" type="org.puremvc.cf.interfaces.factory.IFactory" default="0" required="true">
 	<cfproperty name="SINGLETON_MSG" type="string" default="Facade Singleton already constructed!" required="true">
 	<cfproperty name="facadeInstance" type="org.puremvc.cf.interfaces.IFacade" required="true">
 	
@@ -16,6 +17,7 @@
 		this.model = 0;
 		this.controller = 0;
 		this.view = 0;
+		this.factory = 0;
 		
 		// Message Constants
 		this.SINGLETON_MSG = "Facade Singleton already constructed!";
@@ -140,6 +142,32 @@
 		<cfscript>
 			if ( IsObject(this.view) ) { this.view.removeMediator( arguments.mediatorName ); }
 		</cfscript>
+	</cffunction>
+	
+	<!--- MJO: Added --->
+	
+	<cffunction name="retrieveFactory" returntype="org.puremvc.cf.interfaces.IFactory" access="public" output="true">
+		<cfscript>
+			return this.factory;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="registerFactory" returntype="void" access="public" output="true">
+		<cfargument name="factory" type="org.puremvc.cf.interfaces.IFactory" required="true">
+		<cfscript>
+			this.facory = arguments.factory;
+		</cfscript>
+	</cffunction>
+	
+	<!--- 
+		Example Usage: this.WritePropertiesToFile(data, "X:\file.html");
+		Remove before release
+	--->
+	<cffunction name="WritePropertiesToFile" returntype="void" access="public" output="true">
+		<cfargument name="val" type="any" required="true">
+		<cfargument name="filePath" type="string" required="true">
+		<cfsavecontent variable="valueToDump"><cfdump var="#val#"></cfsavecontent>
+		<cffile action="write" file="#arguments.filePath#" output="#valueToDump#"> 
 	</cffunction>
 
 </cfcomponent>
