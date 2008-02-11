@@ -8,11 +8,11 @@
 	
 	<cffunction name="testSetFacadeMethod" access="public" returntype="void">
 		<cfscript>
-			var viewHelper = CreateObject("component","org.puremvc.cf.patterns.viewHelper.ViewHelper");
+			var testViewHelper = CreateObject("component","test.puremvc.cf.patterns.viewHelper.TestViewHelper");
 			var facade = 0;
 			
-			viewHelper.setFacade(this.getFacade());
-			facade = viewHelper.getFacade();
+			testViewHelper.setFacade(this.getFacade());
+			facade = testViewHelper.getFacade();
 			
 			// test assertions
    			assertTrue( "Expecting instance is an IFacade", GetMetaData(facade).implements['org.puremvc.cf.interfaces.IFacade'].DISPLAYNAME == 'IFacade' );
@@ -20,18 +20,62 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testGetNotificationObject" access="public" returntype="void">
+	<cffunction name="testIdAccessor" access="public" returntype="void">
 		<cfscript>
-			var viewHelper = CreateObject("component","org.puremvc.cf.patterns.viewHelper.ViewHelper");
-			var notification = 0;
-	
-			viewHelper.init();
+			var testViewHelper = CreateObject("component","test.puremvc.cf.patterns.viewHelper.TestViewHelper");
+			testViewHelper.init();
 			
-			notification = viewHelper.getNotification();
-			notification.init("NotificationTestNote");
-			
+			testViewHelper.setId("TestViewHelper");
+		
 			// test assertions
-   			assertTrue( "Expecting instance is an INotification", GetMetaData(notification).implements['org.puremvc.cf.interfaces.INotification'].DISPLAYNAME == 'INotification' );
+   			assertTrue( "Expecting ID = 'TestViewHelper'", testViewHelper.getId() == 'TestViewHelper' );
+		
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="testComponentNameAccessor" access="public" returntype="void">
+		<cfscript>
+			var testViewHelper = CreateObject("component","test.puremvc.cf.patterns.viewHelper.TestViewHelper");
+			testViewHelper.init();
+			
+			testViewHelper.setComponentName("TestViewHelper");
+		
+			// test assertions
+   			assertTrue( "Expecting Name = 'TestViewHelper'", testViewHelper.getComponentName() == 'TestViewHelper' );
+		
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="testMediatorAccessor" access="public" returntype="void">
+		<cfscript>
+			var testViewHelper = CreateObject("component","test.puremvc.cf.patterns.viewHelper.TestViewHelper");
+			var mediator = CreateObject("component","org.puremvc.cf.patterns.mediator.Mediator");
+			
+			testViewHelper.init();
+			mediator.init(testViewHelper);
+			
+			testViewHelper.registerMediator(mediator);
+		
+			// test assertions
+   			assertTrue( "Expecting Mediator Name = 'Mediator'", testViewHelper.retrieveMediator("Mediator").getMediatorName() == 'Mediator' );
+		
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="testSendNotification" access="public" returntype="void">
+		<cfscript>
+			var testViewHelper = CreateObject("component","test.puremvc.cf.patterns.viewHelper.TestViewHelper");
+			var mediator = CreateObject("component","test.puremvc.cf.patterns.viewHelper.TestViewMediator");
+			
+			testViewHelper.init();
+			mediator.init(testViewHelper);
+			
+			this.getFacade().registerMediator(mediator);
+			
+			testViewHelper.sendNotification("ABC", 5);
+		
+			// test assertions
+   			assertTrue( "Expecting testValue == 5", testViewHelper.testValue == 5 );
 		
 		</cfscript>
 	</cffunction>
