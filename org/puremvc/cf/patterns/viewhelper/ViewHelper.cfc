@@ -3,22 +3,20 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent displayname="ViewHelper" 
+<cfcomponent displayname="ViewHelper"
 			 output="true" 
+			 extends="org.puremvc.cf.patterns.observer.Notifier"
 			 implements="org.puremvc.cf.interfaces.IViewHelper,org.puremvc.cf.interfaces.IFactoryObject">
 	
 	<cfproperty name="id" type="string" required="false" hint="Identifies the View Helper object.">
 	<cfproperty name="name" type="string" required="false" hint="The name of the View Helper.">
-	<cfproperty name="oFacade" type="org.puremvc.cf.patterns.facade.Facade" required="true">
-	<cfproperty name="oNotification" type="org.puremvc.cf.patterns.observer.Notification" required="true">
+	<cfproperty name="facade" type="org.puremvc.cf.patterns.facade.Facade" required="true">
 	<cfproperty name="isPostBack" type="boolean" required="true" default="false">
 	<cfproperty name="listenerMap" type="struct" required="true">
 	
 	<cfscript>
 		variables.id = "";
 		variables.name = "";
-		variables.oFacade = 0;
-		variables.oNotification = 0;
 		variables.isPostBack = false;
 		this.listenerMap = {};
 	</cfscript>
@@ -31,8 +29,6 @@
 	
 	<cffunction name="initializeViewHelper" access="public" returntype="void">
 		<cfscript>
-			variables.oFacade = application.facadeInstance;
-			variables.oNotification = CreateObject("component", "org.puremvc.cf.patterns.observer.Notification");
 		</cfscript>
 	</cffunction>
 	
@@ -58,27 +54,42 @@
 	
 	<cffunction name="getComponentName" access="public" returntype="string" output="true">
 		<cfscript>
-			if (len(variables.name)) { return GetMetaData(this).name; } 
-			variables.name = arguments.componentName;
+			if ( IsDefined(GetMetaData(this).displayName) ) { return GetMetaData(this).displayName; } 
+			return variables.name;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="registerMediator" returntype="void" access="public" output="true">
+		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true">
+		<cfscript>
+			this.getFacade().registerMediator(arguments.mediator);
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true">
+		<cfargument name="mediatorName" type="string" required="true">
+		<cfscript>
+			return this.getFacade().retrieveMediator(arguments.mediatorName);
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="getObject" returntype="org.puremvc.cf.interfaces.IFactoryObject" access="public" output="true">
+		<cfargument name="objectName" required="true" type="string" />
+		<cfscript>
+			return this.getFacade().getFactory().getObject(arguments.objectName);
 		</cfscript>
 	</cffunction>
 	
 	<cffunction name="setFacade" access="public" returntype="void">
 		<cfargument name="facade" type="org.puremvc.cf.interfaces.IFacade" required="true">
 		<cfscript>
-			variables.oFacade = arguments.facade;
+			variables.facade = arguments.facade;
 		</cfscript>
 	</cffunction>
 	
 	<cffunction name="getFacade" access="public" returntype="org.puremvc.cf.patterns.facade.Facade">
 		<cfscript>
-			return variables.oFacade;
-		</cfscript>
-	</cffunction>
-	
-	<cffunction name="getNotification" access="public" returntype="org.puremvc.cf.patterns.observer.Notification">
-		<cfscript>
-			return variables.oNotification;
+			return variables.facade;
 		</cfscript>
 	</cffunction>
 	
