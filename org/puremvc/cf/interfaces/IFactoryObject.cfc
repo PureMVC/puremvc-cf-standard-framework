@@ -5,8 +5,4 @@
 --->
 <cfinterface name="IFactoryObject" displayName="IFactoryObject">
 	
-	<cffunction name="getObject" access="public" returntype="org.puremvc.cf.interfaces.IFactoryObject" output="true" hint="I get a factory object">
-		<cfargument name="objectName" required="true" type="string" />
-	</cffunction>
-	
 </cfinterface>
