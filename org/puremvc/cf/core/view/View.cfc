@@ -37,10 +37,24 @@
 		<cfargument name="observer" type="org.puremvc.cf.interfaces.IObserver" required="true">
 		<cfscript>
 			var obj = 0;
+			var observerMapLength = 0;
+			var isRegistered = false;
+			
 			if ( IsDefined("this.observerMap") )
 			{
+				observerMapLength = ArrayLen(this.observerMap);
 				obj = {context=GetMetaData(arguments.observer.getNotifyContext()).name, notificationName=arguments.notificationName, observer=arguments.observer};
-				ArrayAppend(this.observerMap, obj);
+				
+				// Check to see if an Observer with the same context and notificationName is already registered.
+				// If one exists set isRegistered flag to true which will prevent the registration of duplicate observers.
+				for (i=1;  i <= observerMapLength; i++) 
+				{
+					if (this.observerMap[i].context == obj.context AND this.observerMap[i].notificationName == obj.notificationName) 
+						{ isRegistered=true; break; }
+				}
+				
+				// Only register an Observer if both the context and notificationName are unique.
+				if (!isRegistered) { ArrayAppend(this.observerMap, obj); }
 			}
 		</cfscript>
 	</cffunction>
