@@ -8,16 +8,18 @@
 	<cfproperty name="model" type="org.puremvc.cf.interfaces.model.IModel" default="0" required="true">
 	<cfproperty name="view" type="org.puremvc.cf.interfaces.view.IView" default="0" required="true">
 	<cfproperty name="controller" type="org.puremvc.cf.interfaces.controller.IController" default="0" required="true">
-	<cfproperty name="factory" type="org.puremvc.cf.interfaces.factory.IFactory" default="0" required="true">
 	<cfproperty name="SINGLETON_MSG" type="string" default="Facade Singleton already constructed!" required="true">
 	<cfproperty name="facadeInstance" type="org.puremvc.cf.interfaces.IFacade" required="true">
+	<cfproperty name="factoryMap" type="struct" required="false">
 	
 	<cfscript>
 		// Private references to Model, View and Controller
 		this.model = 0;
 		this.controller = 0;
 		this.view = 0;
-		this.factory = 0;
+		
+		// Holds factories
+		this.factoryMap = {};
 		
 		// Message Constants
 		this.SINGLETON_MSG = "Facade Singleton already constructed!";
@@ -36,6 +38,7 @@
 	
 	<cffunction name="initializeFacade" displayname="initializeFacade" access="public" returntype="void">
 		<cfscript>
+			this.initializeFactory();
 			this.initializeModel();
 			this.initializeView();
 			this.initializeController();
@@ -66,6 +69,11 @@
 			{
 				this.view = CreateObject("component","org.puremvc.cf.core.view.View").getInstance();
 			}
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="initializeFactory" returntype="void" access="public" output="true">
+		<cfscript>
 		</cfscript>
 	</cffunction>
 	
@@ -144,30 +152,16 @@
 		</cfscript>
 	</cffunction>
 	
-	<!--- MJO: Added --->
-	
 	<cffunction name="retrieveFactory" returntype="org.puremvc.cf.interfaces.IFactory" access="public" output="true">
+		<cfargument name="factoryName" type="string" required="true">
 		<cfscript>
-			return this.factory;
 		</cfscript>
 	</cffunction>
 	
 	<cffunction name="registerFactory" returntype="void" access="public" output="true">
 		<cfargument name="factory" type="org.puremvc.cf.interfaces.IFactory" required="true">
 		<cfscript>
-			this.facory = arguments.factory;
 		</cfscript>
-	</cffunction>
-	
-	<!--- 
-		Example Usage: this.WritePropertiesToFile(data, "X:\file.html");
-		Remove before release
-	--->
-	<cffunction name="WritePropertiesToFile" returntype="void" access="public" output="true">
-		<cfargument name="val" type="any" required="true">
-		<cfargument name="filePath" type="string" required="true">
-		<cfsavecontent variable="valueToDump"><cfdump var="#val#"></cfsavecontent>
-		<cffile action="write" file="#arguments.filePath#" output="#valueToDump#"> 
 	</cffunction>
 
 </cfcomponent>
