@@ -83,7 +83,7 @@
 	<cffunction name="getObject" returntype="org.puremvc.cf.interfaces.IFactoryObject" access="public" output="true">
 		<cfargument name="objectName" required="true" type="string" />
 		<cfscript>
-			return this.getFacade().getFactory().getObject(arguments.objectName);
+			return this.getFacade().retrieveFactory().getObject(arguments.objectName);
 		</cfscript>
 	</cffunction>
 	
