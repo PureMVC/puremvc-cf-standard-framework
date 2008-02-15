@@ -11,7 +11,7 @@
 		this.testValue = 0;
 	</cfscript>
 	
-	<cffunction name="init" access="public" returntype="org.puremvc.cf.interfaces.IFactoryObject">
+	<cffunction name="init" access="public" returntype="org.puremvc.cf.interfaces.IViewHelper">
 		<cfscript>
 			super.init();
 			return this;
