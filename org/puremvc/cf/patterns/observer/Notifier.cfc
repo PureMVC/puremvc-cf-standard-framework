@@ -53,5 +53,11 @@
 			this.handleNotification(arguments.notification);
 		</cfscript>
 	</cffunction>
+	
+	<cffunction name="getFacade" access="public" returntype="org.puremvc.cf.interfaces.IFacade">
+		<cfscript>
+			return variables.facade;
+		</cfscript>
+	</cffunction>
 
 </cfcomponent>
