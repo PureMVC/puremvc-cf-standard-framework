@@ -10,8 +10,4 @@
 	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
 	</cffunction>
 	
-	<cffunction name="getObject" access="public" returntype="any" output="true" hint="I get a factory object">
-		<cfargument name="objectName" required="true" type="string" />
-	</cffunction>
-	
 </cfinterface>
