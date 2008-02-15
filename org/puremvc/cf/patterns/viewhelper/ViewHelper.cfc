@@ -80,13 +80,6 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getObject" returntype="any" access="public" output="true">
-		<cfargument name="objectName" required="true" type="string" />
-		<cfscript>
-			return this.getFacade().retrieveFactory("ObjectFactory").getObject(arguments.objectName);
-		</cfscript>
-	</cffunction>
-	
 	<cffunction name="setFacade" access="public" returntype="void">
 		<cfargument name="facade" type="org.puremvc.cf.interfaces.IFacade" required="true">
 		<cfscript>
