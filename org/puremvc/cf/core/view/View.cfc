@@ -80,25 +80,26 @@
 	<cffunction name="registerMediator" displayname="registerMediator" returntype="void" access="public" output="true">
 		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true">
 		<cfscript>
-			var interests = [];
-			var observer = 0;
-			var interestsLen = 0;
-			
+			var _interests = [];
+			var _observer = 0;
+			var _interestsLen = 0;
+			var _i = 1;
 			// Register the Mediator for retrieval by name
 			this.mediatorMap[ arguments.mediator.getMediatorName() ] = arguments.mediator;
 			
 			// Get Notification interests, if any.
-			interests = arguments.mediator.listNotificationInterests();
-			interestsLen = ArrayLen(interests);
-			if ( interestsLen EQ 0) return;
+			_interests = arguments.mediator.listNotificationInterests();
+			_interestsLen = ArrayLen(_interests);
+			if ( _interestsLen EQ 0) return;
 			
 			// Create Observer
-			observer = CreateObject("component","org.puremvc.cf.patterns.observer.Observer");
-			observer = observer.init("handleNotification", arguments.mediator);			
+			_observer = CreateObject("component","org.puremvc.cf.patterns.observer.Observer");
+			_observer = _observer.init("handleNotification", arguments.mediator);			
 			
 			// Register Mediator as Observer for its list of Notification interests
-			for (i=1;  i <= interestsLen; i++) {
-				this.registerObserver( interests[i],  observer );
+			for (_i=1;  _i <= _interestsLen; _i++) 
+			{
+				this.registerObserver( _interests[_i],  _observer );
 			}
 		</cfscript>
 	</cffunction>
