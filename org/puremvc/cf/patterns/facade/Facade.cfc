@@ -38,7 +38,6 @@
 	
 	<cffunction name="initializeFacade" displayname="initializeFacade" access="public" returntype="void">
 		<cfscript>
-			this.initializeFactory();
 			this.initializeModel();
 			this.initializeView();
 			this.initializeController();
@@ -73,8 +72,7 @@
 	</cffunction>
 	
 	<cffunction name="initializeFactory" returntype="void" access="public" output="true">
-		<cfscript>
-		</cfscript>
+		<cfthrow type="Custom" message="Abstract method: must be overridden in a subclass" />
 	</cffunction>
 	
 	<cffunction name="getModel" returntype="org.puremvc.cf.core.model.IModel" access="public" output="true">
@@ -152,16 +150,15 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="retrieveFactory" returntype="org.puremvc.cf.interfaces.IFactory" access="public" output="true">
+	<cffunction name="retrieveFactory" returntype="any" access="public" output="true">
 		<cfargument name="factoryName" type="string" required="true">
-		<cfscript>
-		</cfscript>
+		<cfthrow type="Custom" message="Abstract method: must be overridden in a subclass" />
 	</cffunction>
 	
 	<cffunction name="registerFactory" returntype="void" access="public" output="true">
-		<cfargument name="factory" type="org.puremvc.cf.interfaces.IFactory" required="true">
-		<cfscript>
-		</cfscript>
+		<cfargument name="factoryName" type="string" required="true">
+		<cfargument name="factory" type="any" required="true">
+		<cfthrow type="Custom" message="Abstract method: must be overridden in a subclass" />
 	</cffunction>
 
 </cfcomponent>
