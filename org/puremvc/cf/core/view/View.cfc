@@ -7,11 +7,13 @@
 	
 	<cfproperty name="mediatorMap" type="struct" required="true">
 	<cfproperty name="observerMap" type="array" required="true">
+	<cfproperty name="SINGLETON_MSG" type="string" required="true">
 	<cfproperty name="viewInstance" type="org.puremvc.cf.interfaces.IView" required="true">
 	
 	<cfscript>
 		this.mediatorMap = {};
 		this.observerMap = ArrayNew(1);
+		this.SINGLETON_MSG = "View Singleton already constructed!";
 	</cfscript>
 		
 	<cffunction name="getInstance" displayname="getInstance" access="public" returntype="org.puremvc.cf.interfaces.IView" output="true">
