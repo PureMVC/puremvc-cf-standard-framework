@@ -31,3 +31,5 @@ Release Date: ??/??/??
 
 0.6		IViewHelper now extends IViewComponent after discovering thru unit testing that Mediators are not just
 		ment for composite views but technically could be used with other objects. - MJO
+
+0.7 	All unit tests passed. 
