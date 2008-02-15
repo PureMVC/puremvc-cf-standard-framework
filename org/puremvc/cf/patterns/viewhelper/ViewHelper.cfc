@@ -13,7 +13,7 @@
 <cfcomponent displayname="ViewHelper"
 			 output="true" 
 			 extends="org.puremvc.cf.patterns.observer.Notifier"
-			 implements="org.puremvc.cf.interfaces.IViewHelper,org.puremvc.cf.interfaces.IFactoryObject">
+			 implements="org.puremvc.cf.interfaces.IViewHelper">
 	
 	<cfproperty name="id" type="string" required="false" hint="Identifies the View Helper object.">
 	<cfproperty name="name" type="string" required="false" hint="The name of the View Helper.">
@@ -80,10 +80,10 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getObject" returntype="org.puremvc.cf.interfaces.IFactoryObject" access="public" output="true">
+	<cffunction name="getObject" returntype="any" access="public" output="true">
 		<cfargument name="objectName" required="true" type="string" />
 		<cfscript>
-			return this.getFacade().retrieveFactory().getObject(arguments.objectName);
+			return this.getFacade().retrieveFactory("ObjectFactory").getObject(arguments.objectName);
 		</cfscript>
 	</cffunction>
 	
