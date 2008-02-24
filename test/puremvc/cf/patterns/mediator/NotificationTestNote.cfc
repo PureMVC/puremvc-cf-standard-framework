@@ -3,11 +3,12 @@
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent extends="org.puremvc.cf.patterns.observer.notification.Notification"
+<cfcomponent displayname="NotificationTestNote"
+			 extends="org.puremvc.cf.patterns.observer.notification.Notification"
 			 output="true">
 				 
 	<cfscript>
-		this.NAME = "NotificationTestNote";
+		this.notificationName = "NotificationTestNote";
 	</cfscript>
 	
 	<cffunction name="init" returntype="void" access="public" output="true" hint="">
@@ -24,7 +25,7 @@
 		<cfargument name="notificationType" type="string" required="false" hint="Type the type of the Notification">
 		<cfscript>
 			var note = CreateObject("component","org.puremvc.cf.patterns.observer.Notification");
-			note.init(this.NAME, arguments.notificationBody, arguments.notificationType);
+			note.init(this.notificationName, arguments.notificationBody, arguments.notificationType);
 			return note;
 		</cfscript>
 	</cffunction>

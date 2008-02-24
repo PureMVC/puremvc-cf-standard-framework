@@ -3,7 +3,8 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent extends="net.sourceforge.cfunit.framework.TestCase"
+<cfcomponent displayname="MediatorTest"
+			 extends="net.sourceforge.cfunit.framework.TestCase"
 			 output="true" 
 			 hint="Test the PureMVC Mediator class.">
 	
@@ -14,7 +15,7 @@
 			mediator.init();
 			
 			// test assertions
-   			assertTrue( "Expecting mediator.getMediatorName() == Mediator.NAME", mediator.getMediatorName() == Mediator.NAME );
+   			assertTrue( "Expecting mediator.getMediatorName() == 'Mediator'", mediator.getMediatorName() == Mediator.getMediatorName() );
 		</cfscript>
 	</cffunction>
 	
