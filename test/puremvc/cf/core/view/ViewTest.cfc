@@ -12,6 +12,7 @@
 	
 	<cfscript>
 		variables.viewTestVar = 0;
+		variables.name = "";
 	</cfscript>
 	
 	<cffunction name="testGetInstance" returntype="void" access="public">
@@ -206,8 +207,8 @@
 	
 	<cffunction name="getComponentName" access="public" returntype="string" output="true">
 		<cfscript>
-			if (len(variables.name)) { return GetMetaData(this).name; } 
-			variables.name = arguments.componentName;
+			if (len(variables.name)) { return GetMetaData(this).DISPLAYNAME; } 
+			return variables.name;
 		</cfscript>
 	</cffunction>
 	
