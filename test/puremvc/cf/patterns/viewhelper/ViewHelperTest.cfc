@@ -3,7 +3,6 @@
 			 output="true">
 	
 	<cfscript>
-		
 	</cfscript>
 	
 	<cffunction name="testSetFacadeMethod" access="public" returntype="void">
@@ -75,7 +74,7 @@
 			testViewHelper.sendNotification("ABC", 5);
 		
 			// test assertions
-   			assertTrue( "Expecting testValue == 5", testViewHelper.testValue == 5 );
+   			assertTrue( "Expecting testValue == 10", testViewHelper.testValue == 10 );
 		
 		</cfscript>
 	</cffunction>

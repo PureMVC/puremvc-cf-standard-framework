@@ -4,8 +4,8 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
 <cfcomponent displayname="TestViewHelper" 
-			 output="true" 
-			 extends="org.puremvc.cf.patterns.viewHelper.ViewHelper">
+			 extends="org.puremvc.cf.patterns.viewHelper.ViewHelper"
+			 output="true" >
 	
 	<cfscript>
 		this.testValue = 0;
@@ -24,14 +24,11 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
-		<cfscript>
-		</cfscript>
-	</cffunction>
-	
 	<cffunction name="updateView" returntype="void" access="public" output="true">
+		<cfargument name="viewData" type="any" required="false">
+		<cfdump var="#arguments.viewData#" label="In updateView() of TestViewHelper">
 		<cfscript>
-			this.testValue = this.testValue + 5;
+			this.testValue = arguments.viewData + 5;
 		</cfscript>
 	</cffunction>
 	
