@@ -15,7 +15,6 @@
 	<!--- Add as many test classes as you would like to the array --->
 	<cfset testSuite = CreateObject("component", "net.sourceforge.cfunit.framework.TestSuite").init( testClasses )>
 </cfsilent>
-
 <cfoutput>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
