@@ -5,16 +5,17 @@
 
  A Base IMediator implementation.
 --->
-<cfcomponent displayname="Mediator" output="true"  
+<cfcomponent displayname="Mediator"  
 			 extends="org.puremvc.cf.patterns.observer.Notifier" 
 			 implements="org.puremvc.cf.interfaces.IMediator,org.puremvc.cf.interfaces.INotifier"
+			 output="true"
 			 hint="Base IMediator implementation.">
 
-	<cfproperty name="NAME" type="string" required="true" hint="The name of the Mediator. Typically, a Mediator will be written to serve one specific control or group controls and so, will not have a need to be dynamically named.">
+	<cfproperty name="mediatorName" type="string" required="true" hint="The name of the Mediator. Typically, a Mediator will be written to serve one specific control or group controls and so, will not have a need to be dynamically named.">
 	<cfproperty name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true">
 	
 	<cfscript>
-		this.NAME = 'Mediator';
+		variables.mediatorName = 'Mediator';
 		variables.viewComponent = 0;
 	</cfscript>
 	
@@ -25,10 +26,17 @@
 		</cfscript>
 	</cffunction>
 	
+	<cffunction name="setMediatorName" returntype="void" access="public" output="true" hint="Sets the name of the Mediator">
+		<cfargument name="mediatorName" type="string" required="false">
+		<cfscript>
+			variables.mediatorName = arguments.mediatorName;
+		</cfscript>
+	</cffunction>
+	
 	<cffunction name="getMediatorName" returntype="string" access="public" output="true" hint="Gets the name of the Mediator">
 		<cfscript>
-			if ( IsDefined(GetMetaData(this).displayName) ) { return GetMetaData(this).displayName; } 
-			return this.NAME;
+			if ( IsDefined(GetMetaData(this).DISPLAYNAME) ) { return GetMetaData(this).DISPLAYNAME; } 
+			return variables.mediatorName;
 		</cfscript>
 	</cffunction>
 	
