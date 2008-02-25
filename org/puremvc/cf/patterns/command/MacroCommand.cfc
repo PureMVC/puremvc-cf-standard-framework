@@ -1,7 +1,9 @@
 <!---
+*************************************************************************************
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
+*************************************************************************************
 --->
 <cfcomponent displayname="MacroCommand" extends="org.puremvc.cf.patterns.observer.Notifier" 
 			 implements="org.puremvc.cf.interfaces.ICommand,org.puremvc.cf.interfaces.INotifier" 

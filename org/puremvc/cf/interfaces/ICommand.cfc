@@ -5,7 +5,7 @@
 
  The interface definition for ICommand.
 --->
-<cfinterface displayName="ICommand">
+<cfinterface displayName="ICommand" hint="The interface definition for ICommand.">
 			
 	<cffunction name="execute" returntype="void" access="public" output="true" hint="Execute the ICommand's logic to handle a given INotification.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="An INotification to handle.">

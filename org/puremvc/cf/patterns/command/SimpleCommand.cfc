@@ -3,11 +3,11 @@
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
-*************************************************************************************s
-	A base ICommand implementation.
-	
-	Your subclass should override the execute 
-	method where your business logic will handle the INotification.
+*************************************************************************************
+ A base ICommand implementation.
+
+ Your subclass should override the execute 
+ method where your business logic will handle the INotification.
 --->
 <cfcomponent displayname="SimpleCommand" extends="org.puremvc.cf.patterns.observer.Notifier" implements="org.puremvc.cf.interfaces.ICommand,org.puremvc.cf.interfaces.INotifier" output="true">
 	<!---
