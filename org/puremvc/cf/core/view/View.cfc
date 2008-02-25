@@ -48,7 +48,12 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="initializeView" displayname="initializeView" access="public" returntype="void">
+	<!---  
+	 Called automatically by the constructor, this is your opportunity to initialize the Singleton
+	 instance in your subclass.
+	--->
+	<cffunction name="initializeView" displayname="initializeView" access="public" returntype="void"
+				description="Called automatically by the constructor, this is your opportunity to initialize the Singleton instance in your subclass.">
 		<cfscript>
 		</cfscript>
 	</cffunction>
@@ -80,6 +85,11 @@
 		</cfscript>
 	</cffunction>
 	
+	<!---  
+	All previously attached IObservers for this INotification's 
+	list are notified and are passed a reference to the INotification in 
+	the order in which they were registered.
+	--->
 	<cffunction name="notifyObservers" displayname="notifyObservers" returntype="void" access="public" output="true" hint="Notify the <code>IObservers</code> for a particular <code>INotification</code>.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The <code>INotification</code> to notify <code>IObservers</code>">
 		<cfscript>
@@ -99,6 +109,14 @@
 		</cfscript>
 	</cffunction>
 	
+	<!---  
+	 Registers the IMediator so that it can be retrieved by name,
+	 and further interrogates the IMediator for its INotification interests.
+	 
+	 If the IMediator returns any INotification names to be notified about, an 
+	 Observer is created encapsulating the IMediator instance's handleNotification method 
+	 and registering it as an Observer for all INotifications the IMediator is interested in.
+	--->
 	<cffunction name="registerMediator" displayname="registerMediator" returntype="void" access="public" output="true" hint="Register an <code>IMediator</code> instance with the <code>View</code>.">
 		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true" hint="A reference to the <code>IMediator</code> instance">
 		<cfscript>
