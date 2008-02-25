@@ -3,7 +3,9 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent output="true" implements="org.puremvc.cf.interfaces.INotification">
+<cfcomponent displayName="Notification" 
+			 implements="org.puremvc.cf.interfaces.INotification"
+			 output="true">
 	
 	<cfproperty name="notificationName" type="string" required="true" hint="The name of the notification instance">
 	<cfproperty name="notificationBody" type="any" required="true" hint="The body of the notification instance">
@@ -37,33 +39,33 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getName" returntype="string" access="public" output="true" description="Get the name of the <code>INotification</code> instance. No setter, should be set by constructor only">
+	<cffunction name="getName" returntype="string" access="public" output="true" description="Get the name of the INotification instance. No setter, should be set by constructor only">
 		<cfscript>
 			return variables.notificationName;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setBody" returntype="void" access="public" output="true" description="Set the body of the <code>INotification</code> instance">
+	<cffunction name="setBody" returntype="void" access="public" output="true" description="Set the body of the INotification instance">
 		<cfargument name="notificationBody" type="any" required="true">
 		<cfscript>
 			variables.notificationBody = arguments.notificationBody;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getBody" returntype="any" access="public" output="true" description="Get the body of the <code>INotification</code> instance">
+	<cffunction name="getBody" returntype="any" access="public" output="true" description="Get the body of the INotification instance">
 		<cfscript>
 			return variables.notificationBody;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setType" returntype="void" access="public" output="true" description="Set the type of the <code>INotification</code> instance">
+	<cffunction name="setType" returntype="void" access="public" output="true" description="Set the type of the INotification instance">
 		<cfargument name="notificationType" type="string" required="true">
 		<cfscript>
 			variables.notificationType = arguments.notificationType;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getType" returntype="string" access="public" output="true" description="Get the type of the <code>INotification</code> instance">
+	<cffunction name="getType" returntype="string" access="public" output="true" description="Get the type of the INotification instance">
 		<cfscript>
 			return variables.notificationType;
 		</cfscript>

@@ -19,13 +19,11 @@
 	<cfproperty name="name" type="string" required="false" hint="The name of the View Helper.">
 	<cfproperty name="facade" type="org.puremvc.cf.patterns.facade.Facade" required="true">
 	<cfproperty name="isPostBack" type="boolean" required="true" default="false">
-	<cfproperty name="listenerMap" type="struct" required="true">
 	
 	<cfscript>
 		variables.id = "";
 		variables.name = "ViewHelper";
 		variables.isPostBack = false;
-		this.listenerMap = {};
 	</cfscript>
 	
 	<cffunction name="init" access="public" returntype="void">
@@ -61,7 +59,7 @@
 	
 	<cffunction name="getComponentName" access="public" returntype="string" output="true">
 		<cfscript>
-			if ( IsDefined(GetMetaData(this).displayName) ) { return GetMetaData(this).displayName; } 
+			if ( IsDefined(GetMetaData(this).DISPLAYNAME) ) { return GetMetaData(this).DISPLAYNAME; } 
 			return variables.name;
 		</cfscript>
 	</cffunction>

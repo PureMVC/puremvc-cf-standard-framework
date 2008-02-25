@@ -3,12 +3,13 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent displayname="Facade" output="true" implements="org.puremvc.cf.interfaces.IFacade">
+<cfcomponent displayname="Facade" 
+			 implements="org.puremvc.cf.interfaces.IFacade"
+			 output="true">
 	
 	<cfproperty name="model" type="org.puremvc.cf.interfaces.model.IModel" default="0" required="true">
 	<cfproperty name="view" type="org.puremvc.cf.interfaces.view.IView" default="0" required="true">
 	<cfproperty name="controller" type="org.puremvc.cf.interfaces.controller.IController" default="0" required="true">
-	<cfproperty name="SINGLETON_MSG" type="string" default="Facade Singleton already constructed!" required="true">
 	<cfproperty name="facadeInstance" type="org.puremvc.cf.interfaces.IFacade" required="true">
 	<cfproperty name="factoryMap" type="struct" required="false">
 	
@@ -20,9 +21,6 @@
 		
 		// Holds factories
 		this.factoryMap = {};
-		
-		// Message Constants
-		this.SINGLETON_MSG = "Facade Singleton already constructed!";
 	</cfscript>
 	
 	<cffunction name="getInstance" displayname="getInstance" access="public" output="true" returntype="org.puremvc.cf.interfaces.IFacade">

@@ -17,7 +17,7 @@
  - Provides methods for registering and retrieving a Mediator. 
 
 --->
-<cfinterface name="IViewComponent" displayname="IViewComponent">
+<cfinterface displayname="IViewComponent">
 	
 	<cffunction name="setId" access="public" returntype="void" output="true">
 		<cfargument name="componentId" type="string" required="true" hint="The id of the View Component">

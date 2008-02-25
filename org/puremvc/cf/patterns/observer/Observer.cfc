@@ -3,13 +3,16 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent output="true" implements="org.puremvc.cf.interfaces.IObserver">
+<cfcomponent displayName="Observer" 
+			 implements="org.puremvc.cf.interfaces.IObserver"
+			 output="true" >
 	
 	<cfproperty name="notify" type="string" required="false" hint="Method called when a Notification is broadcasted.">
 	<cfproperty name="context" type="any" required="true" hint="The Notification object which contains the notify method.">
 	
 	<cfscript>
 		variables.context = {};
+		variables.notify = "";
 	</cfscript>
 	
 	<cffunction name="init" displayname="init" access="public" returntype="org.puremvc.cf.interfaces.IObserver" output="true" hint="Constructor">

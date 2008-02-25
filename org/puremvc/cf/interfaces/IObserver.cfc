@@ -3,13 +3,13 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfinterface name="IObserver" displayname="IObserver">
+<cfinterface displayname="IObserver">
 	
 	<!--- 
 	/**
 	 * Set the notification method.
 	 * 
-	 * <P>The notification method should take one parameter of type <code>INotification</code></P>
+	 * <P>The notification method should take one parameter of type INotification</code></P>
 	 * 
 	 * @param notifyMethod the notification (callback) method of the interested object
 	 */

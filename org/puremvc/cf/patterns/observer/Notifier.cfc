@@ -28,7 +28,9 @@
  * see org.puremvc.patterns.viewHelper.ViewHelper
  */
 --->
-<cfcomponent name="Notifier" displayname="Notifier" output="true" hint="Send an INotification">
+<cfcomponent displayname="Notifier" 
+			 output="true" 
+			 hint="Send an INotification">
 	
 	<cfproperty name="facade" type="org.puremvc.cf.interfaces.IFacade" default="0" required="true" hint="Concrete implementation of IFacade.">
 

@@ -3,7 +3,7 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfinterface name="INotifier" displayname="INotifier">	
+<cfinterface displayname="INotifier">	
 	
 	<cffunction name="sendNotification" returntype="void" access="public" output="true">
 		<cfargument name="notificationName" type="string" required="true">

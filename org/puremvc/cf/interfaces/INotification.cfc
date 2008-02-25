@@ -3,10 +3,10 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfinterface name="INotification" displayname="INotification">
+<cfinterface displayname="INotification">
 	
 	<!--- 
-	 * Get the name of the <code>INotification</code> instance. 
+	 * Get the name of the INotification</code> instance. 
 	 * No setter, should be set by constructor only
 	--->
 	<cffunction name="getName" returntype="string" access="public" output="true">
@@ -14,7 +14,7 @@
 	
 	<!--- 
 	/**
-	 * Set the body of the <code>INotification</code> instance
+	 * Set the body of the INotification</code> instance
 	 */
 	--->
 	<cffunction name="setBody" returntype="void" access="public" output="true">
@@ -23,7 +23,7 @@
 	
 	<!---  
 	/**
-	 * Get the body of the <code>INotification</code> instance
+	 * Get the body of the INotification</code> instance
 	 */
 	--->
 	<cffunction name="getBody" returntype="any" access="public" output="true">
@@ -31,7 +31,7 @@
 	
 	<!---  
 	/**
-	 * Set the type of the <code>INotification</code> instance
+	 * Set the type of the INotification</code> instance
 	 */
 	--->
 	<cffunction name="setType" returntype="void" access="public" output="true">
@@ -40,7 +40,7 @@
 	
 	<!---  
 	/**
-	 * Get the type of the <code>INotification</code> instance
+	 * Get the type of the INotification</code> instance
 	 */
 	--->
 	<cffunction name="getType" returntype="string" access="public" output="true">

@@ -6,22 +6,19 @@
 <cfcomponent extends="org.puremvc.cf.patterns.observer.Notifier"
 			 implements="org.puremvc.cf.interfaces.IProxy"
 			 output="true">
-	
-	<cfproperty name="NAME" type="string" default="Proxy" required="true">
+			 
 	<cfproperty name="proxyName" type="string" default="Proxy" required="true">
 	<cfproperty name="data" type="any" default="0" required="true">
 
 	<cfscript>
-		this.NAME = "Proxy";
 		variables.data = 0;
-		variables.proxyName = "";
+		variables.proxyName = "Proxy";
 	</cfscript>
 	
 	<cffunction name="init" returntype="void" access="public" output="true">
 		<cfargument name="proxyName" type="string" required="false">
 		<cfargument name="data" type="any" required="false">
 		<cfscript>
-			this.setProxyName(this.Name);
 			if ( IsDefined("arguments.proxyName") ) { this.setProxyName(arguments.ProxyName); }
 			if ( IsDefined("arguments.data") ) { this.setData(arguments.data); }
 		</cfscript>
