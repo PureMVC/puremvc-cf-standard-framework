@@ -4,23 +4,22 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
-******************************************************************************
- * A Singleton <code>IView</code> implementation.
- * 
- * <P>
- * In PureMVC, the <code>View</code> class assumes these responsibilities:
- * <UL>
- * <LI>Maintain a cache of <code>IMediator</code> instances.</LI>
- * <LI>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</LI>
- * <LI>Managing the observer lists for each <code>INotification</code> in the application.</LI>
- * <LI>Providing a method for attaching <code>IObservers</code> to an <code>INotification</code>'s observer list.</LI>
- * <LI>Providing a method for broadcasting an <code>INotification</code>.</LI>
- * <LI>Notifying the <code>IObservers</code> of a given <code>INotification</code> when it broadcast.</LI>
- * </UL>
- * 
- * See org.puremvc.patterns.mediator.Mediator Mediator
- * See org.puremvc.patterns.observer.Observer Observer
- * See org.puremvc.patterns.observer.Notification Notification
+
+ A Singleton IView implementation.
+
+ In PureMVC, the View class assumes these responsibilities:
+
+ -Maintain a cache of IMediator instances.
+ -Provide methods for registering, retrieving, and removing IMediators.
+ -Managing the observer lists for each INotification in the application.
+ -Providing a method for attaching IObservers to an INotification's observer list.
+ -Providing a method for broadcasting an INotification.
+ -Notifying the IObservers of a given INotification when it broadcast.
+ 
+ See org.puremvc.patterns.mediator.Mediator Mediator
+ See org.puremvc.patterns.observer.Observer Observer
+ See org.puremvc.patterns.observer.Notification Notification
+
 ******************************************************************************
 --->
 <cfcomponent displayname="View"
