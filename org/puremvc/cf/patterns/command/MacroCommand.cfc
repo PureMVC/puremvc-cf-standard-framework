@@ -32,8 +32,8 @@
 		</cfscript>
 	</cffunction>
 
-	<cffunction name="execute" returntype="void" access="public" output="true">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+	<cffunction name="execute" returntype="void" access="public" output="true" hint="Execute the ICommand's logic to handle a given INotification.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="An INotification to handle.">
 		<cfscript>
 			var subCommandsLength = ArrayLen(variables.subCommands);
 			var commandClassRef = 0;
