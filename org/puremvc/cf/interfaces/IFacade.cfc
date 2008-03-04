@@ -4,66 +4,73 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
-******************************************************************************
- * The interface definition for a PureMVC Facade.
- *
- * The Facade Pattern suggests providing a single
- * class to act as a central point of communication 
- * for a subsystem.
- * 
- * In PureMVC, the Facade acts as an interface between
- * the core MVC actors (Model, View, Controller) and
- * the rest of your application.
- * 
- * See org.puremvc.interfaces.IModel IModel
- * See org.puremvc.interfaces.IView IView
- * See org.puremvc.interfaces.IController IController
- * See org.puremvc.interfaces.ICommand ICommand
- * See org.puremvc.interfaces.INotification INotification
-******************************************************************************
+The interface definition for a PureMVC Facade.
+
+The Facade Pattern suggests providing a single class to act as a central point of communication for a subsystem.
+
+In PureMVC, the Facade acts as an interface between the core MVC actors (Model, View, Controller) and the rest of your application.
+
 --->
-<cfinterface displayname="IFacade" hint="The interface definition for a PureMVC Facade.">
+<cfinterface displayname="IFacade"
+			 extends="INotifier" 
+			 hint="The interface definition for a PureMVC Facade. The Facade Pattern suggests providing a single class to act as a central point of communication for a subsystem. In PureMVC, the Facade acts as an interface between the core MVC actors (Model, View, Controller) and the rest of your application.">
 	
-	<cffunction name="notifyObservers" returntype="void" access="public" output="true" hint="Notify <code>Observer</code>s of an <code>INotification</code>.">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The <code>INotification</code> to have the <code>View</code> notify observers.">
+	<cffunction name="notifyObservers" returntype="void" access="public" output="true" hint="Notify Observers of an INotification.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The INotification to have the View notify observers.">
 	</cffunction>
 	
-	<cffunction name="registerProxy" returntype="void" access="public" output="true" hint="Register an <code>IProxy</code> with the <code>Model</code> by name.">
-		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true" hint="The <code>IProxy</code> to be registered with the <code>Model</code>.">
+	<cffunction name="registerProxy" returntype="void" access="public" output="true" hint="Register an IProxy with the Model by name.">
+		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true" hint="The IProxy to be registered with the Model.">
 	</cffunction>
 	
-	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true" hint="Retrieve a <code>IProxy</code> from the <code>Model</code> by name.">
-		<cfargument name="proxyName" type="string" required="true" hint="The name of the <code>IProxy</code> instance to be retrieved.">
+	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true" hint="Retrieve a IProxy from the Model by name.">
+		<cfargument name="proxyName" type="string" required="true" hint="The name of the IProxy instance to be retrieved.">
 	</cffunction>
 	
-	<cffunction name="removeProxy" returntype="void" access="public" output="true" hint="Remove an <code>IProxy</code> instance from the <code>Model</code> by name.">
-		<cfargument name="proxyName" type="string" required="true" hint="The <code>IProxy</code> to remove from the <code>Model</code>.">
+	<cffunction name="removeProxy" returntype="void" access="public" output="true" hint="Remove an IProxy instance from the Model by name.">
+		<cfargument name="proxyName" type="string" required="true" hint="The IProxy to remove from the Model.">
 	</cffunction>
 	
-	<cffunction name="registerCommand" returntype="void" access="public" output="true" hint="Register an <code>ICommand</code> with the <code>Controller</code>.">
-		<cfargument name="notificationName" type="string" required="true" hint="The name of the <code>INotification</code> to associate with the <code>ICommand</code>.">
-		<cfargument name="commandClassRef" type="string" required="true" hint="A reference to the <code>Class</code> of the <code>ICommand</code>.">
+	<cffunction name="hasProxy" returntype="boolean" access="public" output="true" hint="Check if a Proxy is registered. Return whether a Proxy is currently registered with the given proxyName.">
+		<cfargument name="proxyName" type="string" required="true" hint="The IProxy to remove from the Model.">
 	</cffunction>
 	
-	<cffunction name="registerMediator" returntype="void" access="public" output="true" hint="Register an <code>IMediator</code> instance with the <code>View</code>.">
-		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true" hint="A reference to the <code>IMediator</code> instance.">
+	<cffunction name="registerCommand" returntype="void" access="public" output="true" hint="Register an ICommand with the Controller.">
+		<cfargument name="notificationName" type="string" required="true" hint="The name of the INotification to associate with the ICommand.">
+		<cfargument name="commandClassRef" type="string" required="true" hint="A reference to the Class of the ICommand.">
 	</cffunction>
 	
-	<cffunction name="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true" hint="Retrieve an <code>IMediator</code> instance from the <code>View</code>.">
-		<cfargument name="mediatorName" type="string" required="true" hint="the name of the <code>IMediator</code> instance to retrieve">
+	<cffunction name="removeCommand" returntype="void" access="public" output="true" hint="Remove a previously registered ICommand to INotification mapping from the Controller.">
+		<cfargument name="notificationName" type="string" required="true" hint="The name of the INotification to remove the ICommand mapping for.">
 	</cffunction>
 	
-	<cffunction name="removeMediator" returntype="void" access="public" output="true" hint="Remove a <code>IMediator</code> instance from the <code>View</code>.">
-		<cfargument name="mediatorName" type="string" required="true" hint="Name of the <code>IMediator</code> instance to be removed.">
+	<cffunction name="hasCommand" returntype="boolean" access="public" output="true" hint="Check if a Command is registered for a given Notification.">
+		<cfargument name="notificationName" type="string" required="true" hint="The INotification name.">
 	</cffunction>
 	
-	<cffunction name="retrieveFactory" returntype="any" access="public" output="true" hint="Retrieve an <code>IFactory</code> from the <code>Facade</code>.">
-		<cfargument name="factoryName" type="string" required="true" hint="The name of the <code>IFactory</code> instance.">
+	<cffunction name="registerMediator" returntype="void" access="public" output="true" hint="Register an IMediator instance with the View.">
+		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true" hint="A reference to the IMediator instance.">
 	</cffunction>
 	
-	<cffunction name="registerFactory" returntype="void" access="public" output="true" hint="Register an <code>IFactory</code> instance with the Facade.">
-		<cfargument name="factoryName" type="string" required="true" hint="The name of the <code>IFactory</code> instance used as key if Factory Map.">
-		<cfargument name="factory" type="any" required="true" hint="The <code>IFactory</code> instance to register with the Factory Map.">
+	<cffunction name="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true" hint="Retrieve an IMediator instance from the View.">
+		<cfargument name="mediatorName" type="string" required="true" hint="the name of the IMediator instance to retrieve">
+	</cffunction>
+	
+	<cffunction name="removeMediator" returntype="any" access="public" output="true" hint="Remove a IMediator instance from the View.">
+		<cfargument name="mediatorName" type="string" required="true" hint="Name of the IMediator instance to be removed.">
+	</cffunction>
+	
+	<cffunction name="hasMediator" displayname="hasMediator" returntype="boolean" access="public" output="true" hint="Check if a Mediator is registered or not">
+		<cfargument name="mediatorName" type="string" required="true" hint="The name of the IMediator instance to retrieve.">
+	</cffunction>
+	
+	<cffunction name="retrieveFactory" returntype="any" access="public" output="true" hint="Retrieve an IFactory from the Facade.">
+		<cfargument name="factoryName" type="string" required="true" hint="The name of the IFactory instance.">
+	</cffunction>
+	
+	<cffunction name="registerFactory" returntype="void" access="public" output="true" hint="Register an IFactory instance with the Facade.">
+		<cfargument name="factoryName" type="string" required="true" hint="The name of the IFactory instance used as key if Factory Map.">
+		<cfargument name="factory" type="any" required="true" hint="The IFactory instance to register with the Factory Map.">
 	</cffunction>
 	
 </cfinterface>

@@ -4,13 +4,13 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
-******************************************************************************
- A base Singleton <code>IFacade</code> implementation.
+
+ A base Singleton <code>IFacade implementation.
  
- In PureMVC, the <code>Facade</code> class assumes these responsibilities:
+ In PureMVC, the <code>Facade class assumes these responsibilities:
 
  * Initializing the Model, View and Controller Singletons. 
- * Providing all the methods defined by the IModel, IView, & IController</code> interfaces.
+ * Providing all the methods defined by the IModel, IView, & IController interfaces.
  * Providing the ability to override the specific Model, View and Controller Singletons created. 
  * Providing a single point of contact to the application for registering Commands and notifying Observers
  
@@ -60,12 +60,11 @@
 	</cffunction>
 
  </cfcomponent>
-
 --->
 <cfcomponent displayname="Facade" 
 			 implements="org.puremvc.cf.interfaces.IFacade"
 			 output="true"
-			 Hint="A base Singleton <code>IFacade</code> implementation.">
+			 Hint="A base Singleton IFacade implementation.">
 	
 	<cfproperty name="model" type="org.puremvc.cf.interfaces.model.IModel" default="0" required="true">
 	<cfproperty name="view" type="org.puremvc.cf.interfaces.view.IView" default="0" required="true">
@@ -94,7 +93,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="initializeFacade" displayname="initializeFacade" access="public" returntype="void" hint="Initialize the Singleton <code>Facade</code> instance. Called automatically by the constructor. Override in your subclass to do any subclass specific initializations. Be sure to call <code>super.initializeFacade()</code>, though.">
+	<cffunction name="initializeFacade" displayname="initializeFacade" access="public" returntype="void" hint="Initialize the Singleton Facade instance. Called automatically by the constructor. Override in your subclass to do any subclass specific initializations. Be sure to call super.initializeFacade(), though.">
 		<cfscript>
 			this.initializeModel();
 			this.initializeView();
@@ -117,7 +116,7 @@
 	since Proxys with mutable data will likely need to send INotifications and thus will likely want to fetch a reference to the Facade 
 	during their construction.
 	--->
-	<cffunction name="initializeModel" returntype="void" access="public" output="true" hint="Initialize the <code>Model</code>.">
+	<cffunction name="initializeModel" returntype="void" access="public" output="true" hint="Initialize the Model.">
 		<cfscript>
 			if (this.model EQ 0)
 			{
@@ -137,7 +136,7 @@
 	 - If you don't want to initialize a different IController, call super.initializeController() at the beginning of your method, then register Commands.
 	****************************************************************************************
 	--->
-	<cffunction name="initializeController" returntype="void" access="public" output="true" hint="Initialize the <code>Controller</code>.">
+	<cffunction name="initializeController" returntype="void" access="public" output="true" hint="Initialize the Controller.">
 		<cfscript>
 			if (this.controller EQ 0)
 			{
@@ -169,101 +168,134 @@
 		</cfscript>
 	</cffunction>
 	
-	<!---
-	**************************************************************************************** 
-	An Abstact method which should not be called directly. 
-	
-	Override this method in your subclass of Facade if you wish to incorporate an 
-	Object Factory into the framework.
-	****************************************************************************************
-	--->
-	<cffunction name="initializeFactory" returntype="void" access="public" output="true">
+	<cffunction name="initializeFactory" returntype="void" access="public" output="true" hint="An Abstact method which should not be called directly. Override this method in your subclass of Facade if you wish to incorporate an Object Factory into the framework. ">
 		<cfthrow type="Custom" message="Abstract method: must be overridden in a subclass" />
 	</cffunction>
 	
-	<cffunction name="notifyObservers" returntype="void" access="public" output="true" hint="Notify <code>Observer</code>s of an <code>INotification</code>.">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The <code>INotification</code> to have the <code>View</code> notify observers.">
-		<cfscript>
-			if ( IsObject(this.view) ) { this.view.notifyObservers( arguments.notification ); }
-		</cfscript>
-	</cffunction>
-	
-	<cffunction name="registerProxy" returntype="void" access="public" output="true" hint="Register an <code>IProxy</code> with the <code>Model</code> by name.">
-		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true" hint="The <code>IProxy</code> to be registered with the <code>Model</code>.">
+	<cffunction name="registerProxy" returntype="void" access="public" output="true" hint="Register an IProxy with the Model by name.">
+		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true" hint="The IProxy to be registered with the Model.">
 		<cfscript>
 			this.model.registerProxy( arguments.proxy );
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true" hint="Retrieve a <code>IProxy</code> from the <code>Model</code> by name.">
-		<cfargument name="proxyName" type="string" required="true" hint="The name of the <code>IProxy</code> instance to be retrieved.">
+	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true" hint="Retrieve a IProxy from the Model by name.">
+		<cfargument name="proxyName" type="string" required="true" hint="The name of the IProxy instance to be retrieved.">
 		<cfscript>
 			return this.model.retrieveProxy( arguments.proxyName );
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="removeProxy" returntype="void" access="public" output="true" hint="Remove an <code>IProxy</code> instance from the <code>Model</code> by name.">
-		<cfargument name="proxyName" type="string" required="true" hint="The <code>IProxy</code> to remove from the <code>Model</code>.">
+	<cffunction name="removeProxy" returntype="void" access="public" output="true" hint="Remove an IProxy instance from the Model by name.">
+		<cfargument name="proxyName" type="string" required="true" hint="The IProxy to remove from the Model.">
 		<cfscript>
-			if ( IsObject(this.model) ) { this.model.removeProxy( arguments.proxyName ); }
+			if ( IsObject(this.model) && this.hasProxy(arguments.proxyName) ) { this.model.removeProxy( arguments.proxyName ); }
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="registerCommand" returntype="void" access="public" output="true" hint="Register an <code>ICommand</code> with the <code>Controller</code>.">
-		<cfargument name="notificationName" type="string" required="true" hint="The name of the <code>INotification</code> to associate with the <code>ICommand</code>.">
-		<cfargument name="commandClassRef" type="string" required="true" hint="A reference to the <code>Class</code> of the <code>ICommand</code>.">
+	<cffunction name="hasProxy" returntype="boolean" access="public" output="true" hint="Check if a Proxy is registered. Return whether a Proxy is currently registered with the given proxyName.">
+		<cfargument name="proxyName" type="string" required="true" hint="The IProxy to remove from the Model.">
+		<cfscript>
+			return model.hasProxy(arguments.proxyName);
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="registerCommand" returntype="void" access="public" output="true" hint="Register an ICommand with the Controller.">
+		<cfargument name="notificationName" type="string" required="true" hint="The name of the INotification to associate with the ICommand.">
+		<cfargument name="commandClassRef" type="string" required="true" hint="A reference to the Class of the ICommand.">
 		<cfscript>
 			this.controller.registerCommand( arguments.notificationName, arguments.commandClassRef );
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="registerMediator" returntype="void" access="public" output="true" hint="Register an <code>IMediator</code> instance with the <code>View</code>.">
-		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true" hint="A reference to the <code>IMediator</code> instance.">
+	<cffunction name="removeCommand" returntype="void" access="public" output="true" hint="Remove a previously registered ICommand to INotification mapping from the Controller.">
+		<cfargument name="notificationName" type="string" required="true" hint="The name of the INotification to remove the ICommand mapping for.">
+		<cfscript>
+			this.controller.removeCommand(arguments.notificationName);
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="hasCommand" returntype="boolean" access="public" output="true" hint="Check if a Command is registered for a given Notification.">
+		<cfargument name="notificationName" type="string" required="true" hint="The INotification name.">
+		<cfscript>
+			return this.model.hasCommand(arguments.notificationName);
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="registerMediator" returntype="void" access="public" output="true" hint="Register an IMediator instance with the View.">
+		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true" hint="A reference to the IMediator instance.">
 		<cfscript>
 			if ( IsObject(this.view) ) this.view.registerMediator( arguments.mediator );
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true" hint="Retrieve an <code>IMediator</code> instance from the <code>View</code>.">
-		<cfargument name="mediatorName" type="string" required="true" hint="the name of the <code>IMediator</code> instance to retrieve">
+	<cffunction name="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true" hint="Retrieve an IMediator instance from the View.">
+		<cfargument name="mediatorName" type="string" required="true" hint="the name of the IMediator instance to retrieve">
 		<cfscript>
 			return this.view.retrieveMediator( arguments.mediatorName );
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="removeMediator" returntype="void" access="public" output="true" hint="Remove a <code>IMediator</code> instance from the <code>View</code>.">
-		<cfargument name="mediatorName" type="string" required="true" hint="Name of the <code>IMediator</code> instance to be removed.">
+	<cffunction name="removeMediator" returntype="any" access="public" output="true" hint="Remove a IMediator instance from the View.">
+		<cfargument name="mediatorName" type="string" required="true" hint="Name of the IMediator instance to be removed.">
 		<cfscript>
-			if ( IsObject(this.view) ) { this.view.removeMediator( arguments.mediatorName ); }
+			var mediator = 0;
+			if ( IsObject(this.view) ) { mediator = this.view.removeMediator( arguments.mediatorName ); }
+			return mediator;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="retrieveFactory" returntype="any" access="public" output="true" hint="Retrieve an <code>IFactory</code> from the <code>Facade</code>.">
-		<cfargument name="factoryName" type="string" required="true" hint="The name of the <code>IFactory</code> instance.">
+	<cffunction name="hasMediator" displayname="hasMediator" returntype="boolean" access="public" output="true" hint="Check if a Mediator is registered or not">
+		<cfargument name="mediatorName" type="string" required="true" hint="The name of the IMediator instance to retrieve.">
+		<cfscript>
+			this.view.hasMediator(arguments.mediatorName);
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="retrieveFactory" returntype="any" access="public" output="true" hint="Retrieve an IFactory from the Facade.">
+		<cfargument name="factoryName" type="string" required="true" hint="The name of the IFactory instance.">
 		<cfthrow type="Custom" message="Abstract method: must be overridden in a subclass" />
 	</cffunction>
 	
-	<cffunction name="registerFactory" returntype="void" access="public" output="true" hint="Register an <code>IFactory</code> instance with the Facade.">
-		<cfargument name="factoryName" type="string" required="true" hint="The name of the <code>IFactory</code> instance used as key if Factory Map.">
-		<cfargument name="factory" type="any" required="true" hint="The <code>IFactory</code> instance to register with the Factory Map.">
+	<cffunction name="registerFactory" returntype="void" access="public" output="true" hint="Register an IFactory instance with the Facade.">
+		<cfargument name="factoryName" type="string" required="true" hint="The name of the IFactory instance used as key if Factory Map.">
+		<cfargument name="factory" type="any" required="true" hint="The IFactory instance to register with the Factory Map.">
 		<cfthrow type="Custom" message="Abstract method: must be overridden in a subclass" />
+	</cffunction>
+	
+	<cffunction name="sendNotification" returntype="void" access="public" output="true" hint="Sends a notification which Observers will act upon.">
+		<cfargument name="notificationName" type="string" required="true">
+		<cfargument name="notificationBody" type="any" default="0" required="false">
+		<cfargument name="notificationType" type="string" default="" required="false">
+		<cfscript>
+			var notification = CreateObject("component","org.puremvc.cf.patterns.observer.Notification");			
+			notification.init(arguments.notificationName, arguments.notificationBody, arguments.notificationType);
+			this.notifyObservers(notification);
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="notifyObservers" returntype="void" access="public" output="true" hint="Notify Observers of an INotification.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The INotification to have the View notify observers.">
+		<cfscript>
+			if ( IsObject(this.view) ) { this.view.notifyObservers( arguments.notification ); }
+		</cfscript>
 	</cffunction>
 	
 	<!--- Accessors --->
 	
-	<cffunction name="getModel" returntype="org.puremvc.cf.core.model.IModel" access="public" output="true" hint="Get an <code>IModel</code> instance of the Facade.">
+	<cffunction name="getModel" returntype="org.puremvc.cf.core.model.IModel" access="public" output="true" hint="Get an IModel instance of the Facade.">
 		<cfscript>
 			return this.model;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getView" returntype="org.puremvc.cf.core.view.IView" access="public" output="true" hint="Get an <code>IView</code> instance of the Facade.">
+	<cffunction name="getView" returntype="org.puremvc.cf.core.view.IView" access="public" output="true" hint="Get an IView instance of the Facade.">
 		<cfscript>
 			return this.view;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getController" returntype="org.puremvc.cf.core.controller.IController" access="public" output="true" hint="Get a <code>IController</code> instance of the Facade.">
+	<cffunction name="getController" returntype="org.puremvc.cf.core.controller.IController" access="public" output="true" hint="Get a IController instance of the Facade.">
 		<cfscript>
 			return this.controller;
 		</cfscript>

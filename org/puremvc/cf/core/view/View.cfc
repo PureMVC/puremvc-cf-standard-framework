@@ -4,28 +4,11 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
-
- A Singleton IView implementation.
-
- In PureMVC, the View class assumes these responsibilities:
-
- -Maintain a cache of IMediator instances.
- -Provide methods for registering, retrieving, and removing IMediators.
- -Managing the observer lists for each INotification in the application.
- -Providing a method for attaching IObservers to an INotification's observer list.
- -Providing a method for broadcasting an INotification.
- -Notifying the IObservers of a given INotification when it broadcast.
- 
- See org.puremvc.patterns.mediator.Mediator Mediator
- See org.puremvc.patterns.observer.Observer Observer
- See org.puremvc.patterns.observer.Notification Notification
-
-******************************************************************************
 --->
 <cfcomponent displayname="View"
 			 implements="org.puremvc.cf.interfaces.IView"
 			 output="true"
-			 hint="A Singleton <code>IView</code> implementation.">
+			 hint="A Singleton IView implementation. In PureMVC, the View class assumes these responsibilities. Maintain a cache of IMediator instances. Provide methods for registering, retrieving, and removing IMediators. Managing the observer lists for each INotification in the application. Providing a method for attaching IObservers to an INotification's observer list. Providing a method for broadcasting an INotification. Notifying the IObservers of a given INotification when it broadcast. ">
 	
 	<cfproperty name="mediatorMap" type="struct" required="true" hint="Mapping of Mediator names to Mediator instances">
 	<cfproperty name="observerMap" type="array" required="true" hint="Mapping of Notification names to Observer lists">
@@ -36,7 +19,7 @@
 		this.observerMap = ArrayNew(1);
 	</cfscript>
 		
-	<cffunction name="getInstance" displayname="getInstance" access="public" returntype="org.puremvc.cf.interfaces.IView" output="true" hint="View Singleton Factory method. Returns the Singleton instance of <code>View</code>.">
+	<cffunction name="getInstance" displayname="getInstance" access="public" returntype="org.puremvc.cf.interfaces.IView" output="true" hint="View Singleton Factory method. Returns the Singleton instance of View.">
 		<cfscript>
 			if ( NOT StructKeyExists(this, "viewInstance" ) )
 			{
@@ -52,14 +35,14 @@
 	 instance in your subclass.
 	--->
 	<cffunction name="initializeView" displayname="initializeView" access="public" returntype="void"
-				description="Called automatically by the constructor, this is your opportunity to initialize the Singleton instance in your subclass.">
+				hint="Called automatically by the constructor, this is your opportunity to initialize the Singleton instance in your subclass.">
 		<cfscript>
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="registerObserver" displayname="registerObserver" returntype="void" access="public" output="true" hint="Register an <code>IObserver</code> to be notified of <code>INotifications</code> with a given name.">
-		<cfargument name="notificationName" type="string" required="true" hint="The name of the <code>INotifications</code>">
-		<cfargument name="observer" type="org.puremvc.cf.interfaces.IObserver" required="true" hint="The <code>IObserver</code> to register">
+	<cffunction name="registerObserver" displayname="registerObserver" returntype="void" access="public" output="true" hint="Register an IObserver to be notified of INotifications with a given name.">
+		<cfargument name="notificationName" type="string" required="true" hint="The name of the INotifications">
+		<cfargument name="observer" type="org.puremvc.cf.interfaces.IObserver" required="true" hint="The IObserver to register">
 		<cfscript>
 			var obj = 0;
 			var observerMapLength = 0;
@@ -89,8 +72,8 @@
 	list are notified and are passed a reference to the INotification in 
 	the order in which they were registered.
 	--->
-	<cffunction name="notifyObservers" displayname="notifyObservers" returntype="void" access="public" output="true" hint="Notify the <code>IObservers</code> for a particular <code>INotification</code>.">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The <code>INotification</code> to notify <code>IObservers</code>">
+	<cffunction name="notifyObservers" displayname="notifyObservers" returntype="void" access="public" output="true" hint="Notify the IObservers for a particular INotification. All previously attached IObservers for this INotification's list are notified and are passed a reference to the INotification in the order in which they were registered.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The INotification to notify IObservers">
 		<cfscript>
 			var observerMapLength = ArrayLen(this.observerMap);
 			var observer = 0;
@@ -116,8 +99,8 @@
 	 Observer is created encapsulating the IMediator instance's handleNotification method 
 	 and registering it as an Observer for all INotifications the IMediator is interested in.
 	--->
-	<cffunction name="registerMediator" displayname="registerMediator" returntype="void" access="public" output="true" hint="Register an <code>IMediator</code> instance with the <code>View</code>.">
-		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true" hint="A reference to the <code>IMediator</code> instance">
+	<cffunction name="registerMediator" displayname="registerMediator" returntype="void" access="public" output="true" hint="Register an IMediator instance with the View. If the IMediator returns any INotification names to be notified about, an Observer is created encapsulating the IMediator instance's handleNotification method and registering it as an Observer for all INotifications the IMediator is interested in handling.">
+		<cfargument name="mediator" type="org.puremvc.cf.interfaces.IMediator" required="true" hint="A reference to the IMediator instance">
 		<cfscript>
 			var _interests = [];
 			var _observer = 0;
@@ -141,21 +124,41 @@
 			{
 				this.registerObserver( _interests[_i],  _observer );
 			}
+			
+			// alert the mediator that it has been registered
+			arguments.mediator.onRegister();
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="retrieveMediator" displayname="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true" hint="Retrieve an <code>IMediator</code> from the <code>View</code>.">
-		<cfargument name="mediatorName" type="string" required="true" hint="The name of the <code>IMediator</code> instance to retrieve.">
+	<cffunction name="retrieveMediator" displayname="retrieveMediator" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true" hint="Retrieve an IMediator from the View.">
+		<cfargument name="mediatorName" type="string" required="true" hint="The name of the IMediator instance to retrieve.">
 		<cfscript>
 			return this.mediatorMap[ arguments.mediatorName ];
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="removeMediator" displayname="removeMediator" returntype="void" access="public" output="true" hint="Remove an <code>IMediator</code> from the <code>View</code>.">
-		<cfargument name="mediatorName" type="string" required="true" hint="Name of the <code>IMediator</code> instance to be removed.">
+	<cffunction name="removeMediator" displayname="removeMediator" returntype="any" access="public" output="true" hint="Remove an IMediator from the View. If Mediator exist it is returned otherwise return 0.">
+		<cfargument name="mediatorName" type="string" required="true" hint="Name of the IMediator instance to be removed.">
 		<cfscript>
-			StructDelete(this.mediatorMap, arguments.mediatorName, false);
+			var mediator = 0;
+			if (this.hasMediator(arguments.mediatorName)) 
+			{ 
+				mediator = this.retrieveMediator(arguments.mediatorName);
+				StructDelete(this.mediatorMap, arguments.mediatorName, true);
+				
+				// alert the mediator that it has been removed
+				if (IsObject(mediator)) { mediator.onRemove(); }
+				return mediator;
+			}
+			return mediator;
 		</cfscript>
 	</cffunction>
 	
+	<cffunction name="hasMediator" displayname="hasMediator" returntype="boolean" access="public" output="true" hint="Check if a Mediator is registered or not">
+		<cfargument name="mediatorName" type="string" required="true" hint="The name of the IMediator instance to retrieve.">
+		<cfscript>
+			return StructKeyExists(this.mediatorMap,arguments.mediatorName);
+		</cfscript>
+	</cffunction>
+
 </cfcomponent>

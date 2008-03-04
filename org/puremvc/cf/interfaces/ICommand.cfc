@@ -11,4 +11,8 @@
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="An INotification to handle.">
 	</cffunction>
 	
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Runs the Observer handler of an ICommand when registered as an Observer.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+	</cffunction>
+	
 </cfinterface>

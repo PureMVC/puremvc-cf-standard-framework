@@ -1,7 +1,9 @@
 <!---
+***************************************************************************
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
+***************************************************************************
 
  A Base IMediator implementation.
 --->
@@ -15,28 +17,36 @@
 	<cfproperty name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true">
 	
 	<cfscript>
-		variables.mediatorName = 'Mediator';
+		variables.mediatorName = "";
 		variables.viewComponent = 0;
 	</cfscript>
 	
 	<cffunction name="init" returntype="void" access="public" output="true">
-		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="false">
+		<cfargument name="mediatorName" type="string" required="false" hint="The name of the mediator" default="">
+		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="false" hint="An instance of IViewComponent">
 		<cfscript>
-			if (isDefined("arguments.viewComponent")) { variables.viewComponent = arguments.viewComponent; }
-		</cfscript>
+			variables.mediatorName = IIF( arguments.mediatorName != "", DE(arguments.mediatorName), DE(GetMetaData(this).DISPLAYNAME) ); 
+			if (isDefined("arguments.viewComponent")) { this.setViewComponent(arguments.viewComponent); }
+		</cfscript>		
 	</cffunction>
 	
 	<cffunction name="setMediatorName" returntype="void" access="public" output="true" hint="Sets the name of the Mediator">
-		<cfargument name="mediatorName" type="string" required="false">
+		<cfargument name="mediatorName" type="string" required="true">
 		<cfscript>
-			variables.mediatorName = arguments.mediatorName;
+			variables.mediatorName = arguments.mediatorName; 
 		</cfscript>
 	</cffunction>
 	
 	<cffunction name="getMediatorName" returntype="string" access="public" output="true" hint="Gets the name of the Mediator">
 		<cfscript>
-			if ( IsDefined(GetMetaData(this).DISPLAYNAME) ) { return GetMetaData(this).DISPLAYNAME; } 
 			return variables.mediatorName;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="setViewComponent" returntype="void" access="public" output="true">
+		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true">
+		<cfscript>
+			variables.viewComponent = arguments.viewComponent;
 		</cfscript>
 	</cffunction>
 	
@@ -54,6 +64,23 @@
 	
 	<cffunction name="handleNotification" returntype="void" access="public" output="true">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+		<cfscript>
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Runs the Observer handler of an IMediator when registered as an Observer.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+		<cfscript>
+			this.handleNotification(arguments.notification);
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="onRegister" returntype="void" access="public" output="true" hint="Called by the View when the Mediator is registered ">
+		<cfscript>
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="onRemove" returntype="void" access="public" output="true" hint="Called by the View when the Mediator is removed ">
 		<cfscript>
 		</cfscript>
 	</cffunction>

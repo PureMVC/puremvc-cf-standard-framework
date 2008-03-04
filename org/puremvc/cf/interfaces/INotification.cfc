@@ -1,49 +1,27 @@
 <!---
+******************************************************************************
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
+******************************************************************************
 --->
-<cfinterface displayname="INotification">
+<cfinterface displayname="INotification" hint="The interface definition for INotification.">
 	
-	<!--- 
-	 * Get the name of the INotification</code> instance. 
-	 * No setter, should be set by constructor only
-	--->
-	<cffunction name="getName" returntype="string" access="public" output="true">
+	<cffunction name="getName" returntype="string" access="public" output="true" hint="Get the name of the INotification instance. No setter, should be set by constructor only.">
 	</cffunction>
 	
-	<!--- 
-	/**
-	 * Set the body of the INotification</code> instance
-	 */
-	--->
-	<cffunction name="setBody" returntype="void" access="public" output="true">
+	<cffunction name="setBody" returntype="void" access="public" output="true" hint="Set the body of the INotification instance.">
 		<cfargument name="notificationBody" type="any" required="true">
 	</cffunction>
 	
-	<!---  
-	/**
-	 * Get the body of the INotification</code> instance
-	 */
-	--->
-	<cffunction name="getBody" returntype="any" access="public" output="true">
+	<cffunction name="getBody" returntype="any" access="public" output="true" hint="Get the body of the INotification instance.">
 	</cffunction>
 	
-	<!---  
-	/**
-	 * Set the type of the INotification</code> instance
-	 */
-	--->
-	<cffunction name="setType" returntype="void" access="public" output="true">
+	<cffunction name="setType" returntype="void" access="public" output="true" hint="Set the type of the INotification instance">
 		<cfargument name="notificationType" type="string" required="true">
 	</cffunction>
 	
-	<!---  
-	/**
-	 * Get the type of the INotification</code> instance
-	 */
-	--->
-	<cffunction name="getType" returntype="string" access="public" output="true">
+	<cffunction name="getType" returntype="string" access="public" output="true" hint="Get the type of the INotification instance.">
 	</cffunction>
 	
 </cfinterface>

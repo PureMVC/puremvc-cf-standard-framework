@@ -47,5 +47,12 @@
 			}
 		</cfscript>
 	</cffunction>
-
+	
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Executes the execute method of an ICommand.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+		<cfscript>
+			this.execute(arguments.notification);
+		</cfscript>
+	</cffunction>
+	
 </cfcomponent>

@@ -1,7 +1,9 @@
 <!---
+******************************************************************************
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
+******************************************************************************
 --->
 <cfcomponent extends="org.puremvc.cf.patterns.observer.Notifier"
 			 implements="org.puremvc.cf.interfaces.IProxy"
@@ -24,27 +26,27 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setProxyName" returntype="void" access="public" output="true">
-		<cfargument name="proxyName" type="string" required="true">
+	<cffunction name="setProxyName" returntype="void" access="public" output="true" hint="Sets the name of the proxy.">
+		<cfargument name="proxyName" type="string" required="true" hint="The name of the proxy.">
 		<cfscript>
 			variables.proxyName = arguments.proxyName;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getProxyName" returntype="string" access="public" output="true">
+	<cffunction name="getProxyName" returntype="string" access="public" output="true" hint="Gets the name of the proxy.">
 		<cfscript>
 			return variables.proxyName;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setData" returntype="any" access="public" output="true">
-		<cfargument name="data" type="any" required="true">
+	<cffunction name="setData" returntype="any" access="public" output="true" hint="Set the data object">
+		<cfargument name="data" type="any" required="true" hint="The data object.">
 		<cfscript>
 			variables.data = arguments.data;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getData" returntype="any" access="public" output="true">
+	<cffunction name="getData" returntype="any" access="public" output="true" hint="Get the data object">
 		<cfscript>
 			return variables.data;
 		</cfscript>

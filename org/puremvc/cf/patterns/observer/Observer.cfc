@@ -1,7 +1,11 @@
 <!---
+******************************************************************************
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
+******************************************************************************
+
+******************************************************************************
 --->
 <cfcomponent displayName="Observer" 
 			 implements="org.puremvc.cf.interfaces.IObserver"
@@ -31,29 +35,24 @@
 			variables.notify = arguments.notifyMethod;
 		</cfscript>	
 	</cffunction>
-	
 	<cffunction name="getNotifyMethod" displayname="getNotifyMethod" access="public" returntype="string" hint="Get the notify method.">
 		<cfscript>
 			return variables.notify;
 		</cfscript>	
 	</cffunction>
 	
-	<!--- Set the notification context. --->
 	<cffunction name="setNotifyContext" displayname="setNotifyContext" access="public" returntype="void" hint="Set the notification context.">
 		<cfargument name="notifyContext" type="any" required="true">
 		<cfscript>
 			variables.context = arguments.notifyContext;
 		</cfscript>
 	</cffunction>
-	
-	<!--- Get the notification context. --->
 	<cffunction name="getNotifyContext" displayname="getNotifyContext" access="public" returntype="any" hint="Get the notification context.">
 		<cfscript>
 			return variables.context;
 		</cfscript>
 	</cffunction>
 	
-	<!---  Notify the interested object. --->
 	<cffunction name="notifyObserver" displayname="notifyObserver" access="public" returntype="void" output="true" hint="Notify the interested object.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>

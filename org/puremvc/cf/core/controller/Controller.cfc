@@ -4,32 +4,11 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
-******************************************************************************
- A Singleton IController implementation.
- 
- In PureMVC, the Controller class follows the 'Command and Controller' strategy, and assumes 
- these responsibilities:
- 
- * Remembering which ICommands are intended to handle which INotifications.
- * Registering itself as an IObserver with the View for each INotification that it has an ICommand mapping for.
- * Creating a new instance of the proper ICommand to handle a given INotification when notified by the View.
- * Calling the ICommand's execute method, passing in the INotification.</LI> 
-
- Your application must register ICommands with the Controller.
- 
- The simplest way is to subclass Facade, and use its initializeController method to add your registrations. 
-  
- * See org.puremvc.core.view.View View
- * See org.puremvc.patterns.observer.Observer Observer
- * See org.puremvc.patterns.observer.Notification Notification
- * See org.puremvc.patterns.command.SimpleCommand SimpleCommand
- * See org.puremvc.patterns.command.MacroCommand MacroCommand
-******************************************************************************
 --->
 <cfcomponent displayname="Controller" 
 			 implements="org.puremvc.cf.interfaces.IController"
 			 output="true"
-			 hint="A Singleton IController implementation.">
+			 hint="A Singleton IController implementation. In PureMVC, the Controller class follows the 'Command and Controller' strategy, and assumes these responsibilities. Remembering which ICommands are intended to handle which INotifications. Registering itself as an IObserver with the View for each INotification that it has an ICommand mapping for. Creating a new instance of the proper ICommand to handle a given INotification when notified by the View. Calling the ICommand's execute method, passing in the INotification. Your application must register ICommands with the Controller. The simplest way is to subclass Facade, and use its initializeController method to add your registrations.">
 	
 	<cfproperty name="view" type="org.puremvc.cf.interfaces.IView" required="true" hint="Local reference to View">
 	<cfproperty name="commandMap" type="struct" required="true" hint="Mapping of Notification names to Command Class references">
@@ -55,12 +34,7 @@
 		</cfscript>
 	</cffunction>
 	
-	 <!--- 
-	 * Note: If you are using a subclass of View in your application, you should also subclass Controller
-	 * and override the initializeController method in the subclass:
-	 --->
-	<cffunction name="initializeController" displayname="initializeController" access="public" returntype="void" 
-				hint="Initialize the Singleton Controller instance. Called automatically by the constructor.">
+	<cffunction name="initializeController" displayname="initializeController" access="public" returntype="void" hint="Initialize the Singleton Controller instance. Called automatically by the constructor. If you are using a subclass of View in your application, you should also subclass Controller and override the initializeController method in the subclass.">
 		<cfscript>
 			this.view = application.facadeInstance.view;
 		</cfscript>
@@ -81,14 +55,7 @@
 		</cfscript>
 	</cffunction>
 	
-	 <!--- 
-	 * If an ICommand has already been registered to handle INotification's with this name, 
-	 * it is no longer used, the new ICommand is used instead.
-	 * 
-	 * The Observer for the new ICommand is only created if this is the 
-	 * first time an ICommand has been regisered for this Notification name. 
-	 --->
-	<cffunction name="registerCommand" returntype="void" access="public" output="true" hint="I Register a particular ICommand class as the handler for a particular INotification.">
+	<cffunction name="registerCommand" returntype="void" access="public" output="true" hint="I Register a particular ICommand class as the handler for a particular INotification. If an ICommand has already been registered to handle INotification's with this name, it is no longer used, the new ICommand is used instead. The Observer for the new ICommand is only created if this is the first time an ICommand has been registered for this Notification name.">
 		<cfargument name="notificationName" type="string" required="true" hint="The name of the INotification">
 		<cfargument name="commandClassRef" type="string" required="true" hint="The Class of the ICommand">
 		<cfscript>
@@ -105,8 +72,8 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Calls a method on the Controller when registered as an Observer.">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The Notification supplied by the Observer">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Executes the notifyMethod of an IObserver when a notification is sent from Proxies.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			this.executeCommand(arguments.notification);
 		</cfscript>
