@@ -7,21 +7,26 @@
 
  The interface definition for IViewHelper.
 
- Since the view in an HTML/ColdFusion application has no concept of a view object,
- we must create a ViewHelper CFC in PureMVC_CF which extends IView and acts
- as our view object. A ViewHelper in PureMVC_CF is registered with a Mediator.
+ The interface definition for IViewHelper. In PureMVC, a Mediator takes a viewComponent as an arguments and 
+ Mediates requests on behalf of the viewComponent.
+ 
+ In ColdFusion, a view in most cases consists of an HTML page with ColdFusion tags, functions, ect and has no way to register 
+ itself to PureMVC without some help. For each CF/HTML view we create a View Helper which extends IViewHelper to act as our 
+ viewComponent. This is possible because IViewHelper extends IViewComponent which represents a viewComponent in
+ PureMVC for ColdFusion.
 
- In PureMVC_CF implementors assume these responsibilities:
+ In PureMVC for ColdFusion implementors assume these responsibilities:
 
- - Provides methods for setting and getting the view components ID
- - Provides methods for setting and getting the view name.
  - Provides methods for setting and getting the application facade.
  - Provides methods for registering and retrieving a Mediator.
-
+ - Provides a method to apply a notification method on the view helper when registered
+   as an Observer.
 --->
 <cfinterface displayname="IViewHelper" 
 			 extends="IViewComponent" 
-			 hint="The interface definition for IViewHelper. Since the view in an HTML/ColdFusion application has no concept of a view object, we must create a ViewHelper CFC in PureMVC_CF which extends IView and acts as our view object. A ViewHelper in PureMVC_CF is registered with a Mediator.">
+			 hint="The interface definition for IViewHelper. In PureMVC, a Mediator takes a viewComponent as an arguments and Mediates requests on behalf of the viewComponent.
+			 	   In ColdFusion, a view in most cases consists of an HTML page with ColdFusion tags, functions, ect and has no way to register itself to PureMVC without some help.
+			 	   For each CF/HTML view we create View Helpers which extend IViewHelper and IViewComponent to act as out viewComponent.">
 			 	
 	<cffunction name="setFacade" access="public" returntype="void" hint="Sets a reference to the facade instance with the view helper.">
 		<cfargument name="facade" type="org.puremvc.cf.interfaces.IFacade" required="true" hint="A facade instance.">

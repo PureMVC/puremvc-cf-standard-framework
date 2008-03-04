@@ -6,17 +6,14 @@
 ******************************************************************************
 
  The interface definition for IViewComponent.
+ 
+ In PureMVC for ColdFusion, a Mediator takes a viewComponent as an argument and Mediates requests on behalf of the 
+ viewComponent. 
 
- Since the view in an HTML/ColdFusion application has no concept of a view object,
- we must create a ViewHelper CFC in PureMVC_CF which implements IViewComponent and acts
- as our view object. A ViewHelper in PureMVC_CF is registered with a Mediator as a View Component.
-
- In PureMVC_CF implementors assume these responsibilities:
+ In PureMVC for ColdFusion implementors assume these responsibilities:
 
  - Provides methods for setting and getting the view components ID
- - Provides methods for setting and getting the view components name.
- - Provides methods for setting and getting the application facade.
- - Provides methods for registering and retrieving a Mediator. 
+ - Provides methods for setting and getting the view components name. 
 
 --->
 <cfinterface displayname="IViewComponent" hint="The interface definition for IViewComponent.">
