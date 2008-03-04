@@ -1,7 +1,9 @@
 <!---
+******************************************************************************
  PureMVC ColdFusion Port by Michael Oddis <michael.oddis@puremvc.org>
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
+******************************************************************************
 --->
 <cfcomponent displayname="MediatorTest"
 			 extends="net.sourceforge.cfunit.framework.TestCase"
@@ -30,7 +32,7 @@
 			
 			// Create a new Mediator
    			mediator = CreateObject("component","org.puremvc.cf.patterns.mediator.Mediator");
-			mediator.init(view);
+			mediator.init("Mediator",view);
 			   			
    			// test assertions
    			assertTrue( "Expecting mediator.getViewComponent() != ''", len(mediator.getViewComponent().getComponentName()) != 0 );

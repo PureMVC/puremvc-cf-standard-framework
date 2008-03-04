@@ -26,7 +26,6 @@
 	
 	<cffunction name="updateView" returntype="void" access="public" output="true">
 		<cfargument name="viewData" type="any" required="false">
-		<cfdump var="#arguments.viewData#" label="In updateView() of TestViewHelper">
 		<cfscript>
 			this.testValue = arguments.viewData + 5;
 		</cfscript>

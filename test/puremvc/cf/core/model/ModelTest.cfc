@@ -82,8 +82,6 @@
 			
 			modelInstance.registerProxy(proxy);
 			modelInstance.removeProxy('sizes');
-			
-			//proxy = modelInstance.retrieveProxy('sizes');
 		</cfscript>
 		<cfinvoke method="assertTrue">
 			<cfinvokeargument name="message" value="Expecting proxy is null">
