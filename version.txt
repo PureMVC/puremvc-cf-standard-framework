@@ -16,11 +16,11 @@ Release Date: 3/9/08
 
 1.0	-	All unit tests passed. AS3 1.7 functionality.
 
-0.9 -	Added additional comments so DocCFC and provide a little more information. Would like to find
+0.9 -	Added additional comments so CFCDoc and provide a little more information. Would like to find
 		free tool to display API without CF Server running but this will have to do for now.
 
 0.8 -	Added more comments and documentation to cfc's. Created HelloWorld and LoginApp examples. Decided to
-		utilize cfcDoc to use as tool to present API.
+		utilize CFCDoc to use as tool to present API.
 
 0.7	-	All unit tests passed. AS3 1.5 functionality. Added more comments to cfc's.
 
