@@ -11,7 +11,8 @@ Release Date: 3/9/08
 
 2.0 - 	All unit tests passed. AS3 2.0 functionality. Supporting documentation outside of code base
 		must still be created. Most code has reasonable documentation to get started but I am sure
-		there are areas which will require deeper explaination.
+		there are areas which will require deeper explaination. The reason for the jump from 1.0 to 2.0
+		is to stay in sync with the release schedule of PureMVC AS3 and present a unified front of a ports.
 
 1.0	-	All unit tests passed. AS3 1.7 functionality.
 
