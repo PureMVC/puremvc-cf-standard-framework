@@ -43,8 +43,8 @@ Installation Scenarios
 
 [SCENARIO 1]
 The quickest and easiest way to install the framework is to extract the contents of the PureMVC_CF.zip into the root of 
-your website. So, if your site root is located at 'C:\ColdFusion8\wwwroot\MyApp\' then extract the contents 
-of the zip under MyApp. 
+your website. So, if your site root is located at 'C:\ColdFusion8\wwwroot\' then extract the contents 
+of the zip under wwwroot. 
 
 If you will be contributing to the code base you must configure your development environment to use CFUnit for unit 
 testing your code changes. if not, then you can simple delete the "test" folder. 
@@ -66,6 +66,6 @@ You can configure ColdFusion mappings to access the framework using the ColdFusi
 Running Unit Tests
 -----------------------------------------------------------
 1 - If you are using the built in ColdFusion server with an application folder named "MyApp", 
-	then go to 'http://localhost:8500/MyApp/test/PureMVC_CFTestRunner.cfm' to execute the test cases.
+	then go to 'http://localhost:8500/test/PureMVC_CFTestRunner.cfm' to execute the test cases.
 	
 2 - If you are using IIS then go to 'http://[yourdomainhere]/test/PureMVC_CFTestRunner.cfm' to execute the test cases.
