@@ -14,6 +14,13 @@ This implementation of the framework is still being tested, but has all the func
 Please feel free to experiment with it and tell us what you come up with! We need demos, and utilities.
 
 
+Communuty Contribution
+----------------------------------------------------------
+If you would like to contribute to the project in some form or another, send me an email
+at michael.oddis@puremvc.org. We need demo's and utilities and lots of feedback. Constructive
+Critizism is welcome! :)
+
+
 Prerequisites
 -----------------------------------------------------------
 - Adobe ColdFusion 8
@@ -54,13 +61,7 @@ You can configure ColdFusion mappings to access the framework using the ColdFusi
 3 - For CFUnit, extract the contents of the CFUnit zip archive into any preferred location outside your site root.
 	In the ColdFusion Admin, create a mapping named "net" which points to the location of the "net" folder
 	extracted from the CFUnit archive.
-	
-	
-Communuty Contribution
-----------------------------------------------------------
-If you would like to contribute to the project in some form or another, send me an email
-at michael.oddis@puremvc.org. We need demo's and utilities and lots of feedback. Constructive
-Critizism is welcome! :)
+
 
 Running Unit Tests
 -----------------------------------------------------------
