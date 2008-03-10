@@ -18,7 +18,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="initializeViewHelper" access="public" returntype="void">
+	<cffunction name="initializeViewHelper" access="public" returntype="void" output="true">
 		<cfscript>
 			super.initializeViewHelper();
 		</cfscript>
