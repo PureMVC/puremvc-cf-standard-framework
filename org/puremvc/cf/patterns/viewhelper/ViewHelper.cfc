@@ -6,11 +6,18 @@
 ******************************************************************************
 
  A Base IViewHelper implementation.
- 
- Since this ViewHelper is also used in a Factory it also implements IFactoryObject.
 
- A ViewHelper is registered with a Mediator in PureMVC_CF. Mediators and the Controller
+ A ViewHelper is registered with a Mediator in PureMVC for ColdFusion. Mediators and the Controller
  can listen for Notifications sent from a ViewHelper.
+
+ Implementors are responsible for the following:
+ 
+ - Send notifications which are handled by a front controller or mediators registered as observers.
+ - Handle postbacks from user gentures from a view.
+ - Handle updating properties defined on a view.
+ - Handle calls from Mediators.
+
+*****************************************************************************
 --->
 <cfcomponent displayname="ViewHelper"
 			 output="true"
@@ -22,19 +29,19 @@
 	<cfproperty name="isPostBack" type="boolean" required="true" default="false" hint="Value which indicates a view has been posted.">
 	
 	<cfscript>
-		variables.id = "";
+		variables.id = "ViewHelper";
 		variables.componentName = "ViewHelper";
 		variables.isPostBack = false;
 		variables.facade = application.facadeInstance;
 	</cfscript>
 	
-	<cffunction name="init" access="public" returntype="void">
+	<cffunction name="init" access="public" returntype="void" hint="Contructor">
 		<cfscript>
 			this.initializeViewHelper();
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="initializeViewHelper" access="public" returntype="void">
+	<cffunction name="initializeViewHelper" access="public" returntype="void" hint="Initializes the View Helper." output="true">
 		<cfscript>
 		</cfscript>
 	</cffunction>
