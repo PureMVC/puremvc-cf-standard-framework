@@ -41,7 +41,7 @@
 	</host>
 	-->
 	<!-- next entries available on all hosts -->
-	<host name="EARTH">
+	<host name="aMachineName">
 		<root>
 			<path>.</path>
 			<prefix>cfcdoc</prefix>
