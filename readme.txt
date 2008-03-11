@@ -24,22 +24,25 @@ Prerequisites
 
 Installation
 -----------------------------------------------------------
-STEP 1 - Download the latest release of PureMVC Framework for ColdFusion from one of the following locations and choose a scenaro for installation:
-	
-	Lastest release: tags/1.0
-	Trac website: http://trac.puremvc.org/PureMVC_CF
-	SVN repository: http://svn.puremvc.org/PureMVC_CF
+Lastest release: tags/1.0
+Trac website: http://trac.puremvc.org/PureMVC_CF
+SVN repository: http://svn.puremvc.org/PureMVC_CF
 
+STEP 1 - Download the latest release above from the Trac website or SVN and choose a scenaro for installation.
+	
 	[SCENARIO 1]
 	The quickest and easiest way to install the framework is to extract the contents of the PureMVC_CF.zip into the root of 
 	your website. So, if your site root is located at 'C:\ColdFusion8\wwwroot\' then extract the contents of the zip under wwwroot.
 	You should see two folders under site root named "org" and "test".
 	
+	org - The PureMVC Framework for ColdFusion classes.
+	test - The PureMVC Framework for ColdFusion test classes.
+	
 	[SCENARIO 2]
 	You can configure ColdFusion mappings to access the framework using the ColdFusion Administrator.
 	1 - Extract the contents of the PureMVC_CF.zip into any preferred location outside your site root.
 	2 - Login to the ColdFusion Admin and create a mapping named "org", which points to the location of the
-		"org" folder you extracted from the PureMVC_CF.zip archive.
+		"org" folder you extracted from the PureMVC_CF.zip archive. Do the same for "test" if you plan on running the unit tests.
 		
 	To run the unit tests or if you will be contributing to the code base you must configure your development environment to use 
 	CFUnit for unit testing. Proceed to STEP 2. if not, then you can simple delete the "test" folder. 
@@ -57,6 +60,10 @@ STEP 2 - Download the latest version of CFUnit at (http://cfunit.sourceforge.net
 	1 - Extract the contents of the CFUnit archive into any preferred location outside your site root.
 	2 - Login to the ColdFusion Admin and create a mapping named "net", which points to the location of the
 		"net" folder you extracted from the CFUnit archive you downloaded above.
+
+API Documentation
+-----------------------------------------------------------
+1- To view API documentation go to http://[yourdomainhere]:[yourport]/cfcdoc/index.cfm
 
 Running Unit Tests
 -----------------------------------------------------------
