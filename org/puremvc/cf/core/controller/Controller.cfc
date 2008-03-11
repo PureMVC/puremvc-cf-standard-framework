@@ -72,6 +72,13 @@
 		</cfscript>
 	</cffunction>
 	
+	<cffunction name="hasCommand" returntype="void" access="public" output="true" hint="Check if a Command is registered for a given Notification. Returns whether a Command is currently registered for the given notificationName">
+		<cfargument name="notificationName" type="string" required="true" hint="The name of the Notification">
+		<cfscript>
+			return StructKeyExists(this.commandMap,arguments.notificationName);
+		</cfscript>
+	</cffunction>
+	
 	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Executes the notifyMethod of an IObserver when a notification is sent from Proxies.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
