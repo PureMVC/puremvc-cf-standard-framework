@@ -1,8 +1,8 @@
-**********************************************
-*											 *
-*  PureMVC for ColdFusion v1.0 Alpha Readme  *
-*											 *
-**********************************************
+*************************************************
+*						*
+*  PureMVC for ColdFusion v1.0 Alpha Readme  	*
+*						*
+*************************************************
 
 Introduction
 -----------------------------------------------------------
@@ -36,8 +36,6 @@ STEP 1 - Download the latest release above from the Trac website or SVN and choo
 	You should see the folders listed below under site root.
 	
 	cfcdoc - API Documentation
-	HelloWorld - Example application which returns message after user selects "Submit" button.
-	LoginApp - Example application which demonstrates one possible way to implement a login process with PureMVC_CF.
 	org - Framework classes.
 	test - Framework Unit Test classes.
 	
