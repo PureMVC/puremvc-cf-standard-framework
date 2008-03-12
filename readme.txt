@@ -33,9 +33,11 @@ STEP 1 - Download the latest release above from the Trac website or SVN and choo
 	[SCENARIO 1]
 	The quickest and easiest way to install the framework is to extract the contents of the PureMVC_CF.zip into the root of 
 	your website. So, if your site root is located at 'C:\ColdFusion8\wwwroot\' then extract the contents of the zip under wwwroot.
-	You should see three folders under site root named "cfcdoc", "org" and "test".
+	You should see the folders listed below under site root.
 	
 	cfcdoc - API Documentation
+	HelloWorld - Example application which returns message after user selects "Submit" button.
+	LoginApp - Example application which demonstrates one possible way to implement a login process with PureMVC_CF.
 	org - Framework classes.
 	test - Framework Unit Test classes.
 	
@@ -61,12 +63,6 @@ STEP 2 - Download CFUnit v2.0 Beta 4 at (http://cfunit.sourceforge.net/)
 	1 - Extract the contents of the CFUnit archive into any preferred location outside your site root.
 	2 - Login to the ColdFusion Admin and create a mapping named "net", which points to the location of the
 		"net" folder you extracted from the CFUnit archive you downloaded above.
-		
-STEP 3 - Download the examples for PureMVC Framework for ColdFusion from the Trac website and extract the contents of the examples archive 
-		 into the root folder of your site. If during the installation of the PureMVC Framework for ColdFusion you installed the "org" folder
-		 at site root you may be prompted to overwrite the contents of the "org" folder, accept yes from the prompt. The contents of the "org"
-		 folder distributed with the examples should be the same as the "org" folder distributed with the PureMVC_CF_1_0.zip archive.  
-
 
 API Documentation
 -----------------------------------------------------------
@@ -74,7 +70,7 @@ API Documentation
 
 Running Examples
 -----------------------------------------------------------
-The examples provided in will give you a starting point to begin developing with PureMVC for ColdFusion. If 
+The examples provided in this archive will give you a starting point to begin developing with PureMVC for ColdFusion. If 
 you would like to contribute to the project, please send me an email at michael.oddis@puremvc.org. We 
 need demo's, utilities and lots of feedback before we can make this an official v1.0 release.
 
