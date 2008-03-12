@@ -4,12 +4,24 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
+ A base IObserver implementation.
 
+ An Observer is an object that encapsulates information about an interested object with a method that should 
+ be called when a particular INotification is broadcast.
+ 
+ In PureMVC, the Observer class assumes these responsibilities:
+
+ - Encapsulate the notification (callback) method of the interested object.
+ - Encapsulate the notification context (this) of the interested object.
+ - Provide methods for setting the notification method and context.
+ - Provide a method for notifying the interested object.
+	 
 ******************************************************************************
 --->
 <cfcomponent displayName="Observer" 
 			 implements="org.puremvc.cf.interfaces.IObserver"
-			 output="true" >
+			 output="true"
+			 hint="A base IObserver implementation. An Observer is an object that encapsulates information about an interested object with a method that should be called when a particular INotification is broadcast.">
 	
 	<cfproperty name="notify" type="string" required="false" hint="Method called when a Notification is broadcasted.">
 	<cfproperty name="context" type="any" required="true" hint="The Notification object which contains the notify method.">
@@ -30,7 +42,7 @@
 	</cffunction>
 	
 	<cffunction name="setNotifyMethod" displayname="setNotifyMethod" access="public" returntype="void" hint="Set the notify method.">
-		<cfargument name="notifyMethod" type="string" required="true">
+		<cfargument name="notifyMethod" type="string" required="true" hint="The notify method.">
 		<cfscript>
 			variables.notify = arguments.notifyMethod;
 		</cfscript>	
@@ -42,7 +54,7 @@
 	</cffunction>
 	
 	<cffunction name="setNotifyContext" displayname="setNotifyContext" access="public" returntype="void" hint="Set the notification context.">
-		<cfargument name="notifyContext" type="any" required="true">
+		<cfargument name="notifyContext" type="any" required="true" hint="The context in which the notification was sent.">
 		<cfscript>
 			variables.context = arguments.notifyContext;
 		</cfscript>
@@ -54,7 +66,7 @@
 	</cffunction>
 	
 	<cffunction name="notifyObserver" displayname="notifyObserver" access="public" returntype="void" output="true" hint="Notify the interested object.">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="A INotification instance.">
 		<cfscript>
 			this.getNotifyContext().applyNotifyMethod(arguments.notification);
 		</cfscript>

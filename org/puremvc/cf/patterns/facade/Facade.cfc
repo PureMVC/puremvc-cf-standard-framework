@@ -5,9 +5,9 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
 
- A base Singleton <code>IFacade implementation.
+ A base Singleton IFacade implementation.
  
- In PureMVC, the <code>Facade class assumes these responsibilities:
+ In PureMVC, the Facade class assumes these responsibilities:
 
  * Initializing the Model, View and Controller Singletons. 
  * Providing all the methods defined by the IModel, IView, & IController interfaces.
@@ -66,11 +66,11 @@
 			 output="true"
 			 Hint="A base Singleton IFacade implementation.">
 	
-	<cfproperty name="model" type="org.puremvc.cf.interfaces.model.IModel" default="0" required="true">
-	<cfproperty name="view" type="org.puremvc.cf.interfaces.view.IView" default="0" required="true">
-	<cfproperty name="controller" type="org.puremvc.cf.interfaces.controller.IController" default="0" required="true">
-	<cfproperty name="facadeInstance" type="org.puremvc.cf.interfaces.IFacade" required="true">
-	<cfproperty name="factoryMap" type="struct" required="false">
+	<cfproperty name="model" type="org.puremvc.cf.interfaces.model.IModel" default="0" required="true" hint="Holds the Model instance.">
+	<cfproperty name="view" type="org.puremvc.cf.interfaces.view.IView" default="0" required="true" hint="Holds the View instance.">
+	<cfproperty name="controller" type="org.puremvc.cf.interfaces.controller.IController" default="0" required="true" hint="Holds the controller instance.">
+	<cfproperty name="facadeInstance" type="org.puremvc.cf.interfaces.IFacade" required="true" hint="Holds the facade instance.">
+	<cfproperty name="factoryMap" type="struct" required="false" hint="Holds a collection of object factories.">
 	
 	<cfscript>
 		// Private references to Model, View and Controller

@@ -83,27 +83,26 @@
 	</cffunction>
 	
 	<cffunction name="sendNotification" returntype="void" access="public" output="true" hint="Sends a notification which Observers will act upon.">
-		<cfargument name="notificationName" type="string" required="true">
-		<cfargument name="notificationBody" type="any" default="0" required="false">
-		<cfargument name="notificationType" type="string" default="" required="false">
+		<cfargument name="notificationName" type="string" required="true" hint="The name of the notification instance">
+		<cfargument name="notificationBody" type="any" default="0" required="false" hint="The body of the notification instance">
+		<cfargument name="notificationType" type="string" default="" required="false" hint="The type of the notification instance">
 		<cfscript>
 			this.getFacade().sendNotification(arguments.notificationName, arguments.notificationBody, arguments.notificationType);		
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="hasFormBeenPosted" access="public" returntype="boolean">
+	<cffunction name="hasFormBeenPosted" access="public" returntype="boolean" hint="Returns whether the ViewHelper is a Form post transactions.">
 		<cfscript>
 			return variables.isPostBack;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="handlePostBack" access="public" returntype="void" output="true">
+	<cffunction name="handlePostBack" access="public" returntype="void" output="true" hint="Is with hasBeenPosted to handle post backs from the server.">
 		<cfscript>
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="updateView" returntype="void" access="public" output="true">
-		<cfargument name="user" type="any" required="true">
+	<cffunction name="updateView" returntype="void" access="public" output="true" hint="Updates the view and associated properties. Most of the time called from an IMediator instance.">
 		<cfscript>
 		</cfscript>
 	</cffunction>

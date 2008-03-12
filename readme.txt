@@ -1,6 +1,6 @@
 **********************************************
 *											 *
-*  PureMVC for ColdFusion Alpha v1.0 Readme  *
+*  PureMVC for ColdFusion v1.0 Alpha Readme  *
 *											 *
 **********************************************
 
@@ -33,21 +33,22 @@ STEP 1 - Download the latest release above from the Trac website or SVN and choo
 	[SCENARIO 1]
 	The quickest and easiest way to install the framework is to extract the contents of the PureMVC_CF.zip into the root of 
 	your website. So, if your site root is located at 'C:\ColdFusion8\wwwroot\' then extract the contents of the zip under wwwroot.
-	You should see two folders under site root named "org" and "test".
+	You should see three folders under site root named "cfcdoc", "org" and "test".
 	
-	org - The PureMVC Framework for ColdFusion classes.
-	test - The PureMVC Framework for ColdFusion test classes.
+	cfcdoc - API Documentation
+	org - Framework classes.
+	test - Framework Unit Test classes.
 	
 	[SCENARIO 2]
 	You can configure ColdFusion mappings to access the framework using the ColdFusion Administrator.
-	1 - Extract the contents of the PureMVC_CF.zip into any preferred location outside your site root.
+	1 - Extract the contents of the PureMVC_CF_1_0.zip into any preferred location outside your site root.
 	2 - Login to the ColdFusion Admin and create a mapping named "org", which points to the location of the
-		"org" folder you extracted from the PureMVC_CF.zip archive. Do the same for "test" if you plan on running the unit tests.
+		"org" folder you extracted from the PureMVC_CF_1_0.zip archive. Do the same for "test" if you plan on running the unit tests.
 		
 	To run the unit tests or if you will be contributing to the code base you must configure your development environment to use 
 	CFUnit for unit testing. Proceed to STEP 2. if not, then you can simple delete the "test" folder. 
 		
-STEP 2 - Download the latest version of CFUnit at (http://cfunit.sourceforge.net/)
+STEP 2 - Download CFUnit v2.0 Beta 4 at (http://cfunit.sourceforge.net/)
 
 	[SCENARIO 1]
 	The quickest and easiest way to install CFUnit is to extract the contents of the CFUnit archive into the root of 
@@ -60,10 +61,25 @@ STEP 2 - Download the latest version of CFUnit at (http://cfunit.sourceforge.net
 	1 - Extract the contents of the CFUnit archive into any preferred location outside your site root.
 	2 - Login to the ColdFusion Admin and create a mapping named "net", which points to the location of the
 		"net" folder you extracted from the CFUnit archive you downloaded above.
+		
+STEP 3 - Download the examples for PureMVC Framework for ColdFusion from the Trac website and extract the contents of the examples archive 
+		 into the root folder of your site. If during the installation of the PureMVC Framework for ColdFusion you installed the "org" folder
+		 at site root you may be prompted to overwrite the contents of the "org" folder, accept yes from the prompt. The contents of the "org"
+		 folder distributed with the examples should be the same as the "org" folder distributed with the PureMVC_CF_1_0.zip archive.  
+
 
 API Documentation
 -----------------------------------------------------------
 1- To view API documentation go to http://[yourdomainhere]:[yourport]/cfcdoc/index.cfm
+
+Running Examples
+-----------------------------------------------------------
+The examples provided in will give you a starting point to begin developing with PureMVC for ColdFusion. If 
+you would like to contribute to the project, please send me an email at michael.oddis@puremvc.org. We 
+need demo's, utilities and lots of feedback before we can make this an official v1.0 release.
+
+Hello World Example - Go to 'http://[youraddress]:[yourport]/LoginApp/LoginApp.cfm.
+Login Example - Go to 'http://[youraddress]:[yourport]/HelloWorld/HelloWorldApp.cfm.
 
 Running Unit Tests
 -----------------------------------------------------------

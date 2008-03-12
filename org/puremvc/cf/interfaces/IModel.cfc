@@ -7,8 +7,7 @@
 
  The interface definition for a PureMVC Model.
 
- In PureMVC, IModel implementors provide
- access to IProxy objects by named lookup.
+ In PureMVC, IModel implementors provide access to IProxy objects by named lookup.
  
  An IModel assumes these responsibilities:
 
@@ -18,15 +17,15 @@
 --->
 <cfinterface displayname="IModel" hint="The interface definition for IModel.">
 
-	<cffunction name="registerProxy" returntype="void" access="public" output="true" hint="Register an <code>IProxy</code> instance with the <code>Model</code>.">
-		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true" hint="An object reference to be held by the <code>Model</code>.">
+	<cffunction name="registerProxy" returntype="void" access="public" output="true" hint="Register an IProxy instance with the Model.">
+		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true" hint="An object reference to be held by the Model.">
 	</cffunction>
 	
-	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true" hint="Retrieve an <code>IProxy</code> instance from the Model.">
+	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true" hint="Retrieve an IProxy instance from the Model.">
 		<cfargument name="proxyName" type="string" required="true" hint="A name of a proxy.">
 	</cffunction>
 	
-	<cffunction name="removeProxy" returntype="any" access="public" output="true">
+	<cffunction name="removeProxy" returntype="any" access="public" output="true" hint="Remove an IProxy instance from the Model.">
 		<cfargument name="proxyName" type="string" required="true" hint="A name of a proxy.">
 	</cffunction>
 	

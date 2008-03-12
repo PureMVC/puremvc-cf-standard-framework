@@ -4,20 +4,32 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
+ A base IProxy implementation. 
+
+ In PureMVC, Proxy classes are used to manage parts of the application's data model. 
+ 
+ A Proxy might simply manage a reference to a local data object, in which case interacting with it 
+ might involve setting and getting of its data in synchronous fashion.
+ 
+ Proxy classes are also used to encapsulate the application's interaction with remote services to save or 
+ retrieve data, in which case, we adopt an asyncronous idiom; setting data (or calling a method) on the 
+ Proxy and listening for a Notification to be sent when the Proxy has retrieved the data from the service. 
+
 --->
 <cfcomponent extends="org.puremvc.cf.patterns.observer.Notifier"
 			 implements="org.puremvc.cf.interfaces.IProxy"
-			 output="true">
+			 output="true"
+			 hint="A base IProxy implementation. In PureMVC Framework for ColdFusion, Proxy classes are used to manage parts of the application's data model. ">
 			 
-	<cfproperty name="proxyName" type="string" default="Proxy" required="true">
-	<cfproperty name="data" type="any" default="0" required="true">
+	<cfproperty name="proxyName" type="string" default="Proxy" required="true" hint="The name of the proxy.">
+	<cfproperty name="data" type="any" default="0" required="true" hint="The data Object">
 
 	<cfscript>
 		variables.data = 0;
 		variables.proxyName = "Proxy";
 	</cfscript>
 	
-	<cffunction name="init" returntype="void" access="public" output="true">
+	<cffunction name="init" returntype="void" access="public" output="true" hint="Contructor">
 		<cfargument name="proxyName" type="string" required="false">
 		<cfargument name="data" type="any" required="false">
 		<cfscript>

@@ -14,14 +14,14 @@
 			 hint="Base IMediator implementation.">
 
 	<cfproperty name="mediatorName" type="string" required="true" hint="The name of the Mediator. Typically, a Mediator will be written to serve one specific control or group controls and so, will not have a need to be dynamically named.">
-	<cfproperty name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true">
+	<cfproperty name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true" hint="The View Componen. In many case a ViewHelper.">
 	
 	<cfscript>
 		variables.mediatorName = "";
 		variables.viewComponent = 0;
 	</cfscript>
 	
-	<cffunction name="init" returntype="void" access="public" output="true">
+	<cffunction name="init" returntype="void" access="public" output="true" hint="Constructor">
 		<cfargument name="mediatorName" type="string" required="false" hint="The name of the mediator" default="">
 		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="false" hint="An instance of IViewComponent">
 		<cfscript>
@@ -43,33 +43,33 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setViewComponent" returntype="void" access="public" output="true">
-		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true">
+	<cffunction name="setViewComponent" returntype="void" access="public" output="true" hint="Sets the View Component on the Mediator.">
+		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true" hint="The name of the ViewComponent.">
 		<cfscript>
 			variables.viewComponent = arguments.viewComponent;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getViewComponent" returntype="org.puremvc.cf.interfaces.IViewComponent" access="public" output="true">
+	<cffunction name="getViewComponent" returntype="org.puremvc.cf.interfaces.IViewComponent" access="public" output="true" hint="Gets the View Component for the Mediator.">
 		<cfscript>
 			return variables.viewComponent;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="listNotificationInterests" returntype="array" access="public" output="true">
+	<cffunction name="listNotificationInterests" returntype="array" access="public" output="true" hint="Gets an array of notification interests.">
 		<cfscript>
 			return ArrayNew(1);
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="handleNotification" returntype="void" access="public" output="true">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+	<cffunction name="handleNotification" returntype="void" access="public" output="true" hint="Handle INotifications. Typically this will be handled in a switch statement, with one 'case' entry per INotification the Mediator is interested in.">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="An INotification instance.">
 		<cfscript>
 		</cfscript>
 	</cffunction>
 	
 	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Runs the Observer handler of an IMediator when registered as an Observer.">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="An INotification instance.">
 		<cfscript>
 			this.handleNotification(arguments.notification);
 		</cfscript>

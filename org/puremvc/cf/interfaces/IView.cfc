@@ -4,9 +4,20 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
+
+ The interface definition for a PureMVC View.
+ 
+ In PureMVC, the View class assumes these responsibilities:
+
+ - Maintain a cache of IMediator instances.
+ - Provide methods for registering, retrieving, and removing IMediators.
+ - Managing the observer lists for each INotification in the application.
+ - Providing a method for attaching IObservers to an INotification's observer list.
+ - Providing a method for broadcasting an INotification.
+ - Notifying the IObservers of a given INotification when it broadcast.
+
 --->
-<cfinterface displayname="IView"
-			 hint="The interface definition for a PureMVC View. In PureMVC, the View class assumes these responsibilities. Maintain a cache of IMediator instances. Provide methods for registering, retrieving, and removing IMediators. Managing the observer lists for each INotification in the application. Providing a method for attaching IObservers to an INotification's observer list. Providing a method for broadcasting an INotification. Notifying the IObservers of a given INotification when it broadcast.">
+<cfinterface displayname="IView" hint="The interface definition for a PureMVC View. In PureMVC, the View class assumes these responsibilities. Maintain a cache of IMediator instances. Provide methods for registering, retrieving, and removing IMediators. Managing the observer lists for each INotification in the application. Providing a method for attaching IObservers to an INotification's observer list. Providing a method for broadcasting an INotification. Notifying the IObservers of a given INotification when it broadcast.">
 
 	<cffunction name="registerObserver" displayname="registerObserver" returntype="void" access="public" output="true" 
 				hint="Register an IObserver to be notified of INotifications with a given name.">

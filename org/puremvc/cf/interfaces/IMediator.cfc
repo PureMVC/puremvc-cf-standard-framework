@@ -9,14 +9,13 @@
  
  In PureMVC, IMediator implementors assume these responsibilities:
  
- - Implement a common method which returns a list of all INotifications 
- - the IMediator has interest in.
+ - Implement a common method which returns a list of all INotifications the IMediator has interest in.
  - Implement a common notification (callback) method.
  
  Additionally, IMediators typically:
  
- Act as an intermediary between one or more ViewHelper components such as text boxes or 
- list controls, maintaining references and coordinating their behavior. In Flash-based 
+ Act as an intermediary between one or more view components such as text boxes or 
+ list controls, maintaining references and coordinating their behavior. In ColdFusion-based 
  apps, this is often the place where event listeners are added to view components, and 
  their handlers implemented. Respond to and generate INotifications, interacting with of 
  the rest of the PureMVC app.
@@ -31,6 +30,52 @@
  
  A concrete IMediator implementor usually looks something like this:
 
+ <cfcomponent displayname="LoginViewMediator" 
+			 extends="org.puremvc.cf.patterns.mediator.Mediator" 
+			 output="true">
+		
+	<cfscript>
+		variables.mediatorName = 'LoginViewMediator';
+	</cfscript>
+
+	<cffunction name="init" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true">
+		<cfargument name="mediatorName" type="string" required="true" hint="The name of the mediator" default="">
+		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="false" hint="An instance of IViewComponent">
+		<cfscript>
+			super.init(arguments.mediatorName,arguments.viewComponent);
+			return this;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="onLoginUser" returntype="void" access="public" output="true">
+		<cfscript>
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="listNotificationInterests" returntype="array" access="public" output="true">
+		<cfscript>
+			var interests = ArrayNew(1);
+			interests[1] = "USER_LOGIN_RESULT";
+			interests[2] = "USER_LOGIN_QUERY_RESULT";
+			return interests;
+		</cfscript>
+	</cffunction>
+	
+	<cffunction name="handleNotification" returntype="void" access="public" output="true">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+		<cfscript>
+			if ( arguments.notification.getName() EQ "USER_LOGIN_RESULT")
+			{
+				this.getViewComponent().updateView(arguments.notification.getBody());
+			} else if ( arguments.notification.getName() EQ "USER_LOGIN_QUERY_RESULT")
+			{
+				this.getViewComponent().updateViewAsQuery(arguments.notification.getBody());
+			}
+		</cfscript>
+	</cffunction>
+	
+ </cfcomponent>
+
 ******************************************************************************
 --->
 <cfinterface displayname="IMediator" 
@@ -43,7 +88,7 @@
 	<cffunction name="getMediatorName" returntype="string" access="public" output="true" hint="Get the IMediator instance name">
 	</cffunction>
 	
-	<cffunction name="setViewComponent" returntype="void" access="public" output="true">
+	<cffunction name="setViewComponent" returntype="void" access="public" output="true" hint="Sets the Mediator''s view component.">
 		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true">
 	</cffunction>
 	

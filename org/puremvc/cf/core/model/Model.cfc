@@ -4,6 +4,20 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
+
+ A Singleton IModel implementation.
+
+ In PureMVC, the Model class provides access to model objects (Proxies) by named lookup. 
+ 
+ The Model assumes these responsibilities:
+ 
+ - Maintain a cache of IProxy instances.
+ - Provide methods for registering, retrieving, and removing IProxy instances.
+ 
+ Your application must register IProxy instances with the Model. Typically, you use an 
+ ICommand to create and register IProxy instances once the Facade has initialized the Core 
+ actors.
+	 
 --->
 <cfcomponent displayname="Model" 
 			 implements="org.puremvc.cf.interfaces.IModel"

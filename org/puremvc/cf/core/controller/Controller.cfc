@@ -4,6 +4,21 @@
  PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
+ A Singleton IController implementation.
+
+ In PureMVC, the Controller class follows the 'Command and Controller' strategy, and assumes these 
+ responsibilities:
+
+ - Remembering which ICommands are intended to handle which INotifications.
+ - Registering itself as an IObserver with the View for each INotification that it has an ICommand mapping for.
+ - Creating a new instance of the proper ICommand to handle a given INotification when notified by the View.
+ - Calling the ICommand's execute method, passing in the INotification.
+ 
+ Your application must register ICommands with the Controller.
+
+ The simplest way is to subclass Facade, and use its initializeController method to 
+ add your registrations.
+
 --->
 <cfcomponent displayname="Controller" 
 			 implements="org.puremvc.cf.interfaces.IController"

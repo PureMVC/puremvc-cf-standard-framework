@@ -26,7 +26,7 @@
 	</cffunction>
 	
 	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Runs the Observer handler of an ICommand when registered as an Observer.">
-		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
+		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="A Notification to execute.">
 		<cfscript>
 			this.execute(arguments.notification);
 		</cfscript>
