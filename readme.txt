@@ -66,14 +66,14 @@ API Documentation
 -----------------------------------------------------------
 1- To view API documentation go to http://[yourdomainhere]:[yourport]/cfcdoc/index.cfm
 
-Running Examples
+Demos and Utils
 -----------------------------------------------------------
-The examples provided in this archive will give you a starting point to begin developing with PureMVC for ColdFusion. If 
+You can download demos and utils from the Trac website listed above.
+
+The demos provided will give you a starting point to begin developing with PureMVC for ColdFusion. If 
 you would like to contribute to the project, please send me an email at michael.oddis@puremvc.org. We 
 need demo's, utilities and lots of feedback before we can make this an official v1.0 release.
 
-Hello World Example - Go to 'http://[youraddress]:[yourport]/LoginApp/LoginApp.cfm.
-Login Example - Go to 'http://[youraddress]:[yourport]/HelloWorld/HelloWorldApp.cfm.
 
 Running Unit Tests
 -----------------------------------------------------------
