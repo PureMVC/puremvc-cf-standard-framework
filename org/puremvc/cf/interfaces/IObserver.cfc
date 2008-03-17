@@ -40,7 +40,7 @@ as a subclass of Notification.
 	</cffunction>
 	
 	<!---  Notify the interested object. --->
-	<cffunction name="notifyObserver" displayname="notifyObserver" access="public" returntype="void" output="true" hint="Notify the interested object.">
+	<cffunction name="notifyObserver" displayname="notifyObserver" access="public" returntype="void" output="false" hint="Notify the interested object.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The INotification to pass to the interested object's notification method.">	
 	</cffunction>
 	

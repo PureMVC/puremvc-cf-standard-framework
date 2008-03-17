@@ -5,7 +5,7 @@
 --->
 <cfcomponent displayname="TestViewHelper" 
 			 extends="org.puremvc.cf.patterns.viewHelper.ViewHelper"
-			 output="true" >
+			 output="false" >
 	
 	<cfscript>
 		this.testValue = 0;
@@ -18,13 +18,13 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="initializeViewHelper" access="public" returntype="void" output="true">
+	<cffunction name="initializeViewHelper" access="public" returntype="void" output="false">
 		<cfscript>
 			super.initializeViewHelper();
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="updateView" returntype="void" access="public" output="true">
+	<cffunction name="updateView" returntype="void" access="public" output="false">
 		<cfargument name="viewData" type="any" required="false">
 		<cfscript>
 			this.testValue = arguments.viewData + 5;

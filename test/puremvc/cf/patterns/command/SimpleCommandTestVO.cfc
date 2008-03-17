@@ -3,7 +3,7 @@
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent output="true" hint="A utility class used by SimpleCommandTest.">
+<cfcomponent output="false" hint="A utility class used by SimpleCommandTest.">
 	
 	<cfproperty name="input" type="numeric" required="true" />
 	<cfproperty name="result" type="numeric" required="false" />

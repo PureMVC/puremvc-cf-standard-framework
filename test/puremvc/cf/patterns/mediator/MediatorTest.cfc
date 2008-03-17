@@ -7,10 +7,10 @@
 --->
 <cfcomponent displayname="MediatorTest"
 			 extends="net.sourceforge.cfunit.framework.TestCase"
-			 output="true" 
+			 output="false" 
 			 hint="Test the PureMVC Mediator class.">
 	
-	<cffunction name="testNameAccessor" returntype="void" access="public" output="true" hint="Tests getting the name using Mediator class accessor method.">
+	<cffunction name="testNameAccessor" returntype="void" access="public" output="false" hint="Tests getting the name using Mediator class accessor method.">
 		<cfscript>
 			// Create a new Mediator and use accessors to set the mediator name 
 			var mediator = CreateObject("component","org.puremvc.cf.patterns.mediator.Mediator");
@@ -21,7 +21,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testViewAccessor" returntype="void" access="public" output="true" hint="Tests getting the name using Mediator class accessor method. ">
+	<cffunction name="testViewAccessor" returntype="void" access="public" output="false" hint="Tests getting the name using Mediator class accessor method. ">
 		<cfscript>
 			var view = 0;
 			var mediator = 0;

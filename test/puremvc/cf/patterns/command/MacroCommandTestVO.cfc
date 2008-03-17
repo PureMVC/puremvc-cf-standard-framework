@@ -5,7 +5,7 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 ******************************************************************************
 --->
-<cfcomponent output="true" hint="A utility class used by MacroCommandTest.">
+<cfcomponent output="false" hint="A utility class used by MacroCommandTest.">
 	
 	<cfproperty name="input" type="numeric" required="true" />
 	<cfproperty name="result1" type="numeric" required="false" />

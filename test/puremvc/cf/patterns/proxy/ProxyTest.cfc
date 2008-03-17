@@ -4,9 +4,9 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
 <cfcomponent extends="net.sourceforge.cfunit.framework.TestCase"
-			 output="true">
+			 output="false">
 	
-	<cffunction name="testNameAccessor" returntype="void" access="public" output="true" hint="Tests getting the name using Proxy class accessor method. Setting can only be done in constructor.">
+	<cffunction name="testNameAccessor" returntype="void" access="public" output="false" hint="Tests getting the name using Proxy class accessor method. Setting can only be done in constructor.">
 		<cfscript>
 			// Create a new Proxy and use accessors to set the proxy name 
 			var proxy = CreateObject("component","org.puremvc.cf.patterns.proxy.Proxy");
@@ -17,7 +17,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testDataAccessors" returntype="void" access="public" output="true" hint="Tests setting and getting the data using Proxy class accessor methods.">
+	<cffunction name="testDataAccessors" returntype="void" access="public" output="false" hint="Tests setting and getting the data using Proxy class accessor methods.">
 		<cfscript>
 			// Create a new Proxy and use accessors to set the proxy name 
 			var proxy = CreateObject("component","org.puremvc.cf.patterns.proxy.Proxy");
@@ -38,7 +38,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testConstructor" returntype="void" access="public" output="true" hint="Tests setting the name and body using the Notification class Constructor.">
+	<cffunction name="testConstructor" returntype="void" access="public" output="false" hint="Tests setting the name and body using the Notification class Constructor.">
 		<cfscript>
 			// Create a new Proxy using the Constructor to set the name and data
 			var proxy = CreateObject("component","org.puremvc.cf.patterns.proxy.Proxy");

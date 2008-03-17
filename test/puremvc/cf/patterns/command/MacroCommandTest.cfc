@@ -4,7 +4,7 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
 <cfcomponent extends="net.sourceforge.cfunit.framework.TestCase"
-			 output="true" 
+			 output="false" 
 			 hint="Tests the execute method of a SimpleCommand.">
 	
 	<!--- 
@@ -34,7 +34,7 @@
 	 * the MacroCommandTestCommand on the Notification 
 	 * body.
 	 --->
-	<cffunction name="testMacroCommandExecute" returntype="void" access="public" output="true" hint="Tests operation of a MacroCommand.">
+	<cffunction name="testMacroCommandExecute" returntype="void" access="public" output="false" hint="Tests operation of a MacroCommand.">
 		<cfscript>
 			// Create the VO
 			var vo = CreateObject("component","MacroCommandTestVO");

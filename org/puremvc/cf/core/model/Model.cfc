@@ -21,7 +21,7 @@
 --->
 <cfcomponent displayname="Model" 
 			 implements="org.puremvc.cf.interfaces.IModel"
-			 output="true" 
+			 output="false" 
 			 hint="A Singleton IModel implementation. In PureMVC, the Model class provides access to model objects (Proxies) by named lookup. The Model assumes these responsibilities. Maintain a cache of IProxy instances. Provide methods for registering, retrieving, and removing IProxy instances. Your application must register IProxy instances with the Model. Typically, you use an ICommand to create and register IProxy instances once the Facade has initialized the Core actors.">
 	
 	<cfproperty name="proxyMap" type="struct" required="true" hint="Holds a collection of proxy objects.">
@@ -31,7 +31,7 @@
 		this.proxyMap = StructNew();
 	</cfscript>
 	
-	<cffunction name="getInstance" displayname="getInstance" access="public" output="true" returntype="org.puremvc.cf.interfaces.IModel"
+	<cffunction name="getInstance" displayname="getInstance" access="public" output="false" returntype="org.puremvc.cf.interfaces.IModel"
 				hint="Model Singleton Factory method. Returns the Singleton instance.">
 		<cfscript>
 			if ( NOT StructKeyExists(this, "modelInstance") )
@@ -49,21 +49,21 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="registerProxy" returntype="void" access="public" output="true" hint="Register an IProxy instance with the Model.">
+	<cffunction name="registerProxy" returntype="void" access="public" output="false" hint="Register an IProxy instance with the Model.">
 		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true" hint="An object reference to be held by the Model.">
 		<cfscript>
 			this.proxyMap[ arguments.proxy.getProxyName() ] = arguments.proxy;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true" hint="Retrieve an IProxy from the Model.">
+	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="false" hint="Retrieve an IProxy from the Model.">
 		<cfargument name="proxyName" type="string" required="true" hint="A name of a proxy.">
 		<cfscript>
 			return this.proxyMap[ arguments.proxyName ];
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="removeProxy" returntype="any" access="public" output="true" hint="Remove an IProxy from the Model.">
+	<cffunction name="removeProxy" returntype="any" access="public" output="false" hint="Remove an IProxy from the Model.">
 		<cfargument name="proxyName" type="string" required="true" hint="A name of a proxy.">
 		<cfscript>
 			var proxy = 0;
@@ -77,7 +77,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="hasProxy" returntype="boolean" access="public" output="true" hint="Check if a Proxy is registered. Return whether a Proxy is currently registered with the given proxyName.">
+	<cffunction name="hasProxy" returntype="boolean" access="public" output="false" hint="Check if a Proxy is registered. Return whether a Proxy is currently registered with the given proxyName.">
 		<cfargument name="proxyName" type="string" required="true" hint="The IProxy to remove from the Model.">
 		<cfscript>
 			return StructKeyExists(this.proxyMap,arguments.proxyName);

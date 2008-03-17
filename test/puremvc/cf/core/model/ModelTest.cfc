@@ -3,7 +3,7 @@
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent displayname="ModelTest" output="true" extends="net.sourceforge.cfunit.framework.TestCase">
+<cfcomponent displayname="ModelTest" output="false" extends="net.sourceforge.cfunit.framework.TestCase">
 	
 	<cfproperty name="model" type="org.puremvc.cf.core.model.Model">
 	

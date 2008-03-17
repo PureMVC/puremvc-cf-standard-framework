@@ -1,6 +1,6 @@
 <cfcomponent displayname="ViewHelperTest"
 			 extends="net.sourceforge.cfunit.framework.TestCase"
-			 output="true">
+			 output="false">
 	
 	<cfscript>
 	</cfscript>

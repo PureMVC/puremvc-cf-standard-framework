@@ -4,10 +4,10 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
 <cfcomponent extends="net.sourceforge.cfunit.framework.TestCase"
-			 output="true" 
+			 output="false" 
 			 hint="Tests the execute method of a SimpleCommand.">
 
-	<cffunction name="testGetInstance" returntype="void" access="public" output="true" hint="Tests the Facade Singleton Factory Method">
+	<cffunction name="testGetInstance" returntype="void" access="public" output="false" hint="Tests the Facade Singleton Factory Method">
 		<cfscript>
 			var facade = this.getFacade();
 			
@@ -17,7 +17,7 @@
    		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testRegisterCommandAndNotifyObservers" returntype="void" access="public" output="true" hint="">
+	<cffunction name="testRegisterCommandAndNotifyObservers" returntype="void" access="public" output="false" hint="">
 		<cfscript>
 			var facade = 0;
 			var vo = 0;
@@ -45,7 +45,7 @@
    		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getFacade" returntype="org.puremvc.cf.interfaces.IFacade" access="public" output="true" hint="">
+	<cffunction name="getFacade" returntype="org.puremvc.cf.interfaces.IFacade" access="public" output="false" hint="">
 		<cfinvoke component="org.puremvc.cf.patterns.facade.Facade" method="getInstance" returnvariable="oFacade">
 		<cfreturn oFacade>
 	</cffunction>

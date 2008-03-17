@@ -19,7 +19,7 @@
 *
 --->
 <cfcomponent extends="net.sourceforge.cfunit.framework.TestCase"
-			 output="true">
+			 output="false">
 			 
 	<cfproperty name="observerTestVar" type="numeric" required="true" hint="A test variable that proves the notify method was executed with 'this' as its exectution context">
 				 
@@ -27,7 +27,7 @@
 		variables.observerTestVar = 0;
 	</cfscript>
 	
-	<cffunction name="testObserverAccessors" returntype="void" access="public" output="true" hint="Tests observer class when initialized by accessor methods.">
+	<cffunction name="testObserverAccessors" returntype="void" access="public" output="false" hint="Tests observer class when initialized by accessor methods.">
 		<cfscript>
 			// Create observer with null args, then
    			// use accessors to set notification method and context
@@ -54,7 +54,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testObserverConstructor" returntype="void" access="public" output="true" hint="Tests observer class when initialized by constructor.">
+	<cffunction name="testObserverConstructor" returntype="void" access="public" output="false" hint="Tests observer class when initialized by constructor.">
 		<cfscript>
 			// Create observer passing in notification method and context
 			var note = 0;
@@ -77,7 +77,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testCompareNotifyContext" returntype="void" access="public" output="true" hint="Tests the compareNotifyContext method of the Observer class">
+	<cffunction name="testCompareNotifyContext" returntype="void" access="public" output="false" hint="Tests the compareNotifyContext method of the Observer class">
 		<cfscript>
 			// Create observer passing in notification method and context
 			var note = 0;
@@ -92,14 +92,14 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="observerTestMethod" returntype="void" access="public" output="true" hint="A function that is used as the observer notification method. It multiplies the input number by the observerTestVar value">
+	<cffunction name="observerTestMethod" returntype="void" access="public" output="false" hint="A function that is used as the observer notification method. It multiplies the input number by the observerTestVar value">
 		<cfargument name="note" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			variables.observerTestVar = note.getBody();
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="false">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			this.observerTestMethod(arguments.notification);

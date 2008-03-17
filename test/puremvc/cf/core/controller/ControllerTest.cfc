@@ -3,7 +3,7 @@
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
-<cfcomponent displayname="Controller" output="true" extends="net.sourceforge.cfunit.framework.TestCase">
+<cfcomponent displayname="Controller" output="false" extends="net.sourceforge.cfunit.framework.TestCase">
 	
 	<cfproperty name="controller" type="org.puremvc.cf.core.controller.Controller">
 	
@@ -18,7 +18,7 @@
 		</cfinvoke>
 	</cffunction>
 	
-	<cffunction name="testRegisterAndExecuteCommand" returntype="void" access="public" output="true">
+	<cffunction name="testRegisterAndExecuteCommand" returntype="void" access="public" output="false">
 		<cfscript>
 			var oVO = 0;
 			var oNotification = 0;

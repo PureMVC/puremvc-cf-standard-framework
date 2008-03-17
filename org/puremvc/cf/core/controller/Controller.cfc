@@ -22,7 +22,7 @@
 --->
 <cfcomponent displayname="Controller" 
 			 implements="org.puremvc.cf.interfaces.IController"
-			 output="true"
+			 output="false"
 			 hint="A Singleton IController implementation. In PureMVC, the Controller class follows the 'Command and Controller' strategy, and assumes these responsibilities. Remembering which ICommands are intended to handle which INotifications. Registering itself as an IObserver with the View for each INotification that it has an ICommand mapping for. Creating a new instance of the proper ICommand to handle a given INotification when notified by the View. Calling the ICommand's execute method, passing in the INotification. Your application must register ICommands with the Controller. The simplest way is to subclass Facade, and use its initializeController method to add your registrations.">
 	
 	<cfproperty name="view" type="org.puremvc.cf.interfaces.IView" required="true" hint="Local reference to View">
@@ -37,7 +37,7 @@
 		this.commandMap = {};
 	</cfscript>
 	
-	<cffunction name="getInstance" displayname="getInstance" access="public" returntype="org.puremvc.cf.interfaces.IController" output="true" 
+	<cffunction name="getInstance" displayname="getInstance" access="public" returntype="org.puremvc.cf.interfaces.IController" output="false" 
 				hint="Controller Singleton Factory method. Returns the Singleton instance of Controller">
 		<cfscript>
 			if ( NOT StructKeyExists(this, "controllerInstance" ) )
@@ -55,7 +55,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="executeCommand" returntype="void" access="public" output="true" hint="If an ICommand has previously been registered to handle a the given INotification, then it is executed.">
+	<cffunction name="executeCommand" returntype="void" access="public" output="false" hint="If an ICommand has previously been registered to handle a the given INotification, then it is executed.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="A notification">
 		<cfscript>
 			var commandClassRef = 0;
@@ -70,7 +70,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="registerCommand" returntype="void" access="public" output="true" hint="I Register a particular ICommand class as the handler for a particular INotification. If an ICommand has already been registered to handle INotification's with this name, it is no longer used, the new ICommand is used instead. The Observer for the new ICommand is only created if this is the first time an ICommand has been registered for this Notification name.">
+	<cffunction name="registerCommand" returntype="void" access="public" output="false" hint="I Register a particular ICommand class as the handler for a particular INotification. If an ICommand has already been registered to handle INotification's with this name, it is no longer used, the new ICommand is used instead. The Observer for the new ICommand is only created if this is the first time an ICommand has been registered for this Notification name.">
 		<cfargument name="notificationName" type="string" required="true" hint="The name of the INotification">
 		<cfargument name="commandClassRef" type="string" required="true" hint="The Class of the ICommand">
 		<cfscript>
@@ -80,21 +80,21 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="removeCommand" returntype="void" access="public" output="true" hint="Remove a previously registered ICommand to INotification mapping.">
+	<cffunction name="removeCommand" returntype="void" access="public" output="false" hint="Remove a previously registered ICommand to INotification mapping.">
 		<cfargument name="notificationName" type="string" required="true" hint="The name of the INotification to remove">
 		<cfscript>
 			StructDelete(this.commandMap, arguments.notificationName, false);
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="hasCommand" returntype="void" access="public" output="true" hint="Check if a Command is registered for a given Notification. Returns whether a Command is currently registered for the given notificationName">
+	<cffunction name="hasCommand" returntype="void" access="public" output="false" hint="Check if a Command is registered for a given Notification. Returns whether a Command is currently registered for the given notificationName">
 		<cfargument name="notificationName" type="string" required="true" hint="The name of the Notification">
 		<cfscript>
 			return StructKeyExists(this.commandMap,arguments.notificationName);
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Executes the notifyMethod of an IObserver when a notification is sent from Proxies.">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="false" hint="Executes the notifyMethod of an IObserver when a notification is sent from Proxies.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			this.executeCommand(arguments.notification);

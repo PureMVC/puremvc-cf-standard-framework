@@ -8,7 +8,7 @@
 <cfcomponent displayname="ViewTest"
 			 extends="net.sourceforge.cfunit.framework.TestCase"
 			 implements="org.puremvc.cf.interfaces.IViewComponent"
-			 output="true">
+			 output="false">
 	
 	<cfproperty name="viewTestVar" type="string" default="0" hint="Value used in testing of the view.">
 	
@@ -28,7 +28,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testRegisterAndNotifyObserver" returntype="void" access="public" output="true">
+	<cffunction name="testRegisterAndNotifyObserver" returntype="void" access="public" output="false">
 		<cfscript>
 			var observer = 0;
 			var note = 0;
@@ -61,7 +61,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testRegisterAndRetrieveMediator" returntype="void" access="public" output="true" hint="Tests registering and retrieving a mediator with the View.">
+	<cffunction name="testRegisterAndRetrieveMediator" returntype="void" access="public" output="false" hint="Tests registering and retrieving a mediator with the View.">
 		<cfscript>
 			var viewTestMediator = 0;
 			var mediator = 0;
@@ -85,7 +85,7 @@
 		<cfset this.cleanup(viewInstance)>
 	</cffunction>
 	
-	<cffunction name="testRegisterAndRemoveMediator" returntype="void" access="public" output="true">
+	<cffunction name="testRegisterAndRemoveMediator" returntype="void" access="public" output="false">
 		<cfscript>
 			var viewTestMediator = 0;
 			var mediator = 0;
@@ -110,7 +110,7 @@
 		<cfset viewInstance.removeMediator("ViewTestMediator")>
 	</cffunction> 
 	
-	<cffunction name="testSuccessiveRegisterAndRemoveMediator" returntype="void" access="public" output="true">
+	<cffunction name="testSuccessiveRegisterAndRemoveMediator" returntype="void" access="public" output="false">
 		<cfscript>
 			var viewTestMediator = 0;
 			var mediator = 0;
@@ -171,38 +171,38 @@
 		<cfset this.cleanUp(viewInstance)>
 	</cffunction> 
 	
-	<cffunction name="cleanup" returntype="void" access="public" output="true">
+	<cffunction name="cleanup" returntype="void" access="public" output="false">
 		<cfargument name="viewInstance" type="org.puremvc.cf.interfaces.IView" required="true">
 		<cfscript>
 			arguments.viewInstance.removeMediator("ViewTestMediator");
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setId" access="public" returntype="void" output="true">
+	<cffunction name="setId" access="public" returntype="void" output="false">
 		<cfargument name="id" type="string" required="true" hint="The id of the View Component">
 		<cfscript>
 			variables.id = arguments.id;
 		</cfscript>
 	</cffunction>
-	<cffunction name="getId" access="public" returntype="string" output="true">
+	<cffunction name="getId" access="public" returntype="string" output="false">
 		<cfscript>
 			return variables.id;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setComponentName" access="public" returntype="void" output="true">
+	<cffunction name="setComponentName" access="public" returntype="void" output="false">
 		<cfargument name="componentName" type="string" required="true" hint="The name of the View Component">
 		<cfscript>
 			variables.componentName = arguments.componentName;
 		</cfscript>
 	</cffunction>
-	<cffunction name="getComponentName" access="public" returntype="string" output="true">
+	<cffunction name="getComponentName" access="public" returntype="string" output="false">
 		<cfscript>
 			return variables.componentName;
 		</cfscript>
 	</cffunction>
 
-	<cffunction name="viewTestMethod" returntype="void" access="public" output="true">
+	<cffunction name="viewTestMethod" returntype="void" access="public" output="false">
 		<cfargument name="note" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			// set the local viewTestVar to the number on the event payload
@@ -210,7 +210,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="false">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			this.viewTestMethod(arguments.notification);

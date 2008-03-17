@@ -17,7 +17,7 @@
 ******************************************************************************
 --->
 <cfcomponent displayname="Notifier" 
-			 output="true" 
+			 output="false" 
 			 hint="A Base INotifier implementation. MacroCommand, SimpleCommand, Mediator, Proxy, and ViewHelper all have a need to send Notifications.">
 	
 	<cfproperty name="facade" type="org.puremvc.cf.interfaces.IFacade" default="0" required="true" hint="Singleton instance of IFacade.">
@@ -26,7 +26,7 @@
 		variables.facade = application.facadeInstance;
 	</cfscript>
 	
-	<cffunction name="sendNotification" returntype="void" access="public" output="true" hint="Sends a notification which Observers will act upon.">
+	<cffunction name="sendNotification" returntype="void" access="public" output="false" hint="Sends a notification which Observers will act upon.">
 		<cfargument name="notificationName" type="string" required="true" hint="The name of the notification instance">
 		<cfargument name="notificationBody" type="any" default="0" required="false" hint="The body of the notification instance">
 		<cfargument name="notificationType" type="string" default="" required="false" hint="The type of the notification instance">

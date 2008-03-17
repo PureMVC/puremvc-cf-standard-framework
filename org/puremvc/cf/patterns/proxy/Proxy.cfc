@@ -18,7 +18,7 @@
 --->
 <cfcomponent extends="org.puremvc.cf.patterns.observer.Notifier"
 			 implements="org.puremvc.cf.interfaces.IProxy"
-			 output="true"
+			 output="false"
 			 hint="A base IProxy implementation. In PureMVC Framework for ColdFusion, Proxy classes are used to manage parts of the application's data model. ">
 			 
 	<cfproperty name="proxyName" type="string" default="Proxy" required="true" hint="The name of the proxy.">
@@ -29,7 +29,7 @@
 		variables.proxyName = "Proxy";
 	</cfscript>
 	
-	<cffunction name="init" returntype="void" access="public" output="true" hint="Contructor">
+	<cffunction name="init" returntype="void" access="public" output="false" hint="Contructor">
 		<cfargument name="proxyName" type="string" required="false">
 		<cfargument name="data" type="any" required="false">
 		<cfscript>
@@ -38,27 +38,27 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setProxyName" returntype="void" access="public" output="true" hint="Sets the name of the proxy.">
+	<cffunction name="setProxyName" returntype="void" access="public" output="false" hint="Sets the name of the proxy.">
 		<cfargument name="proxyName" type="string" required="true" hint="The name of the proxy.">
 		<cfscript>
 			variables.proxyName = arguments.proxyName;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getProxyName" returntype="string" access="public" output="true" hint="Gets the name of the proxy.">
+	<cffunction name="getProxyName" returntype="string" access="public" output="false" hint="Gets the name of the proxy.">
 		<cfscript>
 			return variables.proxyName;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="setData" returntype="any" access="public" output="true" hint="Set the data object">
+	<cffunction name="setData" returntype="any" access="public" output="false" hint="Set the data object">
 		<cfargument name="data" type="any" required="true" hint="The data object.">
 		<cfscript>
 			variables.data = arguments.data;
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="getData" returntype="any" access="public" output="true" hint="Get the data object">
+	<cffunction name="getData" returntype="any" access="public" output="false" hint="Get the data object">
 		<cfscript>
 			return variables.data;
 		</cfscript>

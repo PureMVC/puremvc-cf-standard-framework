@@ -18,10 +18,10 @@
  */
  --->
 <cfcomponent extends="net.sourceforge.cfunit.framework.TestCase"
-			 output="true" 
+			 output="false" 
 			 hint="Tests the execute method of a SimpleCommand.">
 	
-	<cffunction name="testSimpleCommandExecute" returntype="void" access="public" output="true" hint="">
+	<cffunction name="testSimpleCommandExecute" returntype="void" access="public" output="false" hint="">
 		<cfscript>
 			// Create the VO
 			var vo = CreateObject("component","SimpleCommandTestVO");

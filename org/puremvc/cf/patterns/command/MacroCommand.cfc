@@ -19,7 +19,7 @@
 --->
 <cfcomponent displayname="MacroCommand" extends="org.puremvc.cf.patterns.observer.Notifier" 
 			 implements="org.puremvc.cf.interfaces.ICommand,org.puremvc.cf.interfaces.INotifier" 
-			 output="true"
+			 output="false"
 			 hint="A base ICommand implementation that executes other ICommands.">
 				 
 	<cfproperty name="subCommand" type="struct" required="false" hint="A collection of commands.">
@@ -28,7 +28,7 @@
 		variables.subCommands = [];
 	</cfscript>
 	
-	<cffunction name="init" displayname="init" access="public" output="true" returntype="void" hint="Contructor">
+	<cffunction name="init" displayname="init" access="public" output="false" returntype="void" hint="Contructor">
 		<cfscript>
 			initializeMacroCommand();
 		</cfscript>
@@ -38,19 +38,19 @@
 		In your subclass, override this method to initialize the MacroCommand's SubCommand list with ICommand 
 		class references like this:
 		
-		<cffunction name="initializeMacroCommand" returntype="void" access="public" output="true">
+		<cffunction name="initializeMacroCommand" returntype="void" access="public" output="false">
 			<cfscript>
 				this.addSubCommand("ModelPrepCommand", "HelloWorld.controller.ModelPrepCommand" );
 	            this.addSubCommand("ViewPrepCommand", "HelloWorld.controller.ViewPrepCommand" );
 			</cfscript>
 		</cffunction>
 	 --->
-	<cffunction name="initializeMacroCommand" returntype="void" access="public" output="true" hint="Initialize the MacroCommand. ">
+	<cffunction name="initializeMacroCommand" returntype="void" access="public" output="false" hint="Initialize the MacroCommand. ">
 		<cfscript>
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="addSubCommand" returntype="void" access="public" output="true" hint="Add a SubCommand. The SubCommands will be called in First In/First Out (FIFO) order.">
+	<cffunction name="addSubCommand" returntype="void" access="public" output="false" hint="Add a SubCommand. The SubCommands will be called in First In/First Out (FIFO) order.">
 		<cfargument name="commandName" type="string" required="true" hint="The name of the ICommand.">
 		<cfargument name="commandClassRef" type="string" required="true" hint="A reference to the Class of the ICommand.">
 		<cfscript>
@@ -58,7 +58,7 @@
 		</cfscript>
 	</cffunction>
 
-	<cffunction name="execute" returntype="void" access="public" output="true" hint="Execute the ICommand's logic to handle a given INotification.">
+	<cffunction name="execute" returntype="void" access="public" output="false" hint="Execute the ICommand's logic to handle a given INotification.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="An INotification to handle.">
 		<cfscript>
 			var subCommandsLength = ArrayLen(variables.subCommands);
@@ -74,7 +74,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Executes the execute method of an ICommand.">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="false" hint="Executes the execute method of an ICommand.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			this.execute(arguments.notification);

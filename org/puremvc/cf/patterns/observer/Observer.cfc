@@ -20,7 +20,7 @@
 --->
 <cfcomponent displayName="Observer" 
 			 implements="org.puremvc.cf.interfaces.IObserver"
-			 output="true"
+			 output="false"
 			 hint="A base IObserver implementation. An Observer is an object that encapsulates information about an interested object with a method that should be called when a particular INotification is broadcast.">
 	
 	<cfproperty name="notify" type="string" required="false" hint="Method called when a Notification is broadcasted.">
@@ -31,7 +31,7 @@
 		variables.notify = "";
 	</cfscript>
 	
-	<cffunction name="init" displayname="init" access="public" returntype="org.puremvc.cf.interfaces.IObserver" output="true" hint="Constructor">
+	<cffunction name="init" displayname="init" access="public" returntype="org.puremvc.cf.interfaces.IObserver" output="false" hint="Constructor">
 		<cfargument name="notifyMethod" type="string" required="false" default="">
 		<cfargument name="notifyContext" type="any" required="true">
 		<cfscript>
@@ -65,7 +65,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="notifyObserver" displayname="notifyObserver" access="public" returntype="void" output="true" hint="Notify the interested object.">
+	<cffunction name="notifyObserver" displayname="notifyObserver" access="public" returntype="void" output="false" hint="Notify the interested object.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="A INotification instance.">
 		<cfscript>
 			this.getNotifyContext().applyNotifyMethod(arguments.notification);
@@ -73,7 +73,7 @@
 	</cffunction>
 
 	<cffunction name="compareNotifyContext" displayname="compareNotifyContext" access="public" 
-				returntype="boolean" output="true"
+				returntype="boolean" output="false"
 				hint="Compare an object to the notification context. Returns boolean indicating if the object and the notification context are the same">
 		<cfargument name="object" type="any" required="true" hint="The object to compare">
 		<cfscript>

@@ -32,13 +32,13 @@
 
  <cfcomponent displayname="LoginViewMediator" 
 			 extends="org.puremvc.cf.patterns.mediator.Mediator" 
-			 output="true">
+			 output="false">
 		
 	<cfscript>
 		variables.mediatorName = 'LoginViewMediator';
 	</cfscript>
 
-	<cffunction name="init" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="true">
+	<cffunction name="init" returntype="org.puremvc.cf.interfaces.IMediator" access="public" output="false">
 		<cfargument name="mediatorName" type="string" required="true" hint="The name of the mediator" default="">
 		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="false" hint="An instance of IViewComponent">
 		<cfscript>
@@ -47,12 +47,12 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="onLoginUser" returntype="void" access="public" output="true">
+	<cffunction name="onLoginUser" returntype="void" access="public" output="false">
 		<cfscript>
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="listNotificationInterests" returntype="array" access="public" output="true">
+	<cffunction name="listNotificationInterests" returntype="array" access="public" output="false">
 		<cfscript>
 			var interests = ArrayNew(1);
 			interests[1] = "USER_LOGIN_RESULT";
@@ -61,7 +61,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="handleNotification" returntype="void" access="public" output="true">
+	<cffunction name="handleNotification" returntype="void" access="public" output="false">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 		<cfscript>
 			if ( arguments.notification.getName() EQ "USER_LOGIN_RESULT")
@@ -81,35 +81,35 @@
 <cfinterface displayname="IMediator" 
 			 hint="The interface definition for a PureMVC Mediator.">
 	
-	<cffunction name="setMediatorName" returntype="void" access="public" output="true" hint="Sets the name of the Mediator">
+	<cffunction name="setMediatorName" returntype="void" access="public" output="false" hint="Sets the name of the Mediator">
 		<cfargument name="mediatorName" type="string" required="true">
 	</cffunction>
 	
-	<cffunction name="getMediatorName" returntype="string" access="public" output="true" hint="Get the IMediator instance name">
+	<cffunction name="getMediatorName" returntype="string" access="public" output="false" hint="Get the IMediator instance name">
 	</cffunction>
 	
-	<cffunction name="setViewComponent" returntype="void" access="public" output="true" hint="Sets the Mediator''s view component.">
+	<cffunction name="setViewComponent" returntype="void" access="public" output="false" hint="Sets the Mediator''s view component.">
 		<cfargument name="viewComponent" type="org.puremvc.cf.interfaces.IViewComponent" required="true">
 	</cffunction>
 	
-	<cffunction name="getViewComponent" returntype="org.puremvc.cf.interfaces.IViewComponent" access="public" output="true" hint="Get the IMediator's view component.">
+	<cffunction name="getViewComponent" returntype="org.puremvc.cf.interfaces.IViewComponent" access="public" output="false" hint="Get the IMediator's view component.">
 	</cffunction>
 	
-	<cffunction name="listNotificationInterests" returntype="array" access="public" output="true" hint="List INotification interests.">
+	<cffunction name="listNotificationInterests" returntype="array" access="public" output="false" hint="List INotification interests.">
 	</cffunction>
 	
-	<cffunction name="handleNotification" returntype="void" access="public" output="true" hint="Handle an INotification.">
+	<cffunction name="handleNotification" returntype="void" access="public" output="false" hint="Handle an INotification.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Runs the Observer handler of an IMediator when registered as an Observer.">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="false" hint="Runs the Observer handler of an IMediator when registered as an Observer.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 	</cffunction>
 	
-	<cffunction name="onRegister" returntype="void" access="public" output="true" hint="Called by the View when the Mediator is registered">
+	<cffunction name="onRegister" returntype="void" access="public" output="false" hint="Called by the View when the Mediator is registered">
 	</cffunction>
 	
-	<cffunction name="onRemove" returntype="void" access="public" output="true" hint="Called by the View when the Mediator is removed">
+	<cffunction name="onRemove" returntype="void" access="public" output="false" hint="Called by the View when the Mediator is removed">
 	</cffunction>
 	
 </cfinterface>

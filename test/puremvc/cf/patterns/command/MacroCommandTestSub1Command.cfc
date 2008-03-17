@@ -4,10 +4,10 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 --->
 <cfcomponent extends="org.puremvc.cf.patterns.command.SimpleCommand"
-			 output="true" 
+			 output="false" 
 			 hint="Tests the execute method of a SimpleCommand.">
 	
-	<cffunction name="execute" returntype="void" access="public" output="true" hint="Fabricate a result1 by multiplying the input by 2">
+	<cffunction name="execute" returntype="void" access="public" output="false" hint="Fabricate a result1 by multiplying the input by 2">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="The INotification carrying the MacroCommandTestVO">
 		<cfscript>
 			var vo = notification.getBody();

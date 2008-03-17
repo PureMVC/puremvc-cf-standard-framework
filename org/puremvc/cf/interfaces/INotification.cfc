@@ -26,21 +26,21 @@
 --->
 <cfinterface displayname="INotification" hint="The interface definition for INotification.">
 	
-	<cffunction name="getName" returntype="string" access="public" output="true" hint="Get the name of the INotification instance. No setter, should be set by constructor only.">
+	<cffunction name="getName" returntype="string" access="public" output="false" hint="Get the name of the INotification instance. No setter, should be set by constructor only.">
 	</cffunction>
 	
-	<cffunction name="setBody" returntype="void" access="public" output="true" hint="Set the body of the INotification instance.">
+	<cffunction name="setBody" returntype="void" access="public" output="false" hint="Set the body of the INotification instance.">
 		<cfargument name="notificationBody" type="any" required="true">
 	</cffunction>
 	
-	<cffunction name="getBody" returntype="any" access="public" output="true" hint="Get the body of the INotification instance.">
+	<cffunction name="getBody" returntype="any" access="public" output="false" hint="Get the body of the INotification instance.">
 	</cffunction>
 	
-	<cffunction name="setType" returntype="void" access="public" output="true" hint="Set the type of the INotification instance">
+	<cffunction name="setType" returntype="void" access="public" output="false" hint="Set the type of the INotification instance">
 		<cfargument name="notificationType" type="string" required="true">
 	</cffunction>
 	
-	<cffunction name="getType" returntype="string" access="public" output="true" hint="Get the type of the INotification instance.">
+	<cffunction name="getType" returntype="string" access="public" output="false" hint="Get the type of the INotification instance.">
 	</cffunction>
 	
 </cfinterface>

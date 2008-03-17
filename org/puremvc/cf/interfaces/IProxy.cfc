@@ -22,18 +22,18 @@
 <cfinterface displayname="IProxy" 
 			 hint="The interface definition for a PureMVC Proxy.">
 	
-	<cffunction name="setProxyName" returntype="void" access="public" output="true" hint="Sets the name of the proxy.">
+	<cffunction name="setProxyName" returntype="void" access="public" output="false" hint="Sets the name of the proxy.">
 		<cfargument name="proxyName" type="string" required="true" hint="The name of the proxy.">
 	</cffunction>
 	
-	<cffunction name="getProxyName" returntype="string" access="public" output="true" hint="The name of the proxy.">
+	<cffunction name="getProxyName" returntype="string" access="public" output="false" hint="The name of the proxy.">
 	</cffunction>
 	
-	<cffunction name="setData" returntype="any" access="public" output="true" hint="Set the data object">
+	<cffunction name="setData" returntype="any" access="public" output="false" hint="Set the data object">
 		<cfargument name="data" type="any" required="true" hint="The data object.">
 	</cffunction>
 	
-	<cffunction name="getData" returntype="any" access="public" output="true" hint="Get the data object">
+	<cffunction name="getData" returntype="any" access="public" output="false" hint="Get the data object">
 	</cffunction>
 
 </cfinterface>

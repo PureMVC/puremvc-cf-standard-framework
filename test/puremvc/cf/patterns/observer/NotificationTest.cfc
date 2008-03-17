@@ -10,9 +10,9 @@
  *
 --->
 <cfcomponent extends="net.sourceforge.cfunit.framework.TestCase"
-			 output="true">
+			 output="false">
 	
-	<cffunction name="testNameAccessor" returntype="void" access="public" output="true" hint="Tests setting and getting the name using Notification class accessor methods.">
+	<cffunction name="testNameAccessor" returntype="void" access="public" output="false" hint="Tests setting and getting the name using Notification class accessor methods.">
 		<cfscript>
 			// Create a new Notification and use accessors to set the note name 
 			var note = CreateObject("component","org.puremvc.cf.patterns.observer.Notification");
@@ -23,7 +23,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testBodyAccessors" returntype="void" access="public" output="true" hint="Tests setting and getting the body using Notification class accessor methods.">
+	<cffunction name="testBodyAccessors" returntype="void" access="public" output="false" hint="Tests setting and getting the body using Notification class accessor methods.">
 		<cfscript>
 			// Create a new Notification and use accessors to set the body
 			var note = CreateObject("component","org.puremvc.cf.patterns.observer.Notification");
@@ -35,7 +35,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="testConstructor" returntype="void" access="public" output="true" hint="Tests setting the name and body using the Notification class Constructor.">
+	<cffunction name="testConstructor" returntype="void" access="public" output="false" hint="Tests setting the name and body using the Notification class Constructor.">
 		<cfscript>
 			// Create a new Notification using the Constructor to set the note name and body
 			var note = CreateObject("component","org.puremvc.cf.patterns.observer.Notification");

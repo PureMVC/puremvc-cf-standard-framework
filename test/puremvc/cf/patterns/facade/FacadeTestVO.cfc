@@ -5,7 +5,7 @@
 --->
 <cfcomponent name="FacadeTestVO" 
 			 displayname="FacadeTestVO" 
-			 output="true" 
+			 output="false" 
 			 hint="A utility class used by FacadeTestCommand.">
 	
 	<cfproperty name="input" type="numeric" required="true" />

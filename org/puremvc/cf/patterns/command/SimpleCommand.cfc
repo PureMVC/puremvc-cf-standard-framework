@@ -11,7 +11,7 @@
 <cfcomponent displayname="SimpleCommand" 
 			 extends="org.puremvc.cf.patterns.observer.Notifier" 
 			 implements="org.puremvc.cf.interfaces.ICommand,org.puremvc.cf.interfaces.INotifier" 
-			 output="true"
+			 output="false"
 			 hint="A base ICommand implementation.">
 	<!---
 	 	Fulfill the use-case initiated by the given INotification.
@@ -19,13 +19,13 @@
 		In the Command Pattern, an application use-case typically begins with some user action, which results in an 
 		INotification being broadcast, which is handled by business logic in the execute method of an ICommand.
 	--->
-	<cffunction name="execute" returntype="void" access="public" output="true" hint="Execute the ICommand's logic to handle a given INotification.">
+	<cffunction name="execute" returntype="void" access="public" output="false" hint="Execute the ICommand's logic to handle a given INotification.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="An INotification to handle.">
 		<cfscript>
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Runs the Observer handler of an ICommand when registered as an Observer.">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="false" hint="Runs the Observer handler of an ICommand when registered as an Observer.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="A Notification to execute.">
 		<cfscript>
 			this.execute(arguments.notification);

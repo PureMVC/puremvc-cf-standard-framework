@@ -17,19 +17,19 @@
 --->
 <cfinterface displayname="IModel" hint="The interface definition for IModel.">
 
-	<cffunction name="registerProxy" returntype="void" access="public" output="true" hint="Register an IProxy instance with the Model.">
+	<cffunction name="registerProxy" returntype="void" access="public" output="false" hint="Register an IProxy instance with the Model.">
 		<cfargument name="proxy" type="org.puremvc.cf.interfaces.IProxy" required="true" hint="An object reference to be held by the Model.">
 	</cffunction>
 	
-	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="true" hint="Retrieve an IProxy instance from the Model.">
+	<cffunction name="retrieveProxy" returntype="org.puremvc.cf.interfaces.IProxy" access="public" output="false" hint="Retrieve an IProxy instance from the Model.">
 		<cfargument name="proxyName" type="string" required="true" hint="A name of a proxy.">
 	</cffunction>
 	
-	<cffunction name="removeProxy" returntype="any" access="public" output="true" hint="Remove an IProxy instance from the Model.">
+	<cffunction name="removeProxy" returntype="any" access="public" output="false" hint="Remove an IProxy instance from the Model.">
 		<cfargument name="proxyName" type="string" required="true" hint="A name of a proxy.">
 	</cffunction>
 	
-	<cffunction name="hasProxy" returntype="boolean" access="public" output="true" hint="Check if a Proxy is registered. Return whether a Proxy is currently registered with the given proxyName.">
+	<cffunction name="hasProxy" returntype="boolean" access="public" output="false" hint="Check if a Proxy is registered. Return whether a Proxy is currently registered with the given proxyName.">
 		<cfargument name="proxyName" type="string" required="true" hint="The IProxy to remove from the Model.">
 	</cffunction>
 	

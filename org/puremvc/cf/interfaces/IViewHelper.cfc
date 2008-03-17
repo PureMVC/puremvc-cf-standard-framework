@@ -28,7 +28,7 @@
 			 	   In ColdFusion, a view in most cases consists of an HTML page with ColdFusion tags, functions, ect and has no way to register itself to PureMVC without some help.
 			 	   For each CF/HTML view we create View Helpers which extend IViewHelper and IViewComponent to act as out viewComponent.">
 			 	
-	<cffunction name="initializeViewHelper" access="public" returntype="void" hint="Initializes the View Helper." output="true">
+	<cffunction name="initializeViewHelper" access="public" returntype="void" hint="Initializes the View Helper." output="false">
 	</cffunction>
 	
 	<cffunction name="setFacade" access="public" returntype="void" hint="Sets a reference to the facade instance with the view helper.">
@@ -38,7 +38,7 @@
 	<cffunction name="getFacade" access="public" returntype="org.puremvc.cf.interfaces.IFacade" hint="Gets the facade instance on the view helper.">
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Executes the notifyMethod of an IObserver when a notification is sent from Proxies.">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="false" hint="Executes the notifyMethod of an IObserver when a notification is sent from Proxies.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 	</cffunction>
 	

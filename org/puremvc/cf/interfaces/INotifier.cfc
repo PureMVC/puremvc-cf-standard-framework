@@ -19,7 +19,7 @@
 --->
 <cfinterface displayname="INotifier" hint="The interface definition for INotifier. MacroCommand, SimpleCommand, Command, Mediator, Proxy, and ViewHelper all have a need to send Notifications.">	
 	
-	<cffunction name="sendNotification" returntype="void" access="public" output="true" hint="Convenience method to prevent having to construct new notification instances in our implementation code.">
+	<cffunction name="sendNotification" returntype="void" access="public" output="false" hint="Convenience method to prevent having to construct new notification instances in our implementation code.">
 		<cfargument name="notificationName" type="string" required="true">
 		<cfargument name="notificationBody" type="any" default="0" required="false">
 		<cfargument name="notificationType" type="string" default="" required="false">

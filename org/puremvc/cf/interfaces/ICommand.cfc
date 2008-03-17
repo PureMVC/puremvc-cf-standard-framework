@@ -7,11 +7,11 @@
 --->
 <cfinterface displayName="ICommand" hint="The interface definition for ICommand.">
 			
-	<cffunction name="execute" returntype="void" access="public" output="true" hint="Execute the ICommand's logic to handle a given INotification.">
+	<cffunction name="execute" returntype="void" access="public" output="false" hint="Execute the ICommand's logic to handle a given INotification.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true" hint="An INotification to handle.">
 	</cffunction>
 	
-	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="true" hint="Runs the Observer handler of an ICommand when registered as an Observer.">
+	<cffunction name="applyNotifyMethod" returntype="void" access="public" output="false" hint="Runs the Observer handler of an ICommand when registered as an Observer.">
 		<cfargument name="notification" type="org.puremvc.cf.interfaces.INotification" required="true">
 	</cffunction>
 	

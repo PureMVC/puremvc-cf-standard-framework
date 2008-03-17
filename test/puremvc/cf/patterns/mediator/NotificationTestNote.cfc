@@ -5,13 +5,13 @@
 --->
 <cfcomponent displayname="NotificationTestNote"
 			 extends="org.puremvc.cf.patterns.observer.notification.Notification"
-			 output="true">
+			 output="false">
 				 
 	<cfscript>
 		this.notificationName = "NotificationTestNote";
 	</cfscript>
 	
-	<cffunction name="init" returntype="void" access="public" output="true" hint="">
+	<cffunction name="init" returntype="void" access="public" output="false" hint="">
 		<cfargument name="notificationName" type="string" required="true" hint="Name of the Notification instance">
 		<cfargument name="notificationBody" type="any" required="false" hint="Body the Notification body.">
 		<cfargument name="notificationType" type="string" required="false" hint="Type the type of the Notification">
@@ -20,7 +20,7 @@
 		</cfscript>
 	</cffunction>
 	
-	<cffunction name="create" returntype="org.puremvc.cf.interfaces.INotification" access="public" output="true" hint="">
+	<cffunction name="create" returntype="org.puremvc.cf.interfaces.INotification" access="public" output="false" hint="">
 		<cfargument name="notificationBody" type="any" required="false" hint="Body the Notification body.">
 		<cfargument name="notificationType" type="string" required="false" hint="Type the type of the Notification">
 		<cfscript>
