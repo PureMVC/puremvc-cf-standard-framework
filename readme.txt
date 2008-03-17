@@ -1,7 +1,7 @@
 *************************************************
-*						*
+*												*
 *  PureMVC for ColdFusion v1.0 Alpha Readme  	*
-*						*
+*												*
 *************************************************
 
 Introduction
@@ -33,7 +33,8 @@ STEP 1 - Download the latest release above from the Trac website or SVN and choo
 	[SCENARIO 1]
 	The quickest and easiest way to install the framework is to extract the contents of the PureMVC_CF.zip into the root of 
 	your website. So, if your site root is located at 'C:\ColdFusion8\wwwroot\' then extract the contents of the zip under wwwroot.
-	You should see the folders listed below under site root.
+	You should see the folders "PureMVC_CF_X_Y" listed under site root. Move the contents of the "PureMVC_CF_X_Y" into your site root.
+	You should now see the folders listed below under your site root. Delete the "PureMVC_CF_X_Y" folder since it is no longer required.
 	
 	cfcdoc - API Documentation
 	org - Framework classes.
@@ -41,9 +42,9 @@ STEP 1 - Download the latest release above from the Trac website or SVN and choo
 	
 	[SCENARIO 2]
 	You can configure ColdFusion mappings to access the framework using the ColdFusion Administrator.
-	1 - Extract the contents of the PureMVC_CF_1_0.zip into any preferred location outside your site root.
+	1 - Extract the contents of the PureMVC_CF_X_Y.zip into any preferred location outside your site root.
 	2 - Login to the ColdFusion Admin and create a mapping named "org", which points to the location of the
-		"org" folder you extracted from the PureMVC_CF_1_0.zip archive. Do the same for "test" if you plan on running the unit tests.
+		"org" folder you extracted from the PureMVC_CF_X_Y.zip archive. Do the same for "test" if you plan on running the unit tests.
 		
 	To run the unit tests or if you will be contributing to the code base you must configure your development environment to use 
 	CFUnit for unit testing. Proceed to STEP 2. if not, then you can simple delete the "test" folder. 
