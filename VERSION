@@ -1,12 +1,10 @@
-PureMVC Port to ColdFusion by Michael Oddis
-PureMVC - Copyright(c) 2006, 2008 Futurescale, Inc., Some rights reserved.
+PureMVC Standard Framework for ColdFusion (Ported) - Copyright © 2008 Michael Oddis
 --------------------------------------------------------------------------
 Release Date: 3/9/08
     Platform: ColdFusion 8
      Version: 1 
     Revision: 0
       Author: Michael Oddis <michael.oddis@puremvc.org>
-     License: Creative Commons Attribution 3.0 United States License
 --------------------------------------------------------------------------
 
 1.0	-	Added final comments and updated examples to the build archive. - MJO
