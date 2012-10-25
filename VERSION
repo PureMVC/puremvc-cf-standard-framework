@@ -7,40 +7,23 @@ Release Date: 3/9/08
       Author: Michael Oddis <michael.oddis@puremvc.org>
 --------------------------------------------------------------------------
 
-1.0	-	Added final comments and updated examples to the build archive. - MJO
+1.0 - Added final comments and updated examples to the build archive. - MJO
 
-0.9 - 	All unit tests passed. AS3 2.0 functionality. Supporting documentation outside of code base
-		must still be created. Most code has reasonable documentation to get started but I am sure
-		there are areas which will require deeper explaination. - MJO
+0.9 - All unit tests passed. AS3 2.0 functionality. Supporting documentation outside of code base must still be created. Most code has reasonable documentation to get started but I am sure there are areas which will require deeper explaination. - MJO
 
-0.8 -	All unit tests passed. AS3 1.7 functionality. Added additional comments so CFCDoc and provide a 
-		little more information. Would like to find	free tool to display API without CF Server running 
-		but this will have to do for now. - MJO
+0.8 - All unit tests passed. AS3 1.7 functionality. Added additional comments so CFCDoc and provide a little more information. Would like to find free tool to display API without CF Server running but this will have to do for now. - MJO
 
-0.7 -	Added more comments and documentation to cfc's. Created HelloWorld and LoginApp examples. Decided to
-		utilize CFCDoc to use as tool to present API. All unit tests passed. AS3 1.5 functionality. - MJO
+0.7 - Added more comments and documentation to cfc's. Created HelloWorld and LoginApp examples. Decided to utilize CFCDoc to use as tool to present API. All unit tests passed. AS3 1.5 functionality. - MJO
 		
-0.6 -	IViewHelper now extends IViewComponent after discovering thru unit testing that Mediators are not just
-		ment for composite views but technically could be used with other objects. - MJO
+0.6 -IViewHelper now extends IViewComponent after discovering thru unit testing that Mediators are not just meant for composite views but technically could be used with other objects. - MJO
 		
-0.5 -	Added solution for hard coded switch statement in notifyObserver() method of the Observer class. Added
-		an applyNotifyMethod() to the IController and INotifier interfaces. applyNotification() takes an
-		INotification. So, now anything that implements IController or INotifier must implement the a
-		applyNotifyMethod(). This works like a charm because now he Controller can fire off the executeCommand()
-		when applyNotifyMethod() is called and the Notified class in fire off its handleNotification() method
-		when its applyNotifyMethod() is called. Polymorphism is great in this situation :). - MJO
+0.5 - Added solution for hard coded switch statement in notifyObserver() method of the Observer class. Added an applyNotifyMethod() to the IController and INotifier interfaces. applyNotification() takes an INotification. So, now anything that implements IController or INotifier must implement the a applyNotifyMethod(). This works like a charm because now he Controller can fire off the executeCommand() when applyNotifyMethod() is called and the Notified class in fire off its handleNotification() method when its applyNotifyMethod() is called. Polymorphism is great in this situation :). - MJO
 
-0.4 -	Implemented the Model, View, and Controller. Had to hard code a switch statement into the 
-		notifyObserver() method of the Observer class for now until I figure out how to best implement the
-		apply() method which is available in AS3 but not available in ColdFusion. - MJO
+0.4 - Implemented the Model, View, and Controller. Had to hard code a switch statement into the notifyObserver() method of the Observer class for now until I figure out how to best implement the apply() method which is available in AS3 but not available in ColdFusion. - MJO
 
-0.3 -	Implemented the rest of the interfaces into their concreate implementations. Came to realization we
-		will have to add an IViewHelper and ViewHelper pattern to act as the viewComponent in CF since HTML
-		is not considered an object to ColdFusion code. The ViewHelper will act as the view which is passed into
-		the Mediator. - MJO
+0.3 - Implemented the rest of the interfaces into their concreate implementations. Came to realization we will have to add an IViewHelper and ViewHelper pattern to act as the viewComponent in CF since HTML is not considered an object to ColdFusion code. The ViewHelper will act as the view which is passed into the Mediator. - MJO
 		
-0.2 - 	Converted all the interfaces which are a part of the PureMVC AS3 interface core. Implemented Proxy 
-		and Mediator patterns. - MJO
+0.2 - Converted all the interfaces which are a part of the PureMVC AS3 interface core. Implemented Proxy and Mediator patterns. - MJO
 
-0.1 - 	Initial project structure created in repository - CLH
+0.1 - Initial project structure created in repository - CLH
 
