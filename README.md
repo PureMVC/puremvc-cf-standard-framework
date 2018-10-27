@@ -5,7 +5,7 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 * [Overview Presentation](http://puremvc.tv/#P100)
 
 ##Demos
-* [Demo: Hello World] (https://github.com/PureMVC/puremvc-cf-demo-helloworld/wiki) 
+* [Demo: Hello World](https://github.com/PureMVC/puremvc-cf-demo-helloworld/wiki) 
 * [Demo: Login](https://github.com/PureMVC/puremvc-cf-demo-login/wiki)
 
 ## Status
